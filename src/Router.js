@@ -1,13 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
 import Main from './Pages/Main/Main';
 import Login from './Pages/Login/Login';
 import ResList from './Pages/ResList/ResList';
 import ResultList from './Pages/ResultList/ResultList';
 import Detail from './Pages/Detail/Detail';
 import ReviewWrite from './Pages/ReviewWrite/ReviewWrite';
-
 import Header from './Components/ReviewList/Layout/Header/Header';
 import Footer from './Components/ReviewList/Layout/Footer/Footer';
 
