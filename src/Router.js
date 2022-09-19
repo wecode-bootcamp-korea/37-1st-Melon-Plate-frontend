@@ -8,14 +8,13 @@ import ResultList from './Pages/ResultList/ResultList';
 import Detail from './Pages/Detail/Detail';
 import ReviewWrite from './Pages/ReviewWrite/ReviewWrite';
 
-import Header from './Pages/Layout/Header/Header';
-import Footer from './Pages/Layout/Footer/Footer';
+import Header from './Components/ReviewList/Layout/Header/Header';
+import Footer from './Components/ReviewList/Layout/Footer/Footer';
 
 function Router() {
   return (
     <BrowserRouter>
       <Header />
-      <Footer />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
@@ -24,6 +23,7 @@ function Router() {
         <Route path="/detail" element={<Detail />} />
         <Route path="/detail/write" element={<ReviewWrite />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
