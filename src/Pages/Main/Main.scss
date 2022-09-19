@@ -1,0 +1,10 @@
+@import '../../styles/variables.scss';
+
+.main {
+  display: flex;
+  flex-direction: column;
+
+  .searchInput {
+    border: 1px solid black;
+  }
+}
