@@ -3,8 +3,26 @@
 .main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 100vh;
+  width: 100%;
+  padding: 0 20px;
 
-  .searchInput {
-    border: 1px solid black;
+  background: linear-gradient(
+    to bottom right,
+    $melonColor1,
+    $melonColor2,
+    $melonColor3
+  );
+
+  .welcomeMessage {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  .mainLoginMessage {
+    cursor: pointer;
   }
 }

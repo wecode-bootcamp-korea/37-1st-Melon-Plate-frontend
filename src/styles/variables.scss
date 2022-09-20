@@ -3,11 +3,11 @@ $melonColor2: #adcf9f;
 $melonColor3: #ced89e;
 $melonColor4: #ffdcae;
 
-$flexSetCenter: (
-  display: flex,
-  justify-content: center,
-  align-items: center,
-);
+@mixin flexSetCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 $buttonShadow: (
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px,
