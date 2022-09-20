@@ -1,0 +1,83 @@
+.reviewList {
+  width: 800px;
+  border-bottom: 0.8px solid gray;
+
+  .reviewListTop {
+    display: flex;
+    justify-content: space-between;
+    height: 23px;
+    margin-bottom: 14px;
+
+    .reviewListTopReviewLeft {
+      .reviewListTopReviewLeftText {
+        font-size: 18px;
+        color: rgb(79, 79, 79);
+      }
+
+      .reviewListTopReviewLeftNumber {
+        font-size: 18px;
+        color: gray;
+      }
+    }
+    .reviewListTopReviewRight {
+      .reviewListTopReviewRightBtn {
+        height: 23px;
+
+        .reviewListTopReviewRightBtns {
+          color: gray;
+        }
+
+        i {
+          color: gray;
+        }
+      }
+    }
+  }
+  .reviewListMain {
+    display: flex;
+    justify-content: space-between;
+
+    .reviewListMainLeft {
+      width: 70px;
+      margin: 15px 35px 0px 8px;
+
+      .reviewListMainLeftName {
+        font-size: 13px;
+        width: 60px;
+      }
+
+      .reviewListMainLeftReviews {
+        font-size: 8px;
+      }
+    }
+
+    .reviewListMainCenter {
+      width: 605;
+
+      .reviewListMainCenterDay {
+        width: 600px;
+        font-size: 14px;
+        color: gray;
+        margin-bottom: 10px;
+      }
+      .reviewListMainCenterPhoto {
+        margin: 20px 0px;
+        img {
+          object-fit: cover;
+          width: 70px;
+          margin: 10px;
+        }
+      }
+    }
+
+    .reviewListMainRight {
+      width: 60;
+      margin-left: 22px;
+    }
+
+    .reviewListMainRightMelon {
+      width: 40px;
+      border-radius: 20px;
+    }
+  }
+}

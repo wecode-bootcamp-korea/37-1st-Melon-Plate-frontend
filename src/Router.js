@@ -8,6 +8,7 @@ import Detail from './Pages/Detail/Detail';
 import ReviewWrite from './Pages/ReviewWrite/ReviewWrite';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
+import ReviewList from './Components/ReviewList/ReviewList';
 
 function Router() {
   return (
@@ -20,6 +21,7 @@ function Router() {
         <Route path="/resultlist" element={<ResultList />} />
         <Route path="/detail" element={<Detail />} />
         <Route path="/detail/write" element={<ReviewWrite />} />
+        <Route path="/reviewList" element={<ReviewList />} />
       </Routes>
       <Footer />
     </BrowserRouter>
