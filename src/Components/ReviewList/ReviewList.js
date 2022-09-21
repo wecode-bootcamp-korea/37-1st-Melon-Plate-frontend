@@ -1,4 +1,5 @@
 import React from 'react';
+import GreenMelon from '../../Pages/ReviewWrite/GreenMelon';
 import './ReviewList.scss';
 
 const ReviewList = () => {
@@ -32,7 +33,12 @@ const ReviewList = () => {
       </div>
       <div className="reviewListMain">
         <span className="reviewListMainLeft">
-          <div className="reviewListMainLeftPhoto">사진</div>
+          <div className="reviewListMainLeftPhoto">
+            <img
+              src={`${process.env.PUBLIC_URL}/images/20596969-F8C3-4D15-9D89-16ECCE2090F5.jpeg`}
+              className="reviewListMainLeftPhotos"
+            />
+          </div>
           <div className="reviewListMainLeftName">이름</div>
           <div className="reviewListMainLeftReviews">
             <i class="fa-solid fa-pen" />
@@ -58,18 +64,11 @@ const ReviewList = () => {
             탓은 아닌것같다.
           </div>
           <div className="reviewListMainCenterPhoto">
-            <img
-              src={`${process.env.PUBLIC_URL}/images/20596969-F8C3-4D15-9D89-16ECCE2090F5.jpeg`}
-            />{' '}
-            <img
-              src={`${process.env.PUBLIC_URL}/images/20596969-F8C3-4D15-9D89-16ECCE2090F5.jpeg`}
-            />{' '}
-            <img
-              src={`${process.env.PUBLIC_URL}/images/20596969-F8C3-4D15-9D89-16ECCE2090F5.jpeg`}
-            />{' '}
-            <img
-              src={`${process.env.PUBLIC_URL}/images/20596969-F8C3-4D15-9D89-16ECCE2090F5.jpeg`}
-            />
+            <GreenMelon />
+            <GreenMelon />
+            <GreenMelon />
+            <GreenMelon />
+            <GreenMelon />
           </div>
         </span>
         <span className="reviewListMainRight">

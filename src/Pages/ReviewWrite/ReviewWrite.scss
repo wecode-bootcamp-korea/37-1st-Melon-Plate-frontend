@@ -91,16 +91,38 @@
       display: flex;
       flex-direction: column;
       margin-bottom: 10px;
+      width: 676px;
 
       .ReviewWritePhotoInner {
         display: flex;
         position: relative;
         margin-right: 9px;
         margin-bottom: 9px;
-        width: 89px;
-        height: 89px;
+        width: 100%;
+        height: 100%;
         margin-top: 20px;
         margin-bottom: 40px;
+
+        .ReviewWritePhotoInnerLabel {
+          margin-right: 9px;
+          margin-bottom: 9px;
+        }
+        .ReviewWritePhotoInnerPhotos {
+          display: flex;
+          flex-wrap: wrap;
+          margin-left: 9px;
+          margin-bottom: 9px;
+          li {
+            margin-right: 9px;
+            margin-bottom: 9px;
+
+            img {
+              width: 89px;
+              height: 89px;
+              margin: 0px, 9px, 9px, 0px;
+            }
+          }
+        }
 
         .ReviewWritePhotoInnerInput {
           display: none;

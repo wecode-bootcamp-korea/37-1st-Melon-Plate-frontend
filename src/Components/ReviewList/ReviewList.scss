@@ -40,7 +40,10 @@
     .reviewListMainLeft {
       width: 70px;
       margin: 15px 35px 0px 8px;
-
+      .reviewListMainLeftPhotos {
+        width: 60px;
+        border-radius: 50px;
+      }
       .reviewListMainLeftName {
         font-size: 13px;
         width: 60px;

@@ -6,6 +6,28 @@ import './ReviewWrite.scss';
 const ReviewWrite = () => {
   const [input, setInput] = useState(10);
   const [filed, setFiled] = useState([]);
+  const [images, setImages] = useState([]);
+  const [save, setSave] = useState([]);
+
+  const saveImages = e => {
+    const fileArr = e.target.files;
+    setSave([...fileArr]);
+    console.log([...save, ...fileArr]);
+    let fileURLs = [];
+    let file;
+    let filesLength = fileArr.length > 10 ? 10 : fileArr.length;
+    for (let i = 0; i < filesLength; i++) {
+      file = fileArr[i];
+      let reader = new FileReader();
+      reader.onload = () => {
+        fileURLs.push(reader.result);
+        setImages([...fileURLs, ...images]);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  };
+
   // const reviewForm = document.querySelector('.ReviewWritePage');
   // console.log(new FormData(reviewForm));
   return (
@@ -55,20 +77,28 @@ const ReviewWrite = () => {
         </div>
         <div className="ReviewWritePhoto">
           <div className="ReviewWritePhotoInner">
-            <label htmlFor="file">
-              <div className="ReviewWritePhotoInnerInputFile">
-                <i className="fa-regular fa-image" />
-              </div>
-            </label>
-            {filed}
-            <input
-              type="file"
-              id="file"
-              className="ReviewWritePhotoInnerInput"
-              onChange={e => {
-                setFiled(e);
-              }}
-            />
+            <div>
+              <label htmlFor="file" className="ReviewWritePhotoInnerLabel">
+                <div className="ReviewWritePhotoInnerInputFile">
+                  <i className="fa-regular fa-image" />
+                </div>
+              </label>
+              {filed}
+              <input
+                type="file"
+                id="file"
+                multiple="multiple"
+                className="ReviewWritePhotoInnerInput"
+                onChange={saveImages}
+              />
+            </div>
+            <ul className="ReviewWritePhotoInnerPhotos">
+              {images?.map((e, i) => (
+                <li key={i}>
+                  <img src={e} />
+                </li>
+              ))}
+            </ul>
             <div className="ReviewWritePhotoInnerLength">asd</div>
           </div>
         </div>
