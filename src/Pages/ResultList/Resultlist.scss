@@ -1,3 +1,5 @@
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css';
+
 .resultListWrap {
   display: flex;
   flex-wrap: wrap;
@@ -102,32 +104,19 @@
   .restaurantItem
   .thumb
   .dayOffImage {
-  display: none;
+  display: block;
   position: absolute;
   top: 0;
   left: 0;
   font-size: 31px;
   font-weight: 900;
   color: #fff;
-  // text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-  //   1px 1px 0 #000;
   line-height: 239px;
   text-align: center;
   background-color: #333;
   opacity: 0.8;
   width: 359px;
   height: 239px;
-}
-
-.resultListWrap
-  .contentsWrap
-  .resultListContentsWrap
-  .resultListContentsUl
-  .resultListContentsLi
-  .restaurantItem
-  .thumb:hover
-  .dayOffImage {
-  display: block;
 }
 
 .resultListWrap
@@ -184,6 +173,18 @@
   vertical-align: middle;
   color: #76ba99;
 }
+.resultListWrap
+  .contentsWrap
+  .resultListContentsWrap
+  .resultListContentsUl
+  .resultListContentsLi
+  .restaurantItem
+  .info
+  .searchPoint::before {
+  content: '\f005';
+  font-family: 'Font Awesome 6 Free';
+  padding-right: 3px;
+}
 
 .resultListWrap
   .contentsWrap
@@ -220,8 +221,36 @@
   .info
   .etcInfo
   .viewCount {
-  padding-right: 5px;
+  padding-right: 10px;
   display: inline-block;
+}
+
+.resultListWrap
+  .contentsWrap
+  .resultListContentsWrap
+  .resultListContentsUl
+  .resultListContentsLi
+  .restaurantItem
+  .info
+  .etcInfo
+  .viewCount::before {
+  content: '\f06e';
+  font-family: 'Font Awesome 6 Free';
+  padding-right: 4px;
+}
+
+.resultListWrap
+  .contentsWrap
+  .resultListContentsWrap
+  .resultListContentsUl
+  .resultListContentsLi
+  .restaurantItem
+  .info
+  .etcInfo
+  .reviewCount::before {
+  content: '\f044';
+  font-family: 'Font Awesome 6 Free';
+  padding-right: 0px;
 }
 
 .resultListWrap .contentsWrap .pagingContainer {

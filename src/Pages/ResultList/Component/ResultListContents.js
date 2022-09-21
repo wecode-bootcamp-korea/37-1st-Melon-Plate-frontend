@@ -12,7 +12,9 @@ const ResultListContents = () => {
               alt={data.address}
               src={data.imageUrl}
             />
-            <div className="dayOffImage">금일 영업 종료</div>
+            {data.dayOff === 'true' && (
+              <div className="dayOffImage">금일 영업 종료</div>
+            )}
           </div>
         </Link>
 
@@ -26,11 +28,11 @@ const ResultListContents = () => {
             </Link>
             <strong className="searchPoint">{data.searchPoint}</strong>
             <p className="etc">
-              {data.place}- <span>{data.category}</span>
+              {data.place} - <span>{data.category}</span>
             </p>
             <p className="etcInfo">
-              <span className="viewCount">{data.viewCount}</span>
-              <span className="reviewCount">{data.reviewCount}</span>
+              <span className="viewCount"> {data.viewCount}</span>
+              <span className="reviewCount"> {data.reviewCount}</span>
             </p>
           </div>
         </figcaption>
@@ -46,7 +48,7 @@ const RESTAURANT_LIST = [
       'https://mp-seoul-image-production-s3.mangoplate.com/452637/1168063_1639733462425_13128?fit=around|359:240&amp;crop=359:240;*,*&amp;output-format=jpg&amp;output-quality=80',
     detailUrl: '/#',
     address: '서울시 서초구 서초동 1317-31',
-    dayOff: 'true',
+    dayOff: 'false',
     title: '반티엔야오카오위',
     branch: '강남점',
     searchPoint: '4.5',
