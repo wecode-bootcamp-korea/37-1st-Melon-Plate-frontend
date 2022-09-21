@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ResultListContents from './Component/ResultListContents';
 import './Resultlist.scss';
 
 const ResultList = () => {
@@ -9,33 +10,20 @@ const ResultList = () => {
         <div className="resultListTitleWrap">
           <h1 className="resultListTitle">강남역 맛집 인기 검색순위</h1>
           <div className="category">
-            <Link to="#" className="categoryLink">
-              한식
-            </Link>
-            <Link to="#" className="categoryLink">
-              일식
-            </Link>
-            <Link to="#" className="categoryLink">
-              중식
-            </Link>
-            <Link to="#" className="categoryLink">
-              양식
-            </Link>
-            <Link to="#" className="categoryLink">
-              카페
-            </Link>
-            <Link to="#" className="categoryLink">
-              주점
-            </Link>
-            <Link to="#" className="categoryLink">
-              기타
-            </Link>
+            {SEARCH_MENU.map(menuList => {
+              return (
+                <Link key={menuList.id} to="#" className="categoryLink">
+                  {menuList.menuName}
+                </Link>
+              );
+            })}
           </div>
         </div>
 
         <div className="resultListContentsWrap">
           <ul className="resultListContentsUl">
-            <li className="resultListContentsLi">
+            <ResultListContents />
+            {/* <li className="resultListContentsLi">
               <figure className="restaurantItem">
                 <Link to="/#" className="contentLink">
                   <div className="thumb">
@@ -100,7 +88,7 @@ const ResultList = () => {
                   </div>
                 </figcaption>
               </figure>
-            </li>
+            </li> */}
           </ul>
           <div className="pagingContainer">
             <p className="paging">
@@ -235,5 +223,15 @@ const ResultList = () => {
     </article>
   );
 };
+
+const SEARCH_MENU = [
+  { id: 1, menuName: '한식' },
+  { id: 2, menuName: '일식' },
+  { id: 3, menuName: '중식' },
+  { id: 4, menuName: '양식' },
+  { id: 5, menuName: '카페' },
+  { id: 6, menuName: '주점' },
+  { id: 7, menuName: '기타' },
+];
 
 export default ResultList;
