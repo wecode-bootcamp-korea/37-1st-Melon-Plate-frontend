@@ -5,342 +5,265 @@
   flex-wrap: wrap;
   justify-content: center;
   flex-direction: row;
-  margin: 0 auto;
   min-height: 1100px;
-}
-
-.resultListWrap .contentsWrap {
-  width: 800px;
-}
-
-.resultListWrap .contentsWrap .resultListTitleWrap {
   margin: 0 auto;
-  padding: 15px 24px;
-  width: 800px;
+
+  .contentsWrap {
+    width: 800px;
+
+    .resultListTitleWrap {
+      width: 800px;
+      margin: 0 auto;
+      padding: 15px 24px;
+
+      .resultListTitle {
+        margin: 0 auto;
+        padding: 10px 15px;
+        font-size: 29px;
+        color: #76ba99;
+        line-height: 1.5;
+      }
+
+      .category {
+        padding: 15px;
+        border: 1px solid #aaa;
+        border-radius: 6px;
+
+        > .categoryLink {
+          font-size: 15px;
+          color: #666;
+          text-decoration: none;
+
+          &::after {
+            content: '|';
+            padding: 0 10px;
+          }
+
+          &:nth-last-child(1)::after {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .resultListContentsWrap {
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 800px;
+
+      .resultListContentsUl {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: start;
+        margin-top: 10px;
+
+        .resultListContentsLi {
+          background: fefefe;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          width: 50%;
+          padding-bottom: 20px;
+
+          .restaurantItem {
+            .thumb {
+              position: relative;
+              width: 359px;
+              height: 239px;
+
+              .dayOffImage {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 359px;
+                height: 239px;
+                font-size: 31px;
+                font-weight: 900;
+                color: #fff;
+                line-height: 239px;
+                text-align: center;
+                background-color: #333;
+                opacity: 0.8;
+              }
+
+              .resultImage {
+                width: 100%;
+              }
+            }
+
+            .info {
+              padding-top: 10px;
+
+              .title {
+                display: inline-block;
+                overflow: hidden;
+                max-width: 64%;
+                font-size: 21px;
+                color: #555;
+                line-height: 1.5;
+                vertical-align: middle;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+
+              .searchPoint {
+                margin-left: 5px;
+                font-size: 21px;
+                display: inline-block;
+                vertical-align: middle;
+                color: #76ba99;
+
+                &::before {
+                  content: '\f005';
+                  font-family: 'Font Awesome 6 Free';
+                  padding-right: 3px;
+                }
+              }
+
+              .etc {
+                font-size: 15px;
+                color: #9b9b9b;
+                line-height: 1.4;
+              }
+
+              .etcInfo {
+                font-size: 15px;
+                color: #9b9b9b;
+                line-height: 1.4;
+
+                .viewCount {
+                  padding-right: 10px;
+                  display: inline-block;
+
+                  &::before {
+                    content: '\f06e';
+                    font-family: 'Font Awesome 6 Free';
+                    padding-right: 4px;
+                  }
+                }
+
+                .reviewCount::before {
+                  content: '\f044';
+                  font-family: 'Font Awesome 6 Free';
+                  padding-right: 0px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .pagingContainer {
+      margin: 10px 0;
+
+      .paging {
+        padding: 15px 0;
+
+        .pagingLink {
+          display: inline-block;
+          width: 40px;
+          height: 40px;
+          margin: 0 5px;
+          font-size: 21px;
+          color: #666;
+          text-decoration: none;
+          text-align: center;
+          line-height: 40px;
+          border: 1px solid #76ba99;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  .searchFilterWrap {
+    width: 400px;
+    height: 100vh;
+    background-color: #efefef;
+
+    .searchFilterBox {
+      margin: 30px 10px;
+
+      > label {
+        font-size: 19px;
+        color: #666;
+        line-height: 1.5;
+      }
+    }
+
+    .searchFilterTop .radioBox {
+      + label {
+        display: inline-block;
+        width: 180px;
+        height: 50px;
+        margin: 10px 5px;
+        font-size: 15px;
+        color: #bbb;
+        line-height: 50px;
+        text-align: center;
+        border: 1px solid #bbb;
+        border-radius: 6px;
+      }
+
+      &:checked + label {
+        color: #76ba99;
+        border: 1px solid #76ba99;
+      }
+    }
+
+    .searchFilterMid .checkBox,
+    .searchFilterBot .checkBox {
+      + label {
+        display: inline-block;
+        width: 85px;
+        height: 50px;
+        margin: 10px 5px;
+        font-size: 15px;
+        color: #bbb;
+        line-height: 50px;
+        text-align: center;
+        border: 1px solid #bbb;
+        border-radius: 6px;
+      }
+
+      &:checked + label {
+        color: #76ba99;
+        border: 1px solid #76ba99;
+      }
+    }
+  }
 }
 
-.resultListWrap .contentsWrap .resultListTitleWrap .resultListTitle {
-  font-size: 29px;
-  color: #76ba99;
-  line-height: 1.5;
-  margin: 0 auto;
-  padding: 10px 15px;
-}
+@media (max-width: 1199px) {
+  .resultListWrap {
+    .contentsWrap {
+      order: 2;
+      width: 100%;
+      min-width: 400px;
 
-.resultListWrap .contentsWrap .resultListTitleWrap .category {
-  padding: 15px;
-  border: 1px solid #aaa;
-  border-radius: 6px;
-}
+      .resultListTitleWrap {
+        width: 100%;
+        min-width: 400px;
+      }
 
-.resultListWrap .contentsWrap .resultListTitleWrap .category > .categoryLink {
-  font-size: 15px;
-  color: #666;
-  text-decoration: none;
-}
+      .resultListContentsWrap {
+        width: 100%;
 
-.resultListWrap
-  .contentsWrap
-  .resultListTitleWrap
-  .category
-  > .categoryLink::after {
-  content: '|';
-  padding: 0 10px;
-}
+        .resultListContentsUl .resultListContentsLi {
+          width: 100%;
+        }
+      }
+    }
 
-.resultListWrap
-  .contentsWrap
-  .resultListTitleWrap
-  .category
-  > .categoryLink:nth-last-child(1)::after {
-  display: none;
-}
-
-.resultListWrap .contentsWrap .resultListContentsWrap {
-  margin: 0 auto;
-  padding: 0 24px;
-  width: 800px;
-}
-
-.resultListWrap .contentsWrap .resultListContentsWrap .resultListContentsUl {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: start;
-  margin-top: 10px;
-}
-
-.resultListWrap
-  .contentsWrap
-  .resultListContentsWrap
-  .resultListContentsUl
-  .resultListContentsLi {
-  background: fefefe;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 20px;
-  width: 50%;
-}
-
-.resultListWrap
-  .contentsWrap
-  .resultListContentsWrap
-  .resultListContentsUl
-  .resultListContentsLi
-  .restaurantItem
-  .thumb {
-  position: relative;
-  width: 359px;
-  height: 239px;
-}
-
-.resultListWrap
-  .contentsWrap
-  .resultListContentsWrap
-  .resultListContentsUl
-  .resultListContentsLi
-  .restaurantItem
-  .thumb
-  .dayOffImage {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 31px;
-  font-weight: 900;
-  color: #fff;
-  line-height: 239px;
-  text-align: center;
-  background-color: #333;
-  opacity: 0.8;
-  width: 359px;
-  height: 239px;
-}
-
-.resultListWrap
-  .contentsWrap
-  .resultListContentsWrap
-  .resultListContentsUl
-  .resultListContentsLi
-  .restaurantItem
-  .thumb
-  .resultImage {
-  width: 100%;
-}
-
-.resultListWrap
-  .contentsWrap
-  .resultListContentsWrap
-  .resultListContentsUl
-  .resultListContentsLi
-  .restaurantItem
-  .info {
-  padding-top: 10px;
-}
-
-.resultListWrap
-  .contentsWrap
-  .resultListContentsWrap
-  .resultListContentsUl
-  .resultListContentsLi
-  .restaurantItem
-  .info
-  .title {
-  display: inline-block;
-  overflow: hidden;
-  max-width: 64%;
-  font-size: 21px;
-  color: #555;
-  line-height: 1.5;
-  vertical-align: middle;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.resultListWrap
-  .contentsWrap
-  .resultListContentsWrap
-  .resultListContentsUl
-  .resultListContentsLi
-  .restaurantItem
-  .info
-  .searchPoint {
-  margin-left: 5px;
-  font-size: 21px;
-  display: inline-block;
-  vertical-align: middle;
-  color: #76ba99;
-}
-.resultListWrap
-  .contentsWrap
-  .resultListContentsWrap
-  .resultListContentsUl
-  .resultListContentsLi
-  .restaurantItem
-  .info
-  .searchPoint::before {
-  content: '\f005';
-  font-family: 'Font Awesome 6 Free';
-  padding-right: 3px;
-}
-
-.resultListWrap
-  .contentsWrap
-  .resultListContentsWrap
-  .resultListContentsUl
-  .resultListContentsLi
-  .restaurantItem
-  .info
-  .etc {
-  font-size: 15px;
-  color: #9b9b9b;
-  line-height: 1.4;
-}
-
-.resultListWrap
-  .contentsWrap
-  .resultListContentsWrap
-  .resultListContentsUl
-  .resultListContentsLi
-  .restaurantItem
-  .info
-  .etcInfo {
-  font-size: 15px;
-  color: #9b9b9b;
-  line-height: 1.4;
-}
-
-.resultListWrap
-  .contentsWrap
-  .resultListContentsWrap
-  .resultListContentsUl
-  .resultListContentsLi
-  .restaurantItem
-  .info
-  .etcInfo
-  .viewCount {
-  padding-right: 10px;
-  display: inline-block;
-}
-
-.resultListWrap
-  .contentsWrap
-  .resultListContentsWrap
-  .resultListContentsUl
-  .resultListContentsLi
-  .restaurantItem
-  .info
-  .etcInfo
-  .viewCount::before {
-  content: '\f06e';
-  font-family: 'Font Awesome 6 Free';
-  padding-right: 4px;
-}
-
-.resultListWrap
-  .contentsWrap
-  .resultListContentsWrap
-  .resultListContentsUl
-  .resultListContentsLi
-  .restaurantItem
-  .info
-  .etcInfo
-  .reviewCount::before {
-  content: '\f044';
-  font-family: 'Font Awesome 6 Free';
-  padding-right: 0px;
-}
-
-.resultListWrap .contentsWrap .pagingContainer {
-  margin: 10px 0;
-}
-
-.resultListWrap .contentsWrap .pagingContainer .paging {
-  padding: 15px 0;
-}
-
-.resultListWrap .contentsWrap .pagingContainer .paging .pagingLink {
-  display: inline-block;
-  font-size: 21px;
-  line-height: 40px;
-  color: #666;
-  text-decoration: none;
-  margin: 0 5px;
-  border: 1px solid #76ba99;
-  text-align: center;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-}
-
-.resultListWrap .searchFilterWrap {
-  background-color: #efefef;
-  width: 400px;
-  height: 100vh;
-}
-
-.resultListWrap .searchFilterWrap .searchFilterBox {
-  margin: 30px 10px;
-}
-
-.resultListWrap .searchFilterWrap .searchFilterBox > label {
-  font-size: 19px;
-  color: #666;
-  line-height: 1.5;
-}
-
-.resultListWrap .searchFilterWrap .searchFilterTop .radioBox + label {
-  display: inline-block;
-  font-size: 15px;
-  color: #bbb;
-  line-height: 50px;
-  text-align: center;
-  border: 1px solid #bbb;
-  border-radius: 6px;
-  margin: 10px 5px;
-  width: 180px;
-  height: 50px;
-}
-
-.resultListWrap .searchFilterWrap .searchFilterTop .radioBox:checked + label {
-  color: #76ba99;
-  border: 1px solid #76ba99;
-}
-
-.resultListWrap .searchFilterWrap .searchFilterMid .checkBox + label {
-  display: inline-block;
-  font-size: 15px;
-  color: #bbb;
-  line-height: 50px;
-  text-align: center;
-  border: 1px solid #bbb;
-  border-radius: 6px;
-  margin: 10px 5px;
-  width: 85px;
-  height: 50px;
-}
-
-.resultListWrap .searchFilterWrap .searchFilterMid .checkBox:checked + label {
-  color: #76ba99;
-  border: 1px solid #76ba99;
-}
-
-.resultListWrap .searchFilterWrap .searchFilterBot .checkBox + label {
-  display: inline-block;
-  font-size: 15px;
-  color: #bbb;
-  line-height: 50px;
-  text-align: center;
-  border: 1px solid #bbb;
-  border-radius: 6px;
-  margin: 10px 5px;
-  width: 85px;
-  height: 50px;
-}
-
-.resultListWrap .searchFilterWrap .searchFilterBot .checkBox:checked + label {
-  color: #76ba99;
-  border: 1px solid #76ba99;
+    .searchFilterWrap {
+      order: 1;
+      width: 100%;
+      min-width: 400px;
+      height: 100%;
+    }
+  }
 }
