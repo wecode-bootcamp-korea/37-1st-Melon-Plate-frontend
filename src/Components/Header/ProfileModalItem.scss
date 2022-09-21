@@ -60,5 +60,9 @@
     color: gray;
     flex: 1;
     margin-left: 10px;
+
+    .yellow {
+      color: $melonColor4;
+    }
   }
 }

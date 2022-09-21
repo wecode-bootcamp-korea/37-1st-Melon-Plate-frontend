@@ -6,6 +6,7 @@ import StoreList from './Pages/StoreList/StoreList';
 import ResultList from './Pages/ResultList/ResultList';
 import Detail from './Pages/Detail/Detail';
 import ReviewWrite from './Pages/ReviewWrite/ReviewWrite';
+import MyPage from './Pages/MyPage/MyPage';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 
@@ -20,6 +21,7 @@ function Router() {
         <Route path="/resultlist" element={<ResultList />} />
         <Route path="/detail" element={<Detail />} />
         <Route path="/detail/write" element={<ReviewWrite />} />
+        <Route path="/mypage" element={<MyPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

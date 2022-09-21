@@ -9,6 +9,7 @@
   position: fixed;
   width: 100%;
   background-color: white;
+  z-index: 10000;
 
   .headerRight {
     display: flex;
@@ -53,28 +54,4 @@
       }
     }
   }
-  // .profileModal {
-  //   position: fixed;
-  //   display: flex;
-  //   right: 30px;
-  //   top: 60px;
-  //   background-color: white;
-  //   cursor: pointer;
-  //   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  //   border-radius: 12px;
-  //   z-index: 10;
-
-  //   .profileModalLiked,
-  //   .profileModalRecent {
-  //     height: 300px;
-  //     width: 150px;
-  //     .profileModalItem {
-  //       padding: 10px 20px;
-
-  //       &:hover {
-  //         background-color: #eaeaea;
-  //       }
-  //     }
-  //   }
-  // }
 }

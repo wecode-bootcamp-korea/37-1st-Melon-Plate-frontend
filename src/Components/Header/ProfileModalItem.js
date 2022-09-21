@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './ProfileModalItem.scss';
 
 const ProfileModalItem = () => {
+  const [liked, setLiked] = useState(false);
+  const likeClick = () => {
+    setLiked(!liked);
+  };
+
   return (
     <div className="profileModalItem">
       <div className="profileModalLeft">
@@ -17,8 +22,10 @@ const ProfileModalItem = () => {
           <span className="profileModalStoreIntroduce">지역 - 음식 종류</span>
         </div>
       </div>
-      <div className="profileModalLiked">
-        <i className="fa-star fa-regular" />
+      <div className="profileModalLiked" onClick={likeClick}>
+        <i
+          className={liked ? 'fa-star fa-solid  yellow' : 'fa-star fa-regular'}
+        />
       </div>
     </div>
   );
