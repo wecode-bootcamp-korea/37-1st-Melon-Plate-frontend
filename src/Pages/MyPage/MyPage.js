@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ModalPortal from '../../Portal';
+import ModalPortal from './../../Portal';
 import ProfileEdit from './ProfileEdit';
 import './MyPage.scss';
 import LikedItem from './LikedItem';
@@ -26,15 +26,15 @@ const MyPage = () => {
     navigate('/');
   };
 
-  const gender = () => {
-    if (user.user_gender === 'female') {
-      return '여성';
-    } else if (user.user_gender === 'male') {
-      return '남성';
-    } else if (user.user_gender == null) {
-      return null;
-    }
-  };
+  // const gender = () => {
+  //   if (user.user_gender === 'female') {
+  //     return '여성';
+  //   } else if (user.user_gender === 'male') {
+  //     return '남성';
+  //   } else if (user.user_gender == null) {
+  //     return null;
+  //   }
+  // };
 
   return (
     <div className="myPage">
@@ -49,11 +49,15 @@ const MyPage = () => {
           />
           <div className="userProfileText">
             <span className="userNickname">
-              {user.user_nickname}님, 안녕하세요!
+              {user.user_nickname ? user.user_nickname : '손'}님, 안녕하세요!
             </span>
-            <span className="userId">@ {user.user_id}</span>
+            <span className="userId">
+              @ {user.user_id ? user.user_id : '로그인 해주세요'}
+            </span>
             <span className="userAgeAndGender">
-              {user.user_age}대 {gender(user.user_gender)}
+              {user.user_age
+                ? `$(user.user_age)대 $(gender(user.user_gender))`
+                : null}
             </span>
           </div>
           <div className="buttonSet">
@@ -106,6 +110,7 @@ const MyPage = () => {
       <ModalPortal>
         {editClicked && <ProfileEdit setEditClicked={setEditClicked} />}
       </ModalPortal>
+      \{' '}
     </div>
   );
 };
