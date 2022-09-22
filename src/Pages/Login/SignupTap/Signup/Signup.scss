@@ -1,0 +1,90 @@
+.userInfo {
+  text-align: center;
+  padding: 30px 20px 50px;
+  // border-radius: 5px;
+  background: white;
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bolder;
+
+  // .logo {
+  //   margin: 0 auto;
+  //   margin-bottom: 14px;
+  //   width: 200px;
+  //   height: 200px;
+  //   background: url('https://search.pstatic.net/sunny/?src=https%3A%2F%2Fdata.ac-illust.com%2Fdata%2Fthumbnails%2F48%2F48ecd78598456095d654c9196f973b00_w.jpeg&type=a340');
+  //   background-size: 100% 100%;
+  // }
+
+  .title {
+    margin: 24px;
+    font-size: 25px;
+    font-weight: bolder;
+    color: #76ba99;
+  }
+
+  input {
+    display: block;
+    width: 100%;
+    margin: 8px 0;
+    padding: 15px 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: rgb(245, 245, 245);
+  }
+
+  .profileImg {
+    width: 100px;
+    height: 80px;
+    border-radius: 50%;
+    margin-left: 120px;
+  }
+
+  .profileImg2 {
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    top: 87px;
+    left: 140px;
+    border-radius: 50%;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 16px;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #76ba99;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+  }
+
+  .link {
+    display: block;
+    margin-top: 20px;
+    color: rgb(140, 140, 140);
+  }
+
+  .gender,
+  .age {
+    all: revert;
+    gap: 30px;
+    margin-top: 20px;
+    margin-left: 10px;
+  }
+
+  input[type='radio']:checked {
+    width: 10px;
+    height: 10px;
+    background-color: blue;
+  }
+
+  input[type='radio'] {
+    width: 10px;
+    height: 10px;
+  }
+}
