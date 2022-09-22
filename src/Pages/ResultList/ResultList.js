@@ -2,11 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ResultListContents from './Component/ResultListContents';
 import SearchBox from './Component/SearchBox';
-import './Resultlist.scss';
+import './ResultList.scss';
 
 const ResultList = () => {
+  const searchData = event => {
+    event.preventDefault();
+
+    return fetch('/data/restaurant_list.json')
+      .then(response => {
+        response.json();
+      })
+      .then(result => {
+        console.log(result);
+      });
+  };
+
   return (
-    <article className="resultListWrap">
+    <article className="resultList">
       <div className="contentsWrap">
         <div className="resultListTitleWrap">
           <h1 className="resultListTitle">강남 맛집 인기 검색순위</h1>
@@ -35,7 +47,7 @@ const ResultList = () => {
         </div>
       </div>
       <div className="searchFilterWrap">
-        <SearchBox />
+        <SearchBox searchData={searchData} />
       </div>
     </article>
   );

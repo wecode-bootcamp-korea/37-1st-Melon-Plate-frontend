@@ -1,6 +1,7 @@
 import React from 'react';
+import './SearchBox.scss';
 
-const SearchBox = () => {
+const SearchBox = ({ searchData }) => {
   return (
     <>
       <div className="searchFilterBox searchFilterTop">
@@ -25,7 +26,9 @@ const SearchBox = () => {
         </p>
       </div>
       <div className="searchFilterBox searchFilterMid">
-        <label>가격대</label>
+        <label>
+          가격대<span>(중복가능)</span>
+        </label>
         <p>
           {PRICE_DATA.map(menuList => {
             return (
@@ -47,7 +50,9 @@ const SearchBox = () => {
         </p>
       </div>
       <div className="searchFilterBox searchFilterBot">
-        <label>음식 종류</label>
+        <label>
+          음식 종류<span>(중복가능)</span>
+        </label>
         <p>
           {SEARCH_MENU.map(menuList => {
             return (
@@ -68,6 +73,14 @@ const SearchBox = () => {
           })}
         </p>
       </div>
+      <form className="formWrap">
+        <button type="button" className="cancleBtn button">
+          취소
+        </button>
+        <button type="button" onClick={searchData} className="submitBtn button">
+          적용
+        </button>
+      </form>
     </>
   );
 };

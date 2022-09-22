@@ -1,0 +1,96 @@
+.resultListContentsLi {
+  background: fefefe;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  padding-bottom: 20px;
+
+  .restaurantItem {
+    .thumb {
+      position: relative;
+      width: 359px;
+      height: 239px;
+
+      .dayOffImage {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 359px;
+        height: 239px;
+        font-size: 31px;
+        font-weight: 900;
+        color: #fff;
+        line-height: 239px;
+        text-align: center;
+        background-color: #333;
+        opacity: 0.8;
+      }
+
+      .resultImage {
+        width: 100%;
+      }
+    }
+
+    .info {
+      padding-top: 10px;
+
+      .title {
+        display: inline-block;
+        overflow: hidden;
+        max-width: 64%;
+        font-size: 21px;
+        color: #555;
+        line-height: 1.5;
+        vertical-align: middle;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .searchPoint {
+        margin-left: 5px;
+        font-size: 21px;
+        display: inline-block;
+        vertical-align: middle;
+        color: #76ba99;
+
+        &::before {
+          content: '\f005';
+          font-family: 'Font Awesome 6 Free';
+          padding-right: 3px;
+        }
+      }
+
+      .etc {
+        font-size: 15px;
+        color: #9b9b9b;
+        line-height: 1.4;
+      }
+
+      .etcInfo {
+        font-size: 15px;
+        color: #9b9b9b;
+        line-height: 1.4;
+
+        .viewCount {
+          padding-right: 10px;
+          display: inline-block;
+
+          &::before {
+            content: '\f06e';
+            font-family: 'Font Awesome 6 Free';
+            padding-right: 4px;
+          }
+        }
+
+        .reviewCount::before {
+          content: '\f044';
+          font-family: 'Font Awesome 6 Free';
+          padding-right: 0px;
+        }
+      }
+    }
+  }
+}
