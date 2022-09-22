@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 // import { useNavigate } from 'react-router-dom';
 import './Signup.scss';
 
-const Signup = () => {
+const TestSignup = ({ currentId }) => {
   const [imageSrc, setImageSrc] = useState('');
   const encodeFileToBase64 = fileBlob => {
     const reader = new FileReader();
@@ -53,9 +53,9 @@ const Signup = () => {
   userSignUp.append('gender', gender);
   userSignUp.append('age', age);
 
-  // for (let value of userSignUp.values()) {
-  //   console.log(value);
-  // }
+  for (let value of userSignUp.values()) {
+    console.log(value);
+  }
   // const goToLogin = navigate('/logintap');
   const goToMain = e => {
     e.preventDefault();
@@ -89,7 +89,7 @@ const Signup = () => {
   return (
     <div>
       <div className="userInfo">
-        <h2 className="title">회원가입</h2>
+        <h2 className="title">{currentId}</h2>
         <form id="signupForm">
           <div className="container">
             <img
@@ -131,42 +131,47 @@ const Signup = () => {
             placeholder="비밀번호"
             onChange={saveUserPw}
           />
-          <div>
-            <input
-              className="gender"
-              type="radio"
-              name="gender"
-              value="male"
-              onChange={saveUserGender}
-            />
-            남자
-            <input
-              className="gender"
-              type="radio"
-              name="gender"
-              value="female"
-              onChange={saveUserGender}
-            />
-            여자
-            <input
-              className="gender"
-              type="radio"
-              name="gender"
-              value="none"
-              onChange={saveUserGender}
-            />
-            비공개
-          </div>
-          <label>연령대</label>
-          <select className="age" onChange={saveUserAge} value={age}>
-            <option value="">연령대를 선택하세요</option>
-            <option value="10">10대</option>
-            <option value="20">20대</option>
-            <option value="30">30대</option>
-            <option value="40">40대</option>
-            <option value="50">50대이상</option>
-            <option value="0">비공개</option>
-          </select>
+          {currentId === '일반 회원가입' && (
+            <>
+              <div>
+                <input
+                  className="gender"
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  onChange={saveUserGender}
+                />
+                남자
+                <input
+                  className="gender"
+                  type="radio"
+                  name="gender"
+                  value="female"
+                  onChange={saveUserGender}
+                />
+                여자
+                <input
+                  className="gender"
+                  type="radio"
+                  name="gender"
+                  value="none"
+                  onChange={saveUserGender}
+                />
+                비공개
+              </div>
+              <label>연령대</label>
+              <select className="age" onChange={saveUserAge} value={age}>
+                <option value="">연령대를 선택하세요</option>
+                <option value="10">10대</option>
+                <option value="20">20대</option>
+                <option value="30">30대</option>
+                <option value="40">40대</option>
+                <option value="50">50대이상</option>
+                <option value="0">비공개</option>
+              </select>
+            </>
+          )}
+
           <button onClick={goToMain}>회원가입</button>
 
           <Link className="link">이미 가입하셨나요? 로그인</Link>
@@ -176,4 +181,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default TestSignup;
