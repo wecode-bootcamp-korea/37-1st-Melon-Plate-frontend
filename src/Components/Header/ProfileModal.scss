@@ -1,0 +1,53 @@
+@import '../../styles/variables.scss';
+
+.profileModalBack {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.profileModalBox {
+  display: flex;
+  flex-direction: column;
+  max-height: 350px;
+  overflow-y: scroll;
+  position: fixed;
+  top: 60px;
+  right: 30px;
+  z-index: 15;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 12px;
+  cursor: pointer;
+  animation-name: swingdown;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+  }
+
+  .profileModalCategory {
+    display: flex;
+    font-size: 13px;
+    font-weight: 600;
+    position: absolute;
+    width: 100%;
+
+    .profileModalTab {
+      width: 50%;
+      color: gray;
+      text-align: center;
+      padding: 15px 10px;
+    }
+  }
+
+  .profileModalItemList {
+    margin-top: 40px;
+  }
+}

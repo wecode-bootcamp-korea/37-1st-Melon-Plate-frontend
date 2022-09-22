@@ -1,0 +1,57 @@
+@import '../../styles/variables.scss';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 5px 10px;
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  z-index: 10000;
+
+  .headerRight {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+
+    .headerLogoImg {
+      height: 40px;
+    }
+
+    .headerLogoText {
+      font-weight: 700;
+      color: $melonColor1;
+      font-size: 24px;
+    }
+  }
+
+  .headerLeft {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .headerProfileImg {
+      height: 50px;
+      border-radius: 26px;
+      border: 2px solid white;
+      cursor: pointer;
+    }
+
+    .headerCategories {
+      height: 25px;
+
+      &:hover {
+        cursor: pointer;
+
+        &:hover .menuDropDown {
+          visibility: visible;
+        }
+      }
+    }
+  }
+}
