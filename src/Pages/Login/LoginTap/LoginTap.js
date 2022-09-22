@@ -4,21 +4,17 @@ import AdiminLogin from './AdminLogin/AdminLogin';
 import './LoginTap.scss';
 
 export default function LoginTap() {
-  const [currentId, setCurrentId] = useState(1);
-
-  const clickHandler = id => {
-    setCurrentId(id);
-  };
+  const [currentId, setCurrentId] = useState('');
 
   return (
     <div className="wrapper">
       <div className="logintabs">
-        {CATEGORY_ARR.map((category, idx) => {
+        {CATEGORY_ARR.map(category => {
           return (
             <button
-              key={category + idx}
-              className={category}
-              onClick={() => clickHandler(idx + 1)}
+              className="category"
+              key={category}
+              onClick={() => setCurrentId(category)}
             >
               {category}
             </button>
@@ -30,11 +26,9 @@ export default function LoginTap() {
   );
 }
 
-//변하는 값이 아니기 때문에 함수 밖에서 변수 선언
 const MAPPING_OBJ = {
-  1: <SignUp />,
-  2: <AdiminLogin />,
+  로그인: <SignUp />,
+  사장님로그인: <AdiminLogin />,
 };
 
-//조건문 대신 배열로 매핑!
 const CATEGORY_ARR = ['로그인', '사장님로그인'];

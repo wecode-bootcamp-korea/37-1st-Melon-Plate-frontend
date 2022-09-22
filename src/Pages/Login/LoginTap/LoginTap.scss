@@ -4,11 +4,10 @@
   justify-content: center;
   height: 350px;
 
-  button {
+  .category {
     all: revert;
     background-color: #76ba99;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    border-radius: 15px;
     height: 50px;
     width: 194px;
     border: #76ba99 solid;
