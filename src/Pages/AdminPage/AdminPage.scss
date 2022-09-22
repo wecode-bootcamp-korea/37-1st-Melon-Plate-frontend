@@ -1,0 +1,25 @@
+.myStoreList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  background-color: whitesmoke;
+  font-size: 35px;
+  font-weight: bolder;
+  color: #76ba99;
+  // color:  #adcf9f;
+}
+
+.storeList {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 50px;
+  margin-left: 40px;
+  margin-top: 50px;
+  .store {
+    width: 700px;
+    height: 400px;
+    background-color: black;
+  }
+}
