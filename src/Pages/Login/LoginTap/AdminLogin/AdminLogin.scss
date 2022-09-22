@@ -1,0 +1,33 @@
+.userInfo {
+  text-align: center;
+  padding: 30px 20px 50px;
+  // border-radius: 5px;
+  background: white;
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bolder;
+
+  input {
+    display: block;
+    width: 100%;
+    margin: 8px 0;
+    padding: 15px 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: rgb(245, 245, 245);
+  }
+
+  button {
+    width: 100%;
+    margin-top: 16px;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #76ba99;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+  }
+}
