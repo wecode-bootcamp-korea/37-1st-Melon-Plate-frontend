@@ -52,6 +52,7 @@ const TestSignup = ({ currentId }) => {
   userSignUp.append('password', pw);
   userSignUp.append('gender', gender);
   userSignUp.append('age', age);
+  userSignUp.append('admin', true);
 
   for (let value of userSignUp.values()) {
     console.log(value);
@@ -60,7 +61,7 @@ const TestSignup = ({ currentId }) => {
   const goToMain = e => {
     e.preventDefault();
 
-    fetch('https://f29c-211-106-114-186.jp.ngrok.io/user/signup', {
+    fetch('https://f9e6-211-106-114-186.jp.ngrok.io/user/signup', {
       method: 'POST',
       headers: {
         enctype: 'multipart/form-data',
