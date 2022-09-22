@@ -4,7 +4,7 @@ import AdiminLogin from './AdminLogin/AdminLogin';
 import './LoginTap.scss';
 
 export default function LoginTap() {
-  const [currentId, setCurrentId] = useState('');
+  const [currentId, setCurrentId] = useState('로그인');
 
   return (
     <div className="wrapper">
