@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import GrayMelon from './GrayMelon';
 import GreenMelon from './GreenMelon';
 import './ReviewWrite.scss';
@@ -8,6 +8,17 @@ const ReviewWrite = () => {
   const [filed, setFiled] = useState([]);
   const [images, setImages] = useState([]);
   const [save, setSave] = useState([]);
+  const [imgLength, setImgLength] = useState(0);
+  const [textLength, setTextLength] = useState(0);
+
+  const textCount = e => {
+    setTextLength(e.target.value.length);
+  };
+  useEffect(() => {
+    if (textLength > 50000) {
+      alert('리뷰는 50000자 이상 넘어갈수 없습니다.');
+    }
+  }, [textLength]);
 
   const saveImages = e => {
     const fileArr = e.target.files;
@@ -27,9 +38,19 @@ const ReviewWrite = () => {
       reader.readAsDataURL(file);
     }
   };
-
-  // const reviewForm = document.querySelector('.ReviewWritePage');
-  // console.log(new FormData(reviewForm));
+  const clicked = e => {
+    e.preventDefault();
+    e.target.parentNode.remove();
+  };
+  useEffect(() => {
+    const arr = document.getElementsByClassName(
+      'ReviewWritePhotoInnerPhotosImg'
+    );
+    setImgLength(arr.length);
+    if (arr.length > 10) {
+      setImages(images.splice(0, 10));
+    }
+  }, [images]);
   return (
     <form className="ReviewWritePage">
       <div className="ReviewWrite">
@@ -71,14 +92,18 @@ const ReviewWrite = () => {
             <textarea
               placeholder="서비스도 궁금해요"
               className="ReviewWriteReviewInput"
+              onChange={textCount}
             />
+            <span className="ReviewWriteSpan">{textLength}/50000</span>
           </div>
-          <span className="ReviewWriteSpan">sad</span>
         </div>
         <div className="ReviewWritePhoto">
           <div className="ReviewWritePhotoInner">
             <div>
               <label htmlFor="file" className="ReviewWritePhotoInnerLabel">
+                <div className="ReviewWritePhotoInnerLength">
+                  {imgLength}/10
+                </div>
                 <div className="ReviewWritePhotoInnerInputFile">
                   <i className="fa-regular fa-image" />
                 </div>
@@ -95,11 +120,16 @@ const ReviewWrite = () => {
             <ul className="ReviewWritePhotoInnerPhotos">
               {images?.map((e, i) => (
                 <li key={i}>
-                  <img src={e} />
+                  <img src={e} className="ReviewWritePhotoInnerPhotosImg" />
+                  <button
+                    className="ReviewWritePhotoInnerPhotosBtn"
+                    onClick={clicked}
+                  >
+                    x
+                  </button>
                 </li>
               ))}
             </ul>
-            <div className="ReviewWritePhotoInnerLength">asd</div>
           </div>
         </div>
         <div className="ReviewWriteResult">

@@ -38,6 +38,7 @@
           justify-content: space-between;
           position: absolute;
           left: 0;
+          transition: width 0.3s;
 
           overflow: hidden;
 
@@ -69,6 +70,7 @@
         }
       }
       .ReviewWriteReview {
+        position: relative;
         margin-left: 10px;
         height: 150px;
         width: 100%;
@@ -79,11 +81,12 @@
           resize: none;
           outline-color: white;
         }
-      }
-      .ReviewWriteSpan {
-        position: absolute;
-        right: 0;
-        color: gray;
+        .ReviewWriteSpan {
+          position: absolute;
+          right: 20px;
+          bottom: -5px;
+          color: gray;
+        }
       }
     }
 
@@ -106,7 +109,15 @@
         .ReviewWritePhotoInnerLabel {
           margin-right: 9px;
           margin-bottom: 9px;
+          position: relative;
+          .ReviewWritePhotoInnerLength {
+            position: absolute;
+            bottom: 2px;
+            left: 60px;
+            color: gray;
+          }
         }
+
         .ReviewWritePhotoInnerPhotos {
           display: flex;
           flex-wrap: wrap;
@@ -115,11 +126,19 @@
           li {
             margin-right: 9px;
             margin-bottom: 9px;
+            position: relative;
 
-            img {
+            .ReviewWritePhotoInnerPhotosImg {
               width: 89px;
               height: 89px;
               margin: 0px, 9px, 9px, 0px;
+            }
+
+            .ReviewWritePhotoInnerPhotosBtn {
+              position: absolute;
+              left: 75px;
+              font-size: 20px;
+              color: azure;
             }
           }
         }
@@ -140,13 +159,6 @@
             right: 20px;
             top: 15px;
           }
-        }
-
-        .ReviewWritePhotoInnerLength {
-          position: absolute;
-          right: 0;
-          bottom: -20px;
-          color: gray;
         }
       }
     }
