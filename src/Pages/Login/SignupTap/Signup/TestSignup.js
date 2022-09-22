@@ -52,7 +52,7 @@ const TestSignup = ({ currentId }) => {
   userSignUp.append('password', pw);
   userSignUp.append('gender', gender);
   userSignUp.append('age', age);
-  userSignUp.append('admin', true);
+  // userSignUp.append('admin', true);
 
   for (let value of userSignUp.values()) {
     console.log(value);
