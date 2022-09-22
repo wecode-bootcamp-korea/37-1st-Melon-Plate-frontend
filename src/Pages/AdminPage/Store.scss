@@ -1,0 +1,56 @@
+.Store {
+  // height: 400px;
+  // background-color: whitesmoke;
+
+  .storeWrap {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+
+    .storeImg {
+      width: 350px;
+      height: 250px;
+      border: 2px solid whitesmoke;
+    }
+
+    .storeInfo {
+      .mainInfo {
+        .title {
+          font-size: 30px;
+          font-weight: bolder;
+          margin-left: 60px;
+        }
+        .grade {
+          font-size: 25px;
+          margin-left: 15px;
+        }
+      }
+      .info {
+        margin-left: 20px;
+        line-height: 40px;
+        .address {
+        }
+
+        .tel {
+        }
+
+        .off {
+        }
+
+        .hour {
+        }
+      }
+    }
+  }
+  .modifyButton {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+
+    button {
+      background-color: red;
+      margin-right: 40px;
+    }
+  }
+}
