@@ -9,7 +9,6 @@ export default function SignupTap() {
   const clickHandler = id => {
     setCurrentId(id);
   };
-
   return (
     <div className="wrapper">
       <div className="signupTap">
