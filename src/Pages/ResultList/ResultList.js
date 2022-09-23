@@ -1,20 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ResultListContents from './Component/ResultListContents';
 import SearchBox from './Component/SearchBox';
 import './ResultList.scss';
 
 const ResultList = () => {
+  const [restaurantData, setrestaurantData] = useState([]);
+
   const searchData = event => {
     event.preventDefault();
 
-    return fetch('/data/restaurant_list.json')
-      .then(response => {
-        response.json();
-      })
-      .then(result => {
-        console.log(result);
-      });
+    fetch(`/data/restaurant_list.json`)
+      .then(response => response.json())
+      .then(result => setrestaurantData(result.items));
   };
 
   return (
@@ -35,7 +33,10 @@ const ResultList = () => {
 
         <div className="resultListContentsWrap">
           <ul className="resultListContentsUl">
-            <ResultListContents />
+            <ResultListContents
+              restaurantData={restaurantData}
+              setrestaurantData={setrestaurantData}
+            />
           </ul>
           <div className="pagingContainer">
             <p className="paging">
