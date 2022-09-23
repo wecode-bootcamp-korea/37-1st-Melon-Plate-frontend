@@ -6,8 +6,8 @@ const AdminPage = () => {
   return (
     <>
       <div className="myStoreList">내 가게 리스트</div>
-      <div>
-        <button>추가하기</button>
+      <div className="addInfo">
+        <button className="">추가하기</button>
       </div>
       <div className="storeList">
         <Store />

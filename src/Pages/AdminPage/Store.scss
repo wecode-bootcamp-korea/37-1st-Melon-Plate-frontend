@@ -15,10 +15,12 @@
 
     .storeInfo {
       .mainInfo {
+        height: 50px;
         .title {
           font-size: 30px;
           font-weight: bolder;
-          margin-left: 60px;
+          margin-left: 20px;
+          margin-bottom: 30px;
         }
         .grade {
           font-size: 25px;
@@ -49,8 +51,14 @@
     width: 100%;
 
     button {
-      background-color: red;
       margin-right: 40px;
+      background-color: #76ba99;
+      width: 100px;
+      height: 50px;
+      border-radius: 20px;
+      text-align: center;
+      font-weight: bold;
+      color: white;
     }
   }
 }
