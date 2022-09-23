@@ -1,6 +1,5 @@
 .reviewList {
   width: 800px;
-  border-bottom: 0.8px solid gray;
 
   .reviewListTop {
     display: flex;
@@ -36,13 +35,20 @@
   .reviewListMain {
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid gainsboro;
+    margin-bottom: 5px;
+    line-height: 150%;
+    &:hover {
+      background-color: rgb(240, 241, 255);
+    }
 
     .reviewListMainLeft {
       width: 70px;
       margin: 15px 35px 0px 8px;
       .reviewListMainLeftPhotos {
         width: 60px;
-        border-radius: 50px;
+        height: 60px;
+        border-radius: 100px;
       }
       .reviewListMainLeftName {
         font-size: 13px;
@@ -74,8 +80,16 @@
     }
 
     .reviewListMainRight {
+      position: relative;
       width: 60;
       margin-left: 22px;
+      .reviewListMainRightPoint {
+        position: absolute;
+        top: 12px;
+        right: 15px;
+        color: white;
+        font-size: 15px;
+      }
     }
 
     .reviewListMainRightMelon {
