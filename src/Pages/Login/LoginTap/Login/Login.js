@@ -19,13 +19,13 @@ const Login = () => {
   const goToMain = e => {
     e.preventDefault();
 
-    fetch('https://f29c-211-106-114-186.jp.ngrok.io/user/signup', {
+    fetch('https://9da6-211-106-114-186.jp.ngrok.io/user/signin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
       },
       body: JSON.stringify({
-        text: id,
+        userId: id,
         password: pw,
       }),
     })
@@ -43,10 +43,8 @@ const Login = () => {
       .then(data => {
         // console.log(data);
 
-        if (data.message === 'login success') {
-          localStorage.setItem('TOKEN', data.token);
-          navigate('/');
-        }
+        localStorage.setItem('TOKEN', data.accessToken);
+        navigate('/');
       });
   };
 
