@@ -5,14 +5,28 @@ import SearchBox from './Component/SearchBox';
 import './ResultList.scss';
 
 const ResultList = () => {
-  const [restaurantData, setrestaurantData] = useState([]);
+  const [restaurantData, setRestaurantData] = useState([]);
+  const [checkedList, setCheckedList] = useState([]);
 
   const searchData = event => {
     event.preventDefault();
 
     fetch(`/data/restaurant_list.json`)
       .then(response => response.json())
-      .then(result => setrestaurantData(result.items));
+      .then(result => setRestaurantData(result.items));
+  };
+
+  // 1️⃣ onChange함수를 사용하여 이벤트 감지, 필요한 값 받아오기
+  const onCheckedElement = (checked, item) => {
+    if (checked) {
+      setCheckedList([...checkedList, item]);
+      //console.log('checked');
+      //console.log(checkedList);
+    } else if (!checked) {
+      setCheckedList(checkedList.filter(el => el !== item));
+      //console.log('unchecked');
+      //console.log(checkedList);
+    }
   };
 
   return (
@@ -35,7 +49,9 @@ const ResultList = () => {
           <ul className="resultListContentsUl">
             <ResultListContents
               restaurantData={restaurantData}
-              setrestaurantData={setrestaurantData}
+              setRestaurantData={setRestaurantData}
+              checkedList={checkedList}
+              setCheckedList={setCheckedList}
             />
           </ul>
           <div className="pagingContainer">
@@ -48,7 +64,13 @@ const ResultList = () => {
         </div>
       </div>
       <div className="searchFilterWrap">
-        <SearchBox searchData={searchData} />
+        <SearchBox
+          searchData={searchData}
+          restaurantData={restaurantData}
+          onCheckedElement={onCheckedElement}
+          checkedList={checkedList}
+          setCheckedList={setCheckedList}
+        />
       </div>
     </article>
   );

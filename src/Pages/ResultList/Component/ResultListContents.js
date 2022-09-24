@@ -1,15 +1,45 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './ResultListContents.scss';
 
-const ResultListContents = ({ restaurantData, setrestaurantData }) => {
+const ResultListContents = ({
+  restaurantData,
+  setRestaurantData,
+  checkedList,
+  setCheckedList,
+}) => {
+  // const [testArray, setTestArray] = useState([]);
+
   useEffect(() => {
     fetch(`/data/restaurant_list.json`)
       .then(response => response.json())
-      .then(result => setrestaurantData(result.items));
+      .then(result => setRestaurantData(result.items));
   }, []);
 
-  return restaurantData.map(
+  const filterPriceRange = restaurantData.filter(
+    // data => data.priceRange.includes('0') && data.category.includes('한식')
+    data => {
+      if (checkedList) {
+        console.log('data1 : true', checkedList);
+        return checkedList.includes(data.priceRange);
+      } else {
+        console.log('data1 : false', checkedList);
+        return data;
+      }
+    }
+  );
+
+  const filterCategory = filterPriceRange.filter(data => {
+    if (checkedList) {
+      console.log('data2 : true');
+      return checkedList.includes(data.category);
+    } else {
+      console.log('data2 : false');
+      return data;
+    }
+  });
+
+  return filterCategory.map(
     ({
       id,
       detailUrl,
@@ -23,6 +53,7 @@ const ResultListContents = ({ restaurantData, setrestaurantData }) => {
       category,
       viewCount,
       reviewCount,
+      priceRange,
     }) => (
       <li className="resultListContentsLi" key={id}>
         <figure className="restaurantItem">

@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SearchBox.scss';
 
-const SearchBox = ({ searchData }) => {
+const SearchBox = ({
+  searchData,
+  restaurantData,
+  onCheckedElement,
+  checkedList,
+  setCheckedList,
+}) => {
+  // console.log(restaurantData);
+
+  // 2️⃣ x를 누르면 리스팅 목록에서 카테고리가 삭제되며 체크도 해제 된다
+  // const onRemove = item => {
+  //   setCheckedList(checkedList.filter(el => el !== item));
+  // };
+
   return (
     <>
       <div className="searchFilterBox searchFilterTop">
@@ -13,6 +26,9 @@ const SearchBox = ({ searchData }) => {
             value=""
             className="radioBox"
             id="sorting1"
+            onClick={e => {
+              onCheckedElement(e.target.checked, e.target.value);
+            }}
           />
           <label htmlFor="sorting1">인기순</label>
           <input
@@ -21,6 +37,7 @@ const SearchBox = ({ searchData }) => {
             value=""
             className="radioBox"
             id="sorting2"
+            onClick={onCheckedElement}
           />
           <label htmlFor="sorting2">평점순</label>
         </p>
@@ -36,10 +53,13 @@ const SearchBox = ({ searchData }) => {
                 <input
                   type="checkbox"
                   name=""
-                  value={menuList.menuName}
+                  value={menuList.priceRange}
                   className="checkBox"
                   id={'checkBoxMid' + menuList.id}
                   key={menuList.id}
+                  onClick={e => {
+                    onCheckedElement(e.target.checked, e.target.value);
+                  }}
                 />
                 <label htmlFor={'checkBoxMid' + menuList.id}>
                   {menuList.menuName}
@@ -64,6 +84,9 @@ const SearchBox = ({ searchData }) => {
                   className="checkBox"
                   id={'checkBoxBot' + menuList.id}
                   key={menuList.id}
+                  onClick={e => {
+                    onCheckedElement(e.target.checked, e.target.value);
+                  }}
                 />
                 <label htmlFor={'checkBoxBot' + menuList.id}>
                   {menuList.menuName}
@@ -96,10 +119,10 @@ const SEARCH_MENU = [
 ];
 
 const PRICE_DATA = [
-  { id: 1, menuName: '만원 미만' },
-  { id: 2, menuName: '1만원대' },
-  { id: 3, menuName: '2만원대' },
-  { id: 4, menuName: '3만원대' },
+  { id: 1, menuName: '만원 미만', priceRange: '0' },
+  { id: 2, menuName: '1만원대', priceRange: '1' },
+  { id: 3, menuName: '2만원대', priceRange: '2' },
+  { id: 4, menuName: '3만원대', priceRange: '3' },
 ];
 
 export default SearchBox;
