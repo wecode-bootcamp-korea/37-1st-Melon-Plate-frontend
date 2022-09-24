@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './ResultListContents.scss';
 
@@ -8,8 +8,6 @@ const ResultListContents = ({
   checkedList,
   setCheckedList,
 }) => {
-  // const [testArray, setTestArray] = useState([]);
-
   useEffect(() => {
     fetch(`/data/restaurant_list.json`)
       .then(response => response.json())
@@ -20,10 +18,10 @@ const ResultListContents = ({
     // data => data.priceRange.includes('0') && data.category.includes('한식')
     data => {
       if (checkedList) {
-        console.log('data1 : true', checkedList);
+        //console.log('data1 : true', checkedList);
         return checkedList.includes(data.priceRange);
       } else {
-        console.log('data1 : false', checkedList);
+        //console.log('data1 : false', checkedList);
         return data;
       }
     }
@@ -31,10 +29,10 @@ const ResultListContents = ({
 
   const filterCategory = filterPriceRange.filter(data => {
     if (checkedList) {
-      console.log('data2 : true');
+      //console.log('data2 : true');
       return checkedList.includes(data.category);
     } else {
-      console.log('data2 : false');
+      //console.log('data2 : false');
       return data;
     }
   });

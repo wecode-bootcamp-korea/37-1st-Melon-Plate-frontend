@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './SearchBox.scss';
 
 const SearchBox = ({
@@ -8,13 +8,6 @@ const SearchBox = ({
   checkedList,
   setCheckedList,
 }) => {
-  // console.log(restaurantData);
-
-  // 2️⃣ x를 누르면 리스팅 목록에서 카테고리가 삭제되며 체크도 해제 된다
-  // const onRemove = item => {
-  //   setCheckedList(checkedList.filter(el => el !== item));
-  // };
-
   return (
     <>
       <div className="searchFilterBox searchFilterTop">

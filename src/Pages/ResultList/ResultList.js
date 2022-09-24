@@ -16,16 +16,11 @@ const ResultList = () => {
       .then(result => setRestaurantData(result.items));
   };
 
-  // 1️⃣ onChange함수를 사용하여 이벤트 감지, 필요한 값 받아오기
   const onCheckedElement = (checked, item) => {
     if (checked) {
       setCheckedList([...checkedList, item]);
-      //console.log('checked');
-      //console.log(checkedList);
     } else if (!checked) {
       setCheckedList(checkedList.filter(el => el !== item));
-      //console.log('unchecked');
-      //console.log(checkedList);
     }
   };
 
