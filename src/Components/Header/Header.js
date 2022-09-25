@@ -1,31 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import MenuDropDown from './MenuDropDown';
 import ProfileModal from './ProfileModal';
-import SearchForm from '../../Pages/Main/SearchForm';
+// import SearchForm from '../../Pages/Main/SearchForm';
 
 import './Header.scss';
 import ModalPortal from '../../Portal';
 
 const Header = () => {
-  const url = document.location.href;
+  // const url = document.location.href;
+
+  const location = useLocation();
+  console.log(location.pathname);
 
   const [user, setUser] = useState({});
-
   const [menuOpened, setMenuOpened] = useState(false);
-
   const [profileClicked, setProfileClicked] = useState(false);
 
   const profileClick = () => {
     setProfileClicked(true);
-  };
-
-  const menuOpen = () => {
-    setMenuOpened(true);
-  };
-
-  const menuClose = () => {
-    setMenuOpened(false);
   };
 
   useEffect(() => {
@@ -34,23 +27,27 @@ const Header = () => {
       .then(data => setUser(data));
   }, []);
 
-  const navigate = useNavigate();
-
   return (
     <div className="header">
-      <div className="headerRight" onClick={() => navigate('/')}>
-        <img className="headerLogoImg" src={LOGO_IMAGE} alt="로고이미지" />
-        <img className="headerLogoImg" src={LOGO_TEXT_IMAGE} alt="로고이미지" />
-      </div>
+      <Link to="/">
+        <div className="headerRight">
+          <img className="headerLogoImg" src={LOGO_IMAGE} alt="로고이미지" />
+          <img
+            className="headerLogoImg"
+            src={LOGO_TEXT_IMAGE}
+            alt="로고이미지"
+          />
+        </div>
+      </Link>
 
-      {url !== 'http://localhost:3000/' && <SearchForm />}
+      {/* {url !== 'http://localhost:3000/' && <SearchForm />} */}
 
       <div className="headerLeft">
         <img
           className="headerCategories"
           src={CATEGORY_IMAGE}
           alt="메뉴 열기"
-          onMouseOver={menuOpen}
+          onMouseOver={() => setMenuOpened(true)}
         />
         <img
           className="headerProfileImg"
@@ -58,7 +55,7 @@ const Header = () => {
           alt="프로필 이미지"
           onClick={profileClick}
         />
-        {menuOpened && <MenuDropDown menuClose={menuClose} />}
+        {menuOpened && <MenuDropDown setMenuOpened={setMenuOpened} />}
         <ModalPortal>
           {profileClicked && (
             <ProfileModal setProfileClicked={setProfileClicked} />
