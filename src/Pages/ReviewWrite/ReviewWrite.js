@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { json } from 'react-router-dom';
 import GrayMelon from './GrayMelon';
 import GreenMelon from './GreenMelon';
 import './ReviewWrite.scss';
 
 const ReviewWrite = () => {
-  const [text, setText] = useState(10);
-  const [filed, setFiled] = useState([]);
+  const [melonPoint, setMelonPoint] = useState(10);
   const [images, setImages] = useState([]);
-  const [save, setSave] = useState([]);
   const [imgLength, setImgLength] = useState(0);
-  const [textLength, setTextLength] = useState(0);
+  const [text, setText] = useState('');
+  const textLength = text.length;
+
   const formGo = () => {
     fetch('/Mock/Mock.json', {
       method: 'POST',
@@ -20,20 +21,24 @@ const ReviewWrite = () => {
       .then(res => {
         console.log(res);
       });
+    localStorage.removeItem('text');
+    // localStorage.removeItem('img');
+  };
+  const textCount = e => {
+    setText(e.target.value);
   };
 
-  const textCount = e => {
-    setTextLength(e.target.value.length);
+  const saveText = e => {
+    e.preventDefault();
+    const imagesJson = JSON.stringify(images);
+    localStorage.removeItem('text');
+    // localStorage.removeItem('img');
+    localStorage.setItem('text', text);
+    // localStorage.setItem('img', imagesJson);
   };
-  useEffect(() => {
-    if (textLength > 50000) {
-      alert('리뷰는 50000자 이상 넘어갈수 없습니다.');
-    }
-  }, [textLength]);
 
   const saveImages = e => {
     const fileArr = e.target.files;
-    setSave([...fileArr]);
 
     let fileURLs = [];
     let file;
@@ -62,6 +67,20 @@ const ReviewWrite = () => {
       setImages(images.splice(0, 10));
     }
   }, [images]);
+
+  useEffect(() => {
+    if (textLength > 50000) {
+      alert('리뷰는 50000자 이상 넘어갈수 없습니다.');
+    }
+  }, [textLength]);
+
+  useEffect(() => {
+    if (localStorage.getItem('text')) {
+      // const imgParse = JSON.parse(localStorage.getItem('img'));
+      setText(localStorage.getItem('text'));
+      // setImages(imgParse);
+    }
+  }, []);
   return (
     <form className="ReviewWritePage">
       <div className="reviewWrite">
@@ -79,18 +98,18 @@ const ReviewWrite = () => {
               <GrayMelon />
               <input
                 type="range"
-                value={text}
+                value={melonPoint}
                 step="1"
                 min="0"
                 max="10"
                 onChange={e => {
-                  setText(e.target.value);
+                  setMelonPoint(e.target.value);
                 }}
               />
             </div>
             <div
               className="reviewWritePointResultSpan"
-              style={{ width: `${text * 10}%` }}
+              style={{ width: `${melonPoint * 10}%` }}
             >
               <GreenMelon />
               <GreenMelon />
@@ -102,6 +121,7 @@ const ReviewWrite = () => {
           <div className="reviewWriteReview">
             <textarea
               placeholder="서비스도 궁금해요"
+              value={text}
               className="reviewWriteReviewInput"
               onChange={textCount}
             />
@@ -119,7 +139,6 @@ const ReviewWrite = () => {
                   <i className="fa-regular fa-image" />
                 </div>
               </label>
-              {filed}
               <input
                 type="file"
                 id="file"
@@ -147,6 +166,7 @@ const ReviewWrite = () => {
           <button
             className={!Vialed ? 'reviewWriteBtn' : 'reviewWriteBtnChange'}
             disabled={!Vialed}
+            onClick={saveText}
           >
             나중에 이어쓰기
           </button>
