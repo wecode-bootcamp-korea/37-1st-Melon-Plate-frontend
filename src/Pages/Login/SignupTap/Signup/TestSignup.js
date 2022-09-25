@@ -1,7 +1,10 @@
 import React, { useState, useRef } from 'react';
+import { Navigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 // import { useNavigate } from 'react-router-dom';
 import './Signup.scss';
+
+const navigate = Navigate();
 
 const TestSignup = ({ currentId }) => {
   const [imageSrc, setImageSrc] = useState('');
@@ -52,13 +55,13 @@ const TestSignup = ({ currentId }) => {
   userSignUp.append('password', pw);
   userSignUp.append('gender', gender);
   userSignUp.append('age', age);
-  userSignUp.append('admin', true);
 
   for (let value of userSignUp.values()) {
     console.log(value);
   }
   // const goToLogin = navigate('/logintap');
   const goToMain = e => {
+    userSignUp.append('admin', true);
     e.preventDefault();
 
     fetch('https://b35e-211-106-114-186.jp.ngrok.io/user/signup', {
@@ -117,19 +120,19 @@ const TestSignup = ({ currentId }) => {
           <input
             type="text"
             name="nickname"
-            placeholder="닉네임"
+            placeholder="닉네임(2글자 이상)"
             onChange={saveUserNn}
           />
           <input
             type="text"
             name="id"
-            placeholder="아이디"
+            placeholder="아이디(5글자 이상)"
             onChange={saveUserId}
           />
           <input
             type="password"
             name="pw"
-            placeholder="비밀번호"
+            placeholder="비밀번호(8글자 이상 20글자 미만)"
             onChange={saveUserPw}
           />
           {currentId === '일반 회원가입' && (
