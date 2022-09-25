@@ -3,8 +3,18 @@
 .adminEdit {
   position: fixed;
   display: flex;
+
   width: 100vw;
   height: 100vh;
+
+  .adminImageInputSet {
+    display: flex;
+    flex-direction: column;
+
+    .inputTitle {
+      margin-bottom: 20px;
+    }
+  }
 
   .adminEditTitle {
     font-size: 24px;
@@ -31,13 +41,23 @@
     margin-top: 80px;
     position: fixed;
     left: 50%;
-    transform: translate(-50%, 20%);
+    transform: translate(-50%, 5%);
     align-items: center;
 
     .inputText {
       all: revert;
       width: 200px;
       height: 30px;
+      padding: 3px 15px;
+      border: none;
+      border-bottom: 1px solid gray;
+    }
+
+    .inputText2 {
+      all: revert;
+      width: 140px;
+      height: 30px;
+      margin-left: 40px;
       padding: 3px 15px;
       border: none;
       border-bottom: 1px solid gray;

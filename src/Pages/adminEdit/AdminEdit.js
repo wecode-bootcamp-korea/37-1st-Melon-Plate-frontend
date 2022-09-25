@@ -92,7 +92,10 @@ const AdminEdit = () => {
     <div className="adminEdit">
       <div className="adminEditBox">
         <div className="adminEditTitle">내 가게 등록하기</div>
-        <input type="file" accept="image/*" onChange={saveImage} />
+        <div className="adminImageInputSet">
+          <div className="inputTitle">대표 사진</div>
+          <input type="file" accept="image/*" onChange={saveImage} />
+        </div>
         {INPUT_VALUES.map(store => (
           <div className="adminEditInputSet" key={store.id}>
             <div className="inputTitle"> {store.title}</div>
@@ -138,9 +141,20 @@ const AdminEdit = () => {
           <textarea
             onChange={saveInput}
             name="description"
-            placeholder="가게에 대해 설명해주세요"
+            placeholder="가게에 대해 설명해주세요 (최대 1000자)"
+            maxLength="1000"
           />
         </div>
+        <div className="adminEditInputSet">
+          <div className="inputTitle">1인당 가격대</div>
+          <input
+            className="inputText2"
+            type="number"
+            placeholder="1인당 가격대"
+          />
+          <span>만원</span>
+        </div>
+
         {/* <button className="addMenuInput" onClick={addMenuInputClick}>
           메뉴 추가
         </button> */}
@@ -163,23 +177,22 @@ export default AdminEdit;
 
 const INPUT_VALUES = [
   { id: 1, title: '상호명', type: 'text', placeholder: '상호명', name: 'name' },
-  { id: 2, title: '음식 종류', type: 'text', placeholder: '음식 종류' },
   {
-    id: 3,
+    id: 2,
     title: '주소',
     type: 'address',
     placeholder: '주소',
     name: 'address',
   },
   {
-    id: 4,
+    id: 3,
     title: '전화번호',
     type: 'tel',
     placeholder: '전화번호',
     name: 'tel',
   },
   {
-    id: 5,
+    id: 4,
     title: '오픈 시간',
     type: 'time',
     placeholder: '오픈 시간',
@@ -189,7 +202,7 @@ const INPUT_VALUES = [
     step: 3600,
   },
   {
-    id: 6,
+    id: 5,
     title: '마감 시간',
     type: 'time',
     placeholder: '마감 시간',
