@@ -50,7 +50,7 @@ const TestLogin = ({ currentId }) => {
   return (
     <div>
       <div className="userInfo">
-        <h2 className="title">로그인</h2>
+        <h2 className="title">{currentId}</h2>
         <form>
           <input type="text" placeholder="아이디" onChange={saveUserId} />
           <input type="password" placeholder="비밀번호" onChange={saveUserPW} />

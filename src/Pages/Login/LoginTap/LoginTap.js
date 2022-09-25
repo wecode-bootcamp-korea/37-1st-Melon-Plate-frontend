@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import SignUp from './Login/Login';
 import AdiminLogin from './AdminLogin/AdminLogin';
 import './LoginTap.scss';
+import TestLogin from './Login/TestLogin';
 
 export default function LoginTap() {
   const [currentId, setCurrentId] = useState('로그인');
@@ -12,7 +13,7 @@ export default function LoginTap() {
         {CATEGORY_ARR.map(category => {
           return (
             <button
-              className="category"
+              className={category}
               key={category}
               onClick={() => setCurrentId(category)}
             >
@@ -21,14 +22,11 @@ export default function LoginTap() {
           );
         })}
       </div>
-      <div className="contents">{MAPPING_OBJ[currentId]}</div>
+      <div className="contents">
+        <TestLogin currentId={currentId} />
+      </div>
     </div>
   );
 }
-
-const MAPPING_OBJ = {
-  로그인: <SignUp />,
-  사장님로그인: <AdiminLogin />,
-};
 
 const CATEGORY_ARR = ['로그인', '사장님로그인'];
