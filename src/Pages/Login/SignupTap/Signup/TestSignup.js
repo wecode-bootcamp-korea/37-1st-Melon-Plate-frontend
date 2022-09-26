@@ -24,12 +24,18 @@ const TestSignup = ({ currentId }) => {
   });
 
   console.log(inputValues);
+
   const handleInput = event => {
     const { name, value } = event.target;
     setInputValues(prev => ({ ...prev, [name]: value }));
   };
 
-  const { id, pw, nickname, name, gender } = inputValues;
+  const { id, pw, nickname, gender } = inputValues;
+
+  const [age, setAge] = useState('');
+  const saveUserAge = e => {
+    setAge(e.target.value);
+  };
 
   const fileInput = useRef(null);
   const [file, setFile] = useState('');
@@ -40,16 +46,19 @@ const TestSignup = ({ currentId }) => {
   userSignUp.append('userId', id);
   userSignUp.append('password', pw);
   userSignUp.append('gender', gender);
-  // userSignUp.append('age', age);
+  userSignUp.append('age', age);
 
   if (currentId === '사장님회원가입') {
     userSignUp.append('admin', true);
   }
 
+  for (let value of userSignUp.values()) {
+    console.log(value);
+  }
   const goToMain = e => {
     e.preventDefault();
 
-    fetch('https://b35e-211-106-114-186.jp.ngrok.io/user/signup', {
+    fetch('https://87ca-211-106-114-186.jp.ngrok.io/user/signup', {
       method: 'POST',
       headers: {
         enctype: 'multipart/form-data',
@@ -142,7 +151,7 @@ const TestSignup = ({ currentId }) => {
               <label>연령대</label>
               <select
                 className="age"
-                onChange={handleInput}
+                onChange={saveUserAge}
                 value={age}
                 name="age"
               >
