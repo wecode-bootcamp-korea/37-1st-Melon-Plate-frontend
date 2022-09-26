@@ -17,6 +17,7 @@ const AdminEdit = () => {
     price_range: ' ',
     category_id: '',
   });
+
   const [imageInput, setImageInput] = useState();
   const [dayNum, setDayNum] = useState(0);
   const [menuId, setMenuId] = useState(1);
