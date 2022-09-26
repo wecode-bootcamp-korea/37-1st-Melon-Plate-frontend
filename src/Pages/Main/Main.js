@@ -15,7 +15,7 @@ const Main = () => {
   return (
     <div className="main">
       <span className="welcomeMessage">
-        {user.user_nickname ? `${user.user_nickname}님,` : '안녕하세요!'}
+        {user.user_nickname ? `${user.user_nickname}님, ` : '안녕하세요!'}
         궁금한 맛집을 검색하세요!
       </span>
 

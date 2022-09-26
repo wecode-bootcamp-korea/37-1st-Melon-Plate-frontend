@@ -2,13 +2,13 @@ import React from 'react';
 import SearchedResultItem from './SearchedResultItem';
 import './SearchedResult.scss';
 
-const SearchedResult = () => {
+const SearchedResult = ({ data }) => {
   return (
     <div className="searchedResult">
-      <SearchedResultItem />
-      <SearchedResultItem />
-      <SearchedResultItem />
-      <SearchedResultItem />
+      {/* <SearchedResultItem data={data} /> */}
+      {data.map(data => (
+        <SearchedResultItem data={data} key={data.id} />
+      ))}
     </div>
   );
 };

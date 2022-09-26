@@ -1,11 +1,13 @@
 import React from 'react';
 import './SearchedResultItem.scss';
 
-const SearchedResultItem = () => {
+const SearchedResultItem = ({ data }) => {
   return (
     <div className="searchedResultItem">
-      <span>식당 이름 </span>
-      <span>식당 지역 - 음식 종류 </span>
+      <span>{data.name}</span>
+      <span>
+        {data.category} - {data.address}
+      </span>
     </div>
   );
 };
