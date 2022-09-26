@@ -1,23 +1,14 @@
 .userInfo {
-  text-align: center;
-  padding: 30px 20px 50px;
-  // border-radius: 5px;
-  background: white;
-  width: 400px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-weight: bolder;
+  width: 400px;
+  padding: 30px 20px 50px;
+  background: white;
+  text-align: center;
 
-  // .logo {
-  //   margin: 0 auto;
-  //   margin-bottom: 14px;
-  //   width: 200px;
-  //   height: 200px;
-  //   background: url('https://search.pstatic.net/sunny/?src=https%3A%2F%2Fdata.ac-illust.com%2Fdata%2Fthumbnails%2F48%2F48ecd78598456095d654c9196f973b00_w.jpeg&type=a340');
-  //   background-size: 100% 100%;
-  // }
+  font-weight: bolder;
 
   .title {
     margin: 24px;

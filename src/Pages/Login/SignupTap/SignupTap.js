@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import Signup from './Signup/Signup';
-import AdminLogin from './AdminSignup/AdminSignup';
 import './SignupTap.scss';
 import TestSignup from './Signup/TestSignup';
 
@@ -14,7 +12,7 @@ export default function SignupTap() {
           return (
             <button
               key={category}
-              className={category}
+              className="category"
               onClick={() => setCurrentId(category)}
             >
               {category}

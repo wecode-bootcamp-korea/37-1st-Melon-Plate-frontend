@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-// import { useNavigate } from 'react-router-dom';
 import './Signup.scss';
 
 const TestSignup = ({ currentId }) => {
@@ -16,8 +15,20 @@ const TestSignup = ({ currentId }) => {
     });
   };
 
+  const [inputValues, setInputValues] = useState({
+    id: '',
+    pw: '',
+    nickname: '',
+    name: '',
+    gender: '',
+  });
+
+  const handleInput = event => {
+    const { name, value } = event.target;
+    setInputValues({ ...inputValues, [name]: value });
+  };
+
   const fileInput = useRef(null);
-  // const navigate = useNavigate();
   const [file, setFile] = useState('');
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
@@ -57,10 +68,6 @@ const TestSignup = ({ currentId }) => {
     userSignUp.append('admin', true);
   }
 
-  for (let value of userSignUp.values()) {
-    console.log(value);
-  }
-  // const goToLogin = navigate('/logintap');
   const goToMain = e => {
     e.preventDefault();
 
@@ -85,7 +92,6 @@ const TestSignup = ({ currentId }) => {
         if (data.message === 'login success') {
           localStorage.setItem('TOKEN', data.token);
           alert('회원가입이 완료되었습니다.');
-          // navigate('/logintap');
         }
       });
   };
@@ -164,7 +170,12 @@ const TestSignup = ({ currentId }) => {
                 비공개
               </div>
               <label>연령대</label>
-              <select className="age" onChange={saveUserAge} value={age}>
+              <select
+                className="age"
+                onChange={saveUserAge}
+                value={age}
+                name="age"
+              >
                 <option value="">연령대를 선택하세요</option>
                 <option value="10">10대</option>
                 <option value="20">20대</option>
@@ -178,7 +189,7 @@ const TestSignup = ({ currentId }) => {
 
           <button onClick={goToMain}>회원가입</button>
 
-          <Link className="link">이미 가입하셨나요? 로그인</Link>
+          <Link to="/logintap">이미 가입하셨나요? 로그인</Link>
         </form>
       </div>
     </div>
