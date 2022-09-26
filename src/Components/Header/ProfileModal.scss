@@ -1,30 +1,29 @@
 @import '../../styles/variables.scss';
 
 .profileModalBack {
-  width: 100vw;
-  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
+  width: 100vw;
+  height: 100vh;
   z-index: 10;
 }
 
 .profileModalBox {
   display: flex;
   flex-direction: column;
-  max-height: 350px;
-  overflow-y: scroll;
   position: fixed;
   top: 60px;
   right: 30px;
-  z-index: 15;
+  max-height: 350px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 12px;
-  cursor: pointer;
+  overflow-y: scroll;
   animation-name: swingdown;
-
-  &::-webkit-scrollbar {
+  cursor: pointer;
+  z-index: 15;
+  s &::-webkit-scrollbar {
     width: 12px;
   }
 
@@ -34,16 +33,16 @@
 
   .profileModalCategory {
     display: flex;
-    font-size: 13px;
-    font-weight: 600;
     position: absolute;
     width: 100%;
+    font-size: 13px;
+    font-weight: 600;
 
     .profileModalTab {
-      width: 50%;
-      color: gray;
       text-align: center;
       padding: 15px 10px;
+      width: 50%;
+      color: gray;
     }
   }
 

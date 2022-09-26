@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ProfileModal.scss';
 import ProfileModalItem from './ProfileModalItem';
@@ -10,12 +10,6 @@ const ProfileModal = ({ setProfileClicked }) => {
     navigate('/mypage');
     setProfileClicked(false);
   };
-
-  // 최근 본 식당
-  // useEffect(() => {
-  //   const myArr = localStorage.getItem('watched');
-  //   myArr === null ? (myArr = []) : (myArr = JSON.parse(myArr));
-  // }, []);
 
   return (
     <div className="profileModal">
@@ -34,11 +28,6 @@ const ProfileModal = ({ setProfileClicked }) => {
           </div>
         </div>
         <div className="profileModalItemList">
-          <ProfileModalItem />
-          <ProfileModalItem />
-          <ProfileModalItem />
-          <ProfileModalItem />
-          <ProfileModalItem />
           <ProfileModalItem />
         </div>
       </div>

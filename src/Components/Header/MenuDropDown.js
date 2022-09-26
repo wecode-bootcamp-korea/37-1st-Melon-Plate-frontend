@@ -1,6 +1,5 @@
 import React from 'react';
 import './MenuDropDown.scss';
-import './Header.scss';
 
 const MenuDropDown = ({ setMenuOpened }) => {
   return (

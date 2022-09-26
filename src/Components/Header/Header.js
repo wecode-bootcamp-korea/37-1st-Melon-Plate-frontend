@@ -2,17 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import MenuDropDown from './MenuDropDown';
 import ProfileModal from './ProfileModal';
-// import SearchForm from '../../Pages/Main/SearchForm';
-
-import './Header.scss';
 import ModalPortal from '../../Portal';
+import './Header.scss';
 
 const Header = () => {
-  // const url = document.location.href;
-
   const location = useLocation();
-  console.log(location.pathname);
-
   const [user, setUser] = useState({});
   const [menuOpened, setMenuOpened] = useState(false);
   const [profileClicked, setProfileClicked] = useState(false);
@@ -39,8 +33,6 @@ const Header = () => {
           />
         </div>
       </Link>
-
-      {/* {url !== 'http://localhost:3000/' && <SearchForm />} */}
 
       <div className="headerLeft">
         <img
