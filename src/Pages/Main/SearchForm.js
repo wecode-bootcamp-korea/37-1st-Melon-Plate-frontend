@@ -16,6 +16,20 @@ const SearchForm = () => {
     e.preventDefault();
     navigate('/resultlist');
   };
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://192.168.215.167:8000/search?query=${searchTerm}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    })
+      .then(res => res.json())
+      .then(result => console.log(result));
+  }, [searchTerm]);
+
   return (
     <form className="searchForm" onSubmit={termSubmit}>
       <div className="searchBar">
