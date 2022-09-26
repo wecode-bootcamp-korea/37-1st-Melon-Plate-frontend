@@ -3,7 +3,6 @@
 .adminEdit {
   position: fixed;
   display: flex;
-
   width: 100vw;
   height: 100vh;
 
@@ -17,9 +16,9 @@
   }
 
   .adminEditTitle {
+    margin-bottom: 20px;
     font-size: 24px;
     font-weight: 600;
-    margin-bottom: 20px;
   }
 
   .inputTitle {
@@ -36,13 +35,13 @@
   }
 
   .adminEditBox {
-    display: flex;
-    flex-direction: column;
-    margin-top: 80px;
     position: fixed;
     left: 50%;
     transform: translate(-50%, 5%);
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    margin-top: 80px;
 
     .inputText {
       all: revert;
@@ -90,10 +89,10 @@
   .adminEditSave {
     width: 100px;
     height: 30px;
-    background-color: $melonColor2;
-    border-radius: 14px;
     text-align: center;
     margin-top: 20px;
+    background-color: $melonColor2;
+    border-radius: 14px;
   }
 }
 

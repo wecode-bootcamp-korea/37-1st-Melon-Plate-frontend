@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import './AdminEdit.scss';
-import ReactDOM from 'react-dom';
+import React, { useState } from 'react';
 import FoodMenu from './FoodMenu';
+import './AdminEdit.scss';
 
 const AdminEdit = () => {
+  const accesToken = localStorage.getItem('TOKEN');
+
   const [input, setInput] = useState({
     name: '',
     description: '',
@@ -13,6 +14,7 @@ const AdminEdit = () => {
     closed_time: '',
     closed_day_id: '',
     price_range: ' ',
+    category: '',
   });
 
   const [imageInput, setImageInput] = useState();
@@ -73,14 +75,14 @@ const AdminEdit = () => {
   adminEditForm.append('image', imageInput);
   adminEditForm.append('closed_day_id', dayNum);
   adminEditForm.append('description', input.description);
+  adminEditForm.append('price_range', input.price_range);
 
   const editSaveClick = () => {
     fetch('https://b35e-211-106-114-186.jp.ngrok.io/store/admin', {
       method: 'POST',
       headers: {
         enctype: 'multipart/form-data',
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwidXNlcl9pZCI6ImFhYWFhYWFhIiwiYWRtaW5URiI6InRydWUiLCJpYXQiOjE2NjM5MDc1MzB9.tGEtbRFN8RpDBfIqPwHQfzQm1aDJSqKpI9Lb51z_4cc',
+        authorization: accesToken,
       },
       body: adminEditForm,
     })
@@ -96,26 +98,28 @@ const AdminEdit = () => {
           <div className="inputTitle">대표 사진</div>
           <input type="file" accept="image/*" onChange={saveImage} />
         </div>
-        {INPUT_VALUES.map(store => (
-          <div className="adminEditInputSet" key={store.id}>
-            <div className="inputTitle"> {store.title}</div>
-            <input
-              className="inputText"
-              type={store.type}
-              placeholder={store.placeholder}
-              name={store.name}
-              onChange={saveInput}
-              step={store.step}
-              min={store.min}
-              max={store.max}
-            />
-          </div>
-        ))}
+        {INPUT_VALUES.map(
+          ({ id, title, type, placeholder, inputName, step, min, max }) => (
+            <div className="adminEditInputSet" key={id}>
+              <div className="inputTitle"> {title}</div>
+              <input
+                className="inputText"
+                type={type}
+                placeholder={placeholder}
+                name={inputName}
+                onChange={saveInput}
+                step={step}
+                min={min}
+                max={max}
+              />
+            </div>
+          )
+        )}
         <div className="storeCategories">
           <div className="inputTitle">식당 카테고리</div>
           <select className="inputText">
             {CATEGORIES.map(e => (
-              <option value={e.value} key={e.value}>
+              <option value={e.value} key={e.value} onChange={saveInput}>
                 {e.name}
               </option>
             ))}
@@ -149,15 +153,13 @@ const AdminEdit = () => {
           <div className="inputTitle">1인당 가격대</div>
           <input
             className="inputText2"
+            name="price_range"
             type="number"
             placeholder="1인당 가격대"
+            onChange={saveInput}
           />
           <span>만원</span>
         </div>
-
-        {/* <button className="addMenuInput" onClick={addMenuInputClick}>
-          메뉴 추가
-        </button> */}
         <FoodMenu
           saveMenuInput={saveMenuInput}
           menuAddBtnClick={menuAddBtnClick}
@@ -176,27 +178,33 @@ const AdminEdit = () => {
 export default AdminEdit;
 
 const INPUT_VALUES = [
-  { id: 1, title: '상호명', type: 'text', placeholder: '상호명', name: 'name' },
+  {
+    id: 1,
+    title: '상호명',
+    type: 'text',
+    placeholder: '상호명',
+    inputName: 'name',
+  },
   {
     id: 2,
     title: '주소',
     type: 'address',
     placeholder: '주소',
-    name: 'address',
+    inputName: 'address',
   },
   {
     id: 3,
     title: '전화번호',
     type: 'tel',
     placeholder: '전화번호',
-    name: 'tel',
+    inputName: 'tel',
   },
   {
     id: 4,
     title: '오픈 시간',
     type: 'time',
     placeholder: '오픈 시간',
-    name: 'open_time',
+    inputName: 'open_time',
     min: '00:00',
     max: '24:00',
     step: 3600,
@@ -206,7 +214,7 @@ const INPUT_VALUES = [
     title: '마감 시간',
     type: 'time',
     placeholder: '마감 시간',
-    name: 'closed_time',
+    inputName: 'closed_time',
     min: '00:00',
     max: '24:00',
     step: 3600,
@@ -228,12 +236,12 @@ const CATEGORIES = [
   { value: 2, name: '중식' },
   { value: 3, name: '일식' },
   { value: 4, name: '양식' },
-  { value: 5, name: '퓨전식' },
-  { value: 6, name: '이자카야' },
-  { value: 7, name: '카페' },
-  { value: 8, name: '베트남 음식' },
-  { value: 9, name: '이탈리아 음식' },
-  { value: 10, name: '호프' },
+  { value: 5, name: '분식' },
+  { value: 6, name: '고깃집' },
+  { value: 7, name: '치킨' },
+  { value: 8, name: '주점' },
+  { value: 9, name: '카페' },
+  { value: 10, name: '동남아 음식' },
   { value: 11, name: '빵집' },
   { value: 12, name: '패스트푸드' },
   { value: 13, name: '기타' },
