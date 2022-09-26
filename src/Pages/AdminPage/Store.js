@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './Store.scss';
 
 const Store = ({ text }) => {
-  const [stoName, star, address, tel, hour, closedDay] = text;
+  // const [stoName, star, address, tel, hour, closedDay] = text;
   const navigate = useNavigate();
   const goToAdminEdit = () => {
     navigate('/admin/edit');
@@ -19,14 +19,14 @@ const Store = ({ text }) => {
         />
         <div className="storeInfo">
           <div className="mainInfo">
-            <span className="title">{stoName}</span>
-            <span className="grade">{star}</span>
+            <span className="title">{text.stoName}</span>
+            <span className="grade">{text.star}</span>
           </div>
           <div className="info">
-            <p className="address">{address}</p>
-            <p className="tel">{tel}</p>
-            <p className="hour">{hour}</p>
-            <p className="off ">{closedDay}</p>
+            <p className="address">{text.address}</p>
+            <p className="tel">{text.tel}</p>
+            <p className="hour">{text.hour}</p>
+            <p className="off ">{text.closedDay}</p>
           </div>
         </div>
       </div>
