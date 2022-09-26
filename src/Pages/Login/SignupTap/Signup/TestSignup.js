@@ -23,46 +23,24 @@ const TestSignup = ({ currentId }) => {
     gender: '',
   });
 
+  console.log(inputValues);
   const handleInput = event => {
     const { name, value } = event.target;
-    setInputValues({ ...inputValues, [name]: value });
+    setInputValues(prev => ({ ...prev, [name]: value }));
   };
+
+  const { id, pw, nickname, name, gender } = inputValues;
 
   const fileInput = useRef(null);
   const [file, setFile] = useState('');
-  const [id, setId] = useState('');
-  const [pw, setPw] = useState('');
-  const [nickName, setNickName] = useState('');
-  const [age, setAge] = useState();
-  const [gender, setGender] = useState();
-
-  const saveUserId = e => {
-    setId(e.target.value);
-  };
-
-  const saveUserPw = e => {
-    setPw(e.target.value);
-  };
-
-  const saveUserNn = e => {
-    setNickName(e.target.value);
-  };
-
-  const saveUserAge = e => {
-    setAge(e.target.value);
-  };
-
-  const saveUserGender = e => {
-    setGender(e.target.value);
-  };
 
   const userSignUp = new FormData();
   userSignUp.append('profileImg', file);
-  userSignUp.append('nickname', nickName);
+  userSignUp.append('nickname', nickname);
   userSignUp.append('userId', id);
   userSignUp.append('password', pw);
   userSignUp.append('gender', gender);
-  userSignUp.append('age', age);
+  // userSignUp.append('age', age);
 
   if (currentId === '사장님회원가입') {
     userSignUp.append('admin', true);
@@ -123,24 +101,16 @@ const TestSignup = ({ currentId }) => {
               <img src={imageSrc} alt="프로필사진" className="profileImg2" />
             )}
           </div>
-          <input
-            type="text"
-            name="nickname"
-            placeholder="닉네임(2글자 이상)"
-            onChange={saveUserNn}
-          />
-          <input
-            type="text"
-            name="id"
-            placeholder="아이디(5글자 이상)"
-            onChange={saveUserId}
-          />
-          <input
-            type="password"
-            name="pw"
-            placeholder="비밀번호(8글자 이상 20글자 미만)"
-            onChange={saveUserPw}
-          />
+          {INPUT_LIST.map(list => {
+            return (
+              <input
+                type={list.type}
+                name={list.name}
+                placeholder={list.placeholder}
+                onChange={handleInput}
+              />
+            );
+          })}
           {currentId === '일반 회원가입' && (
             <>
               <div>
@@ -149,7 +119,7 @@ const TestSignup = ({ currentId }) => {
                   type="radio"
                   name="gender"
                   value="male"
-                  onChange={saveUserGender}
+                  onChange={handleInput}
                 />
                 남자
                 <input
@@ -157,7 +127,7 @@ const TestSignup = ({ currentId }) => {
                   type="radio"
                   name="gender"
                   value="female"
-                  onChange={saveUserGender}
+                  onChange={handleInput}
                 />
                 여자
                 <input
@@ -165,14 +135,14 @@ const TestSignup = ({ currentId }) => {
                   type="radio"
                   name="gender"
                   value="none"
-                  onChange={saveUserGender}
+                  onChange={handleInput}
                 />
                 비공개
               </div>
               <label>연령대</label>
               <select
                 className="age"
-                onChange={saveUserAge}
+                onChange={handleInput}
                 value={age}
                 name="age"
               >
@@ -197,3 +167,14 @@ const TestSignup = ({ currentId }) => {
 };
 
 export default TestSignup;
+
+const INPUT_LIST = [
+  { id: 1, type: 'text', name: 'nickname', placeholder: '닉네임(2글자 이상)' },
+  { id: 2, type: 'text', name: 'id', placeholder: '아이디(5글자 이상)' },
+  {
+    id: 3,
+    type: 'password',
+    name: 'pw',
+    placeholder: '비밀번호(8글자 이상 20글자 미만)',
+  },
+];
