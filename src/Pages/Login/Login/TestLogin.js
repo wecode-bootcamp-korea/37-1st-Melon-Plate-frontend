@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import SIGNUP_API from '../../../config';
 import './Login.scss';
 
 const TestLogin = ({ currentId }) => {
@@ -13,7 +14,7 @@ const TestLogin = ({ currentId }) => {
 
   const handleInput = event => {
     const { name, value } = event.target;
-    setInputValues({ ...inputValues, [name]: value });
+    setInputValues(prev => ({ ...prev, [name]: value }));
   };
 
   const goToMain = e => {
