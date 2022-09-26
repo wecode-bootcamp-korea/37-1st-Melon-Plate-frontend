@@ -13,9 +13,6 @@ const Main = () => {
 
   return (
     <div className="main">
-      {/* 토큰이 있으면 user_nickname님 맛집을 검색하세요!
-      없으면 로그인하기 버튼 보이게 하고, 맛집을 검색하세요! */}
-
       {user.user_nickname ? (
         <span className="welcomeMessage">
           {user.user_nickname}님, 궁금한 맛집을 검색하세요!
