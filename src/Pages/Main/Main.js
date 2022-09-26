@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './Main.scss';
+import { Link } from 'react-router-dom';
 import SearchForm from './SearchForm';
+import './Main.scss';
 
 const Main = () => {
   const [user, setUser] = useState({});
@@ -13,20 +14,17 @@ const Main = () => {
 
   return (
     <div className="main">
-      {user.user_nickname ? (
-        <span className="welcomeMessage">
-          {user.user_nickname}님, 궁금한 맛집을 검색하세요!
-        </span>
-      ) : (
-        <span className="welcomeMessage">
-          안녕하세요! 궁금한 맛집을 검색해보세요!
-        </span>
-      )}
+      <span className="welcomeMessage">
+        {user.user_nickname ? `${user.user_nickname}님,` : '안녕하세요!'}
+        궁금한 맛집을 검색하세요!
+      </span>
 
       <SearchForm />
 
       {!user.user_nickname && (
-        <span className="mainLoginMessage">로그인하고 더 많은 정보 보기</span>
+        <Link to="/logintap">
+          <span className="mainLoginMessage">로그인하고 더 많은 정보 보기</span>
+        </Link>
       )}
     </div>
   );
