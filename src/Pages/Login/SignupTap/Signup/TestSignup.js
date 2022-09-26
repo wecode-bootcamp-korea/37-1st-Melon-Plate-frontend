@@ -127,7 +127,7 @@ const TestSignup = ({ currentId }) => {
                   className="gender"
                   type="radio"
                   name="gender"
-                  value="male"
+                  value="남"
                   onChange={handleInput}
                 />
                 남자
@@ -135,7 +135,7 @@ const TestSignup = ({ currentId }) => {
                   className="gender"
                   type="radio"
                   name="gender"
-                  value="female"
+                  value="여"
                   onChange={handleInput}
                 />
                 여자
@@ -143,7 +143,7 @@ const TestSignup = ({ currentId }) => {
                   className="gender"
                   type="radio"
                   name="gender"
-                  value="none"
+                  value=""
                   onChange={handleInput}
                 />
                 비공개
