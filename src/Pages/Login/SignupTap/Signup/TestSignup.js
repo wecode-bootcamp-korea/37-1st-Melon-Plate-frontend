@@ -53,12 +53,15 @@ const TestSignup = ({ currentId }) => {
   userSignUp.append('gender', gender);
   userSignUp.append('age', age);
 
+  if (currentId === '사장님회원가입') {
+    userSignUp.append('admin', true);
+  }
+
   for (let value of userSignUp.values()) {
     console.log(value);
   }
   // const goToLogin = navigate('/logintap');
   const goToMain = e => {
-    userSignUp.append('admin', true);
     e.preventDefault();
 
     fetch('https://b35e-211-106-114-186.jp.ngrok.io/user/signup', {
