@@ -11,10 +11,7 @@ const Header = () => {
   const [menuOpened, setMenuOpened] = useState(false);
   const [profileClicked, setProfileClicked] = useState(false);
 
-  const profileClick = () => {
-    setProfileClicked(true);
-  };
-
+  console.log(location);
   useEffect(() => {
     fetch('./jiwonData/loginUser.json')
       .then(res => res.json())
@@ -33,7 +30,7 @@ const Header = () => {
           />
         </div>
       </Link>
-
+      {location.pathname !== '/' && <div>searchform</div>}
       <div className="headerLeft">
         <img
           className="headerCategories"
@@ -45,7 +42,7 @@ const Header = () => {
           className="headerProfileImg"
           src={user.user_profile_img}
           alt="프로필 이미지"
-          onClick={profileClick}
+          onClick={() => setProfileClicked(true)}
         />
         {menuOpened && <MenuDropDown setMenuOpened={setMenuOpened} />}
         <ModalPortal>
