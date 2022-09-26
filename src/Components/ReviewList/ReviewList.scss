@@ -7,22 +7,22 @@
     height: 23px;
     margin-bottom: 14px;
 
-    .TopReviewLeft {
-      .TopReviewLeftText {
+    .topReviewLeft {
+      .topReviewLeftText {
         font-size: 18px;
         color: rgb(79, 79, 79);
       }
 
-      .TopReviewLeftNumber {
+      .topReviewLeftNumber {
         font-size: 18px;
         color: gray;
       }
     }
-    .TopReviewRight {
-      .TopReviewRightBtn {
+    .topReviewRight {
+      .topReviewRightBtn {
         height: 23px;
 
-        .TopReviewRightBtns {
+        .topReviewRightBtns {
           color: gray;
         }
 
@@ -43,36 +43,36 @@
       background-color: rgb(240, 241, 255);
     }
 
-    .MainLeft {
+    .mainLeft {
       width: 70px;
       margin: 15px 35px 0px 8px;
 
-      .MainLeftPhotos {
+      .mainLeftPhotos {
         width: 60px;
         height: 60px;
         border-radius: 100px;
       }
 
-      .MainLeftName {
+      .mainLeftName {
         width: 60px;
         font-size: 13px;
       }
 
-      .MainLeftReviews {
+      .mainLeftReviews {
         font-size: 8px;
       }
     }
 
-    .MainCenter {
+    .mainCenter {
       width: 605;
 
-      .MainCenterDay {
+      .mainCenterDay {
         width: 600px;
         margin-bottom: 10px;
         font-size: 14px;
         color: gray;
       }
-      .MainCenterPhoto {
+      .mainCenterPhoto {
         margin: 20px 0px;
 
         img {
@@ -83,12 +83,12 @@
       }
     }
 
-    .MainRight {
+    .mainRight {
       position: relative;
       width: 60;
       margin-left: 22px;
 
-      .MainRightPoint {
+      .mainRightPoint {
         position: absolute;
         top: 12px;
         right: 15px;
@@ -97,7 +97,7 @@
       }
     }
 
-    .MainRightMelon {
+    .mainRightMelon {
       width: 40px;
       border-radius: 20px;
     }

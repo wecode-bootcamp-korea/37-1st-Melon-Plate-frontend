@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import GrayMelon from './GrayMelon';
-import GreenMelon from './GreenMelon';
+import Melon from './Melon';
 import './ReviewWrite.scss';
-// import { json } from 'react-router-dom';
 
 const ReviewWrite = () => {
   const [melonPoint, setMelonPoint] = useState(10);
@@ -10,6 +8,8 @@ const ReviewWrite = () => {
   const [imgLength, setImgLength] = useState(0);
   const [text, setText] = useState('');
   const textLength = text.length;
+  const greenMelon = `${process.env.PUBLIC_URL}/images/20596969-F8C3-4D15-9D89-16ECCE2090F5.jpeg`;
+  const grayMelon = `${process.env.PUBLIC_URL}/images/07E08BB9-5390-41B4-9270-DC83C7D8ACE2.jpeg`;
 
   const formGo = () => {
     // fetch('/Mock/Mock.json', {
@@ -22,7 +22,6 @@ const ReviewWrite = () => {
     //     console.log(res);
     //   });
     localStorage.removeItem('text');
-    // localStorage.removeItem('img');
   };
   const textCount = e => {
     setText(e.target.value);
@@ -30,11 +29,8 @@ const ReviewWrite = () => {
 
   const saveText = e => {
     e.preventDefault();
-    // const imagesJson = JSON.stringify(images);
     localStorage.removeItem('text');
-    // localStorage.removeItem('img');
     localStorage.setItem('text', text);
-    // localStorage.setItem('img', imagesJson);
   };
 
   const saveImages = e => {
@@ -76,26 +72,24 @@ const ReviewWrite = () => {
 
   useEffect(() => {
     if (localStorage.getItem('text')) {
-      // const imgParse = JSON.parse(localStorage.getItem('img'));
       setText(localStorage.getItem('text'));
-      // setImages(imgParse);
     }
   }, []);
   return (
     <div className="reviewWrite">
       <form className="reviewWritePage">
-        <div className="Store">
-          <span className="StoreName">부촌육회 </span>
+        <div className="store">
+          <span className="storeName">부촌육회 </span>
           <span>에 대한 솔직한 리뷰를 써주세요</span>
         </div>
-        <div className="Melon">
-          <div className="Point">
-            <div className="PointResult">
-              <GrayMelon />
-              <GrayMelon />
-              <GrayMelon />
-              <GrayMelon />
-              <GrayMelon />
+        <div className="melon">
+          <div className="point">
+            <div className="pointResult">
+              <Melon Melon={grayMelon} />
+              <Melon Melon={grayMelon} />
+              <Melon Melon={grayMelon} />
+              <Melon Melon={grayMelon} />
+              <Melon Melon={grayMelon} />
               <input
                 type="range"
                 value={melonPoint}
@@ -108,32 +102,32 @@ const ReviewWrite = () => {
               />
             </div>
             <div
-              className="PointResultSpan"
+              className="pointResultSpan"
               style={{ width: `${melonPoint * 10}%` }}
             >
-              <GreenMelon />
-              <GreenMelon />
-              <GreenMelon />
-              <GreenMelon />
-              <GreenMelon />
+              <Melon Melon={greenMelon} />
+              <Melon Melon={greenMelon} />
+              <Melon Melon={greenMelon} />
+              <Melon Melon={greenMelon} />
+              <Melon Melon={greenMelon} />
             </div>
           </div>
-          <div className="Review">
+          <div className="review">
             <textarea
               placeholder="서비스도 궁금해요"
               value={text}
-              className="ReviewInput"
+              className="reviewInput"
               onChange={textCount}
             />
-            <span className="Span">{textLength}/50000</span>
+            <span className="span">{textLength}/50000</span>
           </div>
         </div>
-        <div className="Photo">
-          <div className="PhotoInner">
+        <div className="photo">
+          <div className="photoInner">
             <div>
-              <label htmlFor="file" className="PhotoInnerLabel">
-                <div className="PhotoInnerLength">{imgLength}/10</div>
-                <div className="PhotoInnerInputFile">
+              <label htmlFor="file" className="photoInnerLabel">
+                <div className="photoInnerLength">{imgLength}/10</div>
+                <div className="photoInnerInputFile">
                   <i className="fa-regular fa-image" />
                 </div>
               </label>
@@ -141,15 +135,15 @@ const ReviewWrite = () => {
                 type="file"
                 id="file"
                 multiple="multiple"
-                className="PhotoInnerInput"
+                className="photoInnerInput"
                 onChange={saveImages}
               />
             </div>
-            <ul className="PhotoInnerPhotos">
+            <ul className="photoInnerPhotos">
               {images?.map((e, i) => (
                 <li key={i}>
-                  <img src={e} className="PhotoInnerPhotosImg" alt="melonImg" />
-                  <button className="PhotoInnerPhotosBtn" onClick={clicked}>
+                  <img src={e} className="photoInnerPhotosImg" alt="melonImg" />
+                  <button className="photoInnerPhotosBtn" onClick={clicked}>
                     x
                   </button>
                 </li>
@@ -157,18 +151,18 @@ const ReviewWrite = () => {
             </ul>
           </div>
         </div>
-        <div className="Result">
+        <div className="result">
           <button
-            className={!Vialed ? 'Btn' : 'BtnChange'}
+            className={!Vialed ? 'btn' : 'btnChange'}
             disabled={!Vialed}
             onClick={saveText}
           >
             나중에 이어쓰기
           </button>
           <div>
-            <button className="BtnCancel">취소</button>
+            <button className="btnCancel">취소</button>
             <button
-              className={!Vialed ? 'BtnReview' : 'BtnReviewChange'}
+              className={!Vialed ? 'btnReview' : 'btnReviewChange'}
               disabled={!Vialed}
               onClick={formGo}
             >

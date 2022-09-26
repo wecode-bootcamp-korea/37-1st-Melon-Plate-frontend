@@ -9,22 +9,22 @@
     flex-direction: column;
     width: 678px;
 
-    .Store {
+    .store {
       height: 40.93px;
       margin-bottom: 20px;
 
-      .StoreName {
+      .storeName {
         color: #ced89e;
         font-size: 30px;
       }
     }
 
-    .Melon {
+    .melon {
       height: 206px;
       border: 1px solid gainsboro;
       border-radius: 5px;
 
-      .Point {
+      .point {
         display: flex;
         align-items: center;
         position: relative;
@@ -33,7 +33,7 @@
         margin: 10px auto;
         margin-bottom: 20px;
 
-        .PointResultSpan {
+        .pointResultSpan {
           display: flex;
           justify-content: space-between;
           position: absolute;
@@ -47,7 +47,7 @@
           }
         }
 
-        .PointResult {
+        .pointResult {
           display: flex;
           justify-content: space-between;
           position: relative;
@@ -70,13 +70,13 @@
         }
       }
 
-      .Review {
+      .review {
         position: relative;
         margin-left: 10px;
         height: 150px;
         width: 100%;
 
-        .ReviewInput {
+        .reviewInput {
           height: 90%;
           width: 90%;
           border: none;
@@ -84,7 +84,7 @@
           outline-color: white;
         }
 
-        .Span {
+        .span {
           position: absolute;
           right: 20px;
           bottom: -5px;
@@ -93,13 +93,13 @@
       }
     }
 
-    .Photo {
+    .photo {
       display: flex;
       flex-direction: column;
       margin-bottom: 10px;
       width: 676px;
 
-      .PhotoInner {
+      .photoInner {
         display: flex;
         position: relative;
         margin-top: 20px;
@@ -108,12 +108,12 @@
         width: 100%;
         height: 100%;
 
-        .PhotoInnerLabel {
+        .photoInnerLabel {
           position: relative;
           margin-right: 9px;
           margin-bottom: 9px;
 
-          .PhotoInnerLength {
+          .photoInnerLength {
             position: absolute;
             bottom: 2px;
             left: 60px;
@@ -121,7 +121,7 @@
           }
         }
 
-        .PhotoInnerPhotos {
+        .photoInnerPhotos {
           display: flex;
           flex-wrap: wrap;
           margin-left: 9px;
@@ -132,13 +132,13 @@
             margin-right: 9px;
             margin-bottom: 9px;
 
-            .PhotoInnerPhotosImg {
+            .photoInnerPhotosImg {
               width: 89px;
               height: 89px;
               margin: 0px, 9px, 9px, 0px;
             }
 
-            .PhotoInnerPhotosBtn {
+            .photoInnerPhotosBtn {
               position: absolute;
               left: 75px;
               font-size: 20px;
@@ -147,11 +147,11 @@
           }
         }
 
-        .PhotoInnerInput {
+        .photoInnerInput {
           display: none;
         }
 
-        .PhotoInnerInputFile {
+        .photoInnerInputFile {
           position: relative;
           width: 89px;
           height: 89px;
@@ -168,11 +168,11 @@
       }
     }
 
-    .Result {
+    .result {
       display: flex;
       justify-content: space-between;
 
-      .Btn {
+      .btn {
         border: 1px solid gray;
         padding: 15px 20px;
         border-radius: 50px;
@@ -180,7 +180,7 @@
         color: gainsboro;
       }
 
-      .BtnChange {
+      .btnChange {
         padding: 15px 20px;
         border: 1px solid #76ba99;
         border-radius: 50px;
@@ -188,7 +188,7 @@
         color: #76ba99;
       }
 
-      .BtnCancel {
+      .btnCancel {
         padding: 15px 50px;
         border: 1px solid gray;
         border-radius: 50px;
@@ -196,7 +196,7 @@
         color: gray;
       }
 
-      .BtnReview {
+      .btnReview {
         padding: 15px 30px;
         margin-left: 15px;
         border-radius: 50px;
@@ -206,7 +206,7 @@
         color: white;
       }
 
-      .BtnReviewChange {
+      .btnReviewChange {
         padding: 15px 30px;
         margin-left: 15px;
         background-color: #76ba99;

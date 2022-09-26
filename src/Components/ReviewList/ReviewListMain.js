@@ -6,33 +6,33 @@ const reviewListMain = data => {
 
   return (
     <div className="reviewListMain">
-      <span className="MainLeft">
-        <div className="MainLeftPhoto">
-          <img src={profileImg} className="MainLeftPhotos" alt="melonImg" />
+      <span className="mainLeft">
+        <div className="mainLeftPhoto">
+          <img src={profileImg} className="mainLeftPhotos" alt="melonImg" />
         </div>
-        <div className="MainLeftName">{nickname}</div>
-        <div className="MainLeftReviews">
+        <div className="mainLeftName">{nickname}</div>
+        <div className="mainLeftReviews">
           <i className="fa-solid fa-pen" />
           0
           <i className="fa-solid fa-people-group" />0
         </div>
       </span>
-      <span className="MainCenter">
-        <div className="MainCenterDay">{reviewDate}</div>
-        <div className="MainCenterReview">{reviewText}</div>
-        <div className="MainCenterPhoto">
+      <span className="mainCenter">
+        <div className="mainCenterDay">{reviewDate}</div>
+        <div className="mainCenterReview">{reviewText}</div>
+        <div className="mainCenterPhoto">
           {reviewImg.map(e => {
             return <img src={e} key={e.id} alt="melonImg" />;
           })}
         </div>
       </span>
-      <span className="MainRight">
+      <span className="mainRight">
         <img
           src={`${process.env.PUBLIC_URL}/images/20596969-F8C3-4D15-9D89-16ECCE2090F5.jpeg`}
-          className="MainRightMelon"
+          className="mainRightMelon"
           alt="melonImg"
         />
-        <div className="MainRightPoint">{rate}</div>
+        <div className="mainRightPoint">{rate}</div>
       </span>
     </div>
   );

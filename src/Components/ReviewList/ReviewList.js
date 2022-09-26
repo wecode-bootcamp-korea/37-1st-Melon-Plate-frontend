@@ -4,28 +4,37 @@ import ReviewListTop from './ReviewListTop';
 import './ReviewList.scss';
 
 const ReviewList = () => {
-  const [data, setData] = useState('');
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     fetch('/Mock/Mock.json')
       .then(res => res.json())
       .then(res => setData(res));
   }, []);
-  const test = [...data];
+
   return (
     <div className="reviewList">
       <ReviewListTop />
 
-      {test.map(e => {
+      {data.map(list => {
+        const {
+          reviewText,
+          rate,
+          nickname,
+          reviewImg,
+          profileImg,
+          reviewDate,
+          id,
+        } = list;
         return (
           <ReviewListMain
-            reviewText={e.reviewText}
-            rate={e.rate}
-            nickname={e.nickname}
-            reviewImg={e.reviewImg}
-            profileImg={e.profileImg}
-            reviewDate={e.reviewDate}
-            key={e.id}
+            reviewText={reviewText}
+            rate={rate}
+            nickname={nickname}
+            reviewImg={reviewImg}
+            profileImg={profileImg}
+            reviewDate={reviewDate}
+            key={id}
           />
         );
       })}
