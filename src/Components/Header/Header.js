@@ -11,7 +11,6 @@ const Header = () => {
   const [menuOpened, setMenuOpened] = useState(false);
   const [profileClicked, setProfileClicked] = useState(false);
 
-  console.log(location);
   useEffect(() => {
     fetch('./jiwonData/loginUser.json')
       .then(res => res.json())
