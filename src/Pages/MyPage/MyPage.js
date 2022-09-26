@@ -22,19 +22,19 @@ const MyPage = () => {
   };
 
   const logOutClick = () => {
-    localStorage.removeItem('key', '키값');
+    localStorage.removeItem('TOKEN');
     navigate('/');
   };
 
-  // const gender = () => {
-  //   if (user.user_gender === 'female') {
-  //     return '여성';
-  //   } else if (user.user_gender === 'male') {
-  //     return '남성';
-  //   } else if (user.user_gender == null) {
-  //     return null;
-  //   }
-  // };
+  const gender = () => {
+    if (user.user_gender === 'female') {
+      return '여성';
+    } else if (user.user_gender === 'male') {
+      return '남성';
+    } else if (user.user_gender == null) {
+      return null;
+    }
+  };
 
   return (
     <div className="myPage">
@@ -85,7 +85,7 @@ const MyPage = () => {
               <LikedItem />
             </div>
           </div>
-          <div className="myActionBox">
+          {/* <div className="myActionBox">
             <div className="myPageMiniTitle">나의 예약 리스트</div>
             <div className="myPageItemList">
               <LikedItem />
@@ -94,13 +94,10 @@ const MyPage = () => {
               <LikedItem />
               <LikedItem />
             </div>
-          </div>
+          </div> */}
           <div className="myActionBox2">
             <div className="myPageMiniTitle">내가 작성한 후기</div>
             <div className="myPageItemList">
-              <ReviewedItem />
-              <ReviewedItem />
-              <ReviewedItem />
               <ReviewedItem />
               <ReviewedItem />
             </div>
@@ -110,7 +107,6 @@ const MyPage = () => {
       <ModalPortal>
         {editClicked && <ProfileEdit setEditClicked={setEditClicked} />}
       </ModalPortal>
-      \{' '}
     </div>
   );
 };
