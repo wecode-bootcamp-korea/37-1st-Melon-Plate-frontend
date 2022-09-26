@@ -7,7 +7,7 @@ const Store = ({ text }) => {
   const goToAdminEdit = () => {
     navigate('/admin/edit');
   };
-  console.log(text);
+  // console.log(text);
   return (
     <div className="Store">
       <div className="storeWrap">
@@ -18,7 +18,7 @@ const Store = ({ text }) => {
         />
         <div className="storeInfo">
           <div className="mainInfo">
-            <span className="title">{text.title}</span>
+            <span className="title">{text.stoName}</span>
             <span className="grade">{text.star}</span>
           </div>
           <div className="info">
