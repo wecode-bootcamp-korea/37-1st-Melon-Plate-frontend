@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import SignUp from './Login/Login';
-import AdiminLogin from './AdminLogin/AdminLogin';
+import TestLogin from '../Login/TestLogin';
 import './LoginTap.scss';
-import TestLogin from './Login/TestLogin';
 
 export default function LoginTap() {
   const [currentId, setCurrentId] = useState('로그인');
@@ -13,7 +11,7 @@ export default function LoginTap() {
         {CATEGORY_ARR.map(category => {
           return (
             <button
-              className={category}
+              className="category"
               key={category}
               onClick={() => setCurrentId(category)}
             >

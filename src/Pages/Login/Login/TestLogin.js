@@ -1,32 +1,31 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import './AdminLogin.scss';
+import { Link } from 'react-router-dom';
+import './Login.scss';
 
-const AdminLogin = () => {
+const TestLogin = ({ currentId }) => {
   const navigate = useNavigate();
-  const [id, setId] = useState('');
-  const [pw, setPw] = useState('');
 
-  const saveUserId = e => {
-    setId(e.target.value);
-  };
+  const [inputValues, setInputValues] = useState({
+    text: '',
+    password: '',
+  });
 
-  const saveUserPW = e => {
-    setPw(e.target.value);
+  const handleInput = event => {
+    const { name, value } = event.target;
+    setInputValues({ ...inputValues, [name]: value });
   };
 
   const goToMain = e => {
     e.preventDefault();
 
-    fetch('https://b35e-211-106-114-186.jp.ngrok.io/user/signin', {
+    fetch('https://f29c-211-106-114-186.jp.ngrok.io/user/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
       },
       body: JSON.stringify({
-        userId: id,
-        password: pw,
+        inputValues,
       }),
     })
       .then(response => {
@@ -37,24 +36,32 @@ const AdminLogin = () => {
         }
       })
       .catch(error => {
-        // console.log(error);
         alert('아이디 또는 비밀번호가 틀렸습니다.');
       })
       .then(data => {
-        console.log(data);
-
-        localStorage.setItem('TOKEN', data.accessToken);
-        if (data.admin === 'true') navigate('/adminpage');
+        if (data.message === 'login success') {
+          localStorage.setItem('TOKEN', data.token);
+          navigate('/');
+        }
       });
   };
-
   return (
     <div>
       <div className="userInfo">
-        <h2 className="title">사장님로그인</h2>
+        <h2 className="title">{currentId}</h2>
         <form>
-          <input type="text" placeholder="아이디" onChange={saveUserId} />
-          <input type="password" placeholder="비밀번호" onChange={saveUserPW} />
+          <input
+            type="text"
+            placeholder="아이디"
+            onChange={handleInput}
+            name="text"
+          />
+          <input
+            type="password"
+            placeholder="비밀번호"
+            onChange={handleInput}
+            name="password"
+          />
 
           <button onClick={goToMain}>로그인</button>
           <Link to="/logintap" className="link">
@@ -66,4 +73,4 @@ const AdminLogin = () => {
   );
 };
 
-export default AdminLogin;
+export default TestLogin;
