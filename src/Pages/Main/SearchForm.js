@@ -14,10 +14,8 @@ const SearchForm = () => {
 
   const termSubmit = e => {
     e.preventDefault();
-
     navigate('/resultlist');
   };
-
   return (
     <form className="searchForm" onSubmit={termSubmit}>
       <div className="searchBar">
