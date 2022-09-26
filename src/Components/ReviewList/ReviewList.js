@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './ReviewList.scss';
 import ReviewListMain from './ReviewListMain';
 import ReviewListTop from './ReviewListTop';
+import './ReviewList.scss';
 
 const ReviewList = () => {
   const [data, setData] = useState('');

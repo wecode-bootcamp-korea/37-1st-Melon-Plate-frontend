@@ -7,22 +7,22 @@
     height: 23px;
     margin-bottom: 14px;
 
-    .reviewListTopReviewLeft {
-      .reviewListTopReviewLeftText {
+    .TopReviewLeft {
+      .TopReviewLeftText {
         font-size: 18px;
         color: rgb(79, 79, 79);
       }
 
-      .reviewListTopReviewLeftNumber {
+      .TopReviewLeftNumber {
         font-size: 18px;
         color: gray;
       }
     }
-    .reviewListTopReviewRight {
-      .reviewListTopReviewRightBtn {
+    .TopReviewRight {
+      .TopReviewRightBtn {
         height: 23px;
 
-        .reviewListTopReviewRightBtns {
+        .TopReviewRightBtns {
           color: gray;
         }
 
@@ -38,52 +38,57 @@
     border-bottom: 1px solid gainsboro;
     margin-bottom: 5px;
     line-height: 150%;
+
     &:hover {
       background-color: rgb(240, 241, 255);
     }
 
-    .reviewListMainLeft {
+    .MainLeft {
       width: 70px;
       margin: 15px 35px 0px 8px;
-      .reviewListMainLeftPhotos {
+
+      .MainLeftPhotos {
         width: 60px;
         height: 60px;
         border-radius: 100px;
       }
-      .reviewListMainLeftName {
-        font-size: 13px;
+
+      .MainLeftName {
         width: 60px;
+        font-size: 13px;
       }
 
-      .reviewListMainLeftReviews {
+      .MainLeftReviews {
         font-size: 8px;
       }
     }
 
-    .reviewListMainCenter {
+    .MainCenter {
       width: 605;
 
-      .reviewListMainCenterDay {
+      .MainCenterDay {
         width: 600px;
+        margin-bottom: 10px;
         font-size: 14px;
         color: gray;
-        margin-bottom: 10px;
       }
-      .reviewListMainCenterPhoto {
+      .MainCenterPhoto {
         margin: 20px 0px;
+
         img {
-          object-fit: cover;
           width: 70px;
           margin: 10px;
+          object-fit: cover;
         }
       }
     }
 
-    .reviewListMainRight {
+    .MainRight {
       position: relative;
       width: 60;
       margin-left: 22px;
-      .reviewListMainRightPoint {
+
+      .MainRightPoint {
         position: absolute;
         top: 12px;
         right: 15px;
@@ -92,7 +97,7 @@
       }
     }
 
-    .reviewListMainRightMelon {
+    .MainRightMelon {
       width: 40px;
       border-radius: 20px;
     }

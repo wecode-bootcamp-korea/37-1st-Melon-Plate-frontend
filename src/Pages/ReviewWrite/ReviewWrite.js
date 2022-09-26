@@ -82,15 +82,15 @@ const ReviewWrite = () => {
     }
   }, []);
   return (
-    <form className="ReviewWritePage">
-      <div className="reviewWrite">
-        <div className="reviewWriteSto">
-          <span className="reviewWriteStoName">부촌육회 </span>
+    <div className="reviewWrite">
+      <form className="reviewWritePage">
+        <div className="Store">
+          <span className="StoreName">부촌육회 </span>
           <span>에 대한 솔직한 리뷰를 써주세요</span>
         </div>
-        <div className="reviewWriteMelon">
-          <div className="reviewWritePoint">
-            <div className="reviewWritePointResult">
+        <div className="Melon">
+          <div className="Point">
+            <div className="PointResult">
               <GrayMelon />
               <GrayMelon />
               <GrayMelon />
@@ -108,7 +108,7 @@ const ReviewWrite = () => {
               />
             </div>
             <div
-              className="reviewWritePointResultSpan"
+              className="PointResultSpan"
               style={{ width: `${melonPoint * 10}%` }}
             >
               <GreenMelon />
@@ -118,24 +118,22 @@ const ReviewWrite = () => {
               <GreenMelon />
             </div>
           </div>
-          <div className="reviewWriteReview">
+          <div className="Review">
             <textarea
               placeholder="서비스도 궁금해요"
               value={text}
-              className="reviewWriteReviewInput"
+              className="ReviewInput"
               onChange={textCount}
             />
-            <span className="reviewWriteSpan">{textLength}/50000</span>
+            <span className="Span">{textLength}/50000</span>
           </div>
         </div>
-        <div className="reviewWritePhoto">
-          <div className="reviewWritePhotoInner">
+        <div className="Photo">
+          <div className="PhotoInner">
             <div>
-              <label htmlFor="file" className="reviewWritePhotoInnerLabel">
-                <div className="reviewWritePhotoInnerLength">
-                  {imgLength}/10
-                </div>
-                <div className="reviewWritePhotoInnerInputFile">
+              <label htmlFor="file" className="PhotoInnerLabel">
+                <div className="PhotoInnerLength">{imgLength}/10</div>
+                <div className="PhotoInnerInputFile">
                   <i className="fa-regular fa-image" />
                 </div>
               </label>
@@ -143,22 +141,15 @@ const ReviewWrite = () => {
                 type="file"
                 id="file"
                 multiple="multiple"
-                className="reviewWritePhotoInnerInput"
+                className="PhotoInnerInput"
                 onChange={saveImages}
               />
             </div>
-            <ul className="reviewWritePhotoInnerPhotos">
+            <ul className="PhotoInnerPhotos">
               {images?.map((e, i) => (
                 <li key={i}>
-                  <img
-                    src={e}
-                    className="reviewWritePhotoInnerPhotosImg"
-                    alt="melonImg"
-                  />
-                  <button
-                    className="reviewWritePhotoInnerPhotosBtn"
-                    onClick={clicked}
-                  >
+                  <img src={e} className="PhotoInnerPhotosImg" alt="melonImg" />
+                  <button className="PhotoInnerPhotosBtn" onClick={clicked}>
                     x
                   </button>
                 </li>
@@ -166,20 +157,18 @@ const ReviewWrite = () => {
             </ul>
           </div>
         </div>
-        <div className="reviewWriteResult">
+        <div className="Result">
           <button
-            className={!Vialed ? 'reviewWriteBtn' : 'reviewWriteBtnChange'}
+            className={!Vialed ? 'Btn' : 'BtnChange'}
             disabled={!Vialed}
             onClick={saveText}
           >
             나중에 이어쓰기
           </button>
           <div>
-            <button className="reviewWriteBtnCancel">취소</button>
+            <button className="BtnCancel">취소</button>
             <button
-              className={
-                !Vialed ? 'reviewWriteBtnReview' : 'reviewWriteBtnReviewChange'
-              }
+              className={!Vialed ? 'BtnReview' : 'BtnReviewChange'}
               disabled={!Vialed}
               onClick={formGo}
             >
@@ -187,8 +176,8 @@ const ReviewWrite = () => {
             </button>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 

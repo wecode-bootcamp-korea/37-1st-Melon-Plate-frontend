@@ -1,45 +1,41 @@
 import React from 'react';
 
-const ReviewListMain = data => {
+const reviewListMain = data => {
   const { profileImg, nickname, reviewDate, reviewText, reviewImg, rate } =
     data;
 
   return (
     <div className="reviewListMain">
-      <span className="reviewListMainLeft">
-        <div className="reviewListMainLeftPhoto">
-          <img
-            src={profileImg}
-            className="reviewListMainLeftPhotos"
-            alt="melonImg"
-          />
+      <span className="MainLeft">
+        <div className="MainLeftPhoto">
+          <img src={profileImg} className="MainLeftPhotos" alt="melonImg" />
         </div>
-        <div className="reviewListMainLeftName">{nickname}</div>
-        <div className="reviewListMainLeftReviews">
+        <div className="MainLeftName">{nickname}</div>
+        <div className="MainLeftReviews">
           <i className="fa-solid fa-pen" />
           0
           <i className="fa-solid fa-people-group" />0
         </div>
       </span>
-      <span className="reviewListMainCenter">
-        <div className="reviewListMainCenterDay">{reviewDate}</div>
-        <div className="reviewListMainCenterReview">{reviewText}</div>
-        <div className="reviewListMainCenterPhoto">
+      <span className="MainCenter">
+        <div className="MainCenterDay">{reviewDate}</div>
+        <div className="MainCenterReview">{reviewText}</div>
+        <div className="MainCenterPhoto">
           {reviewImg.map(e => {
             return <img src={e} key={e.id} alt="melonImg" />;
           })}
         </div>
       </span>
-      <span className="reviewListMainRight">
+      <span className="MainRight">
         <img
           src={`${process.env.PUBLIC_URL}/images/20596969-F8C3-4D15-9D89-16ECCE2090F5.jpeg`}
-          className="reviewListMainRightMelon"
+          className="MainRightMelon"
           alt="melonImg"
         />
-        <div className="reviewListMainRightPoint">{rate}</div>
+        <div className="MainRightPoint">{rate}</div>
       </span>
     </div>
   );
 };
 
-export default ReviewListMain;
+export default reviewListMain;
