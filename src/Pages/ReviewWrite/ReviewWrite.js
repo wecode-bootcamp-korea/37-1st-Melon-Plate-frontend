@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { json } from 'react-router-dom';
 import GrayMelon from './GrayMelon';
 import GreenMelon from './GreenMelon';
 import './ReviewWrite.scss';
+// import { json } from 'react-router-dom';
 
 const ReviewWrite = () => {
   const [melonPoint, setMelonPoint] = useState(10);
@@ -12,15 +12,15 @@ const ReviewWrite = () => {
   const textLength = text.length;
 
   const formGo = () => {
-    fetch('/Mock/Mock.json', {
-      method: 'POST',
-      cache: 'no-cache',
-      body: 'formData',
-    })
-      .then(res => res.json())
-      .then(res => {
-        console.log(res);
-      });
+    // fetch('/Mock/Mock.json', {
+    //   method: 'POST',
+    //   cache: 'no-cache',
+    //   body: 'formData',
+    // })
+    //   .then(res => res.json())
+    //   .then(res => {
+    //     console.log(res);
+    //   });
     localStorage.removeItem('text');
     // localStorage.removeItem('img');
   };
@@ -30,7 +30,7 @@ const ReviewWrite = () => {
 
   const saveText = e => {
     e.preventDefault();
-    const imagesJson = JSON.stringify(images);
+    // const imagesJson = JSON.stringify(images);
     localStorage.removeItem('text');
     // localStorage.removeItem('img');
     localStorage.setItem('text', text);
@@ -150,7 +150,11 @@ const ReviewWrite = () => {
             <ul className="reviewWritePhotoInnerPhotos">
               {images?.map((e, i) => (
                 <li key={i}>
-                  <img src={e} className="reviewWritePhotoInnerPhotosImg" />
+                  <img
+                    src={e}
+                    className="reviewWritePhotoInnerPhotosImg"
+                    alt="melonImg"
+                  />
                   <button
                     className="reviewWritePhotoInnerPhotosBtn"
                     onClick={clicked}

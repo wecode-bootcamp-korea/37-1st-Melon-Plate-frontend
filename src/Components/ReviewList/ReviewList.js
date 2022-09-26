@@ -12,7 +12,6 @@ const ReviewList = () => {
       .then(res => setData(res));
   }, []);
   const test = [...data];
-  console.log(test);
   return (
     <div className="reviewList">
       <ReviewListTop />

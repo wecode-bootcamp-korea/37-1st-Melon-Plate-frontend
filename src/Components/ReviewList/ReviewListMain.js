@@ -1,15 +1,20 @@
 import React from 'react';
-import GreenMelon from '../../Pages/ReviewWrite/GreenMelon';
 
 const ReviewListMain = data => {
-  console.log(data);
+  const { profileImg, nickname, reviewDate, reviewText, reviewImg, rate } =
+    data;
+
   return (
     <div className="reviewListMain">
       <span className="reviewListMainLeft">
         <div className="reviewListMainLeftPhoto">
-          <img src={data.profileImg} className="reviewListMainLeftPhotos" />
+          <img
+            src={profileImg}
+            className="reviewListMainLeftPhotos"
+            alt="melonImg"
+          />
         </div>
-        <div className="reviewListMainLeftName">{data.nickname}</div>
+        <div className="reviewListMainLeftName">{nickname}</div>
         <div className="reviewListMainLeftReviews">
           <i className="fa-solid fa-pen" />
           0
@@ -17,11 +22,11 @@ const ReviewListMain = data => {
         </div>
       </span>
       <span className="reviewListMainCenter">
-        <div className="reviewListMainCenterDay">{data.reviewDate}</div>
-        <div className="reviewListMainCenterReview">{data.reviewText}</div>
+        <div className="reviewListMainCenterDay">{reviewDate}</div>
+        <div className="reviewListMainCenterReview">{reviewText}</div>
         <div className="reviewListMainCenterPhoto">
-          {data.reviewImg.map(e => {
-            return <img src={e} key={e.id} />;
+          {reviewImg.map(e => {
+            return <img src={e} key={e.id} alt="melonImg" />;
           })}
         </div>
       </span>
@@ -29,8 +34,9 @@ const ReviewListMain = data => {
         <img
           src={`${process.env.PUBLIC_URL}/images/20596969-F8C3-4D15-9D89-16ECCE2090F5.jpeg`}
           className="reviewListMainRightMelon"
+          alt="melonImg"
         />
-        <div className="reviewListMainRightPoint">{data.rate}</div>
+        <div className="reviewListMainRightPoint">{rate}</div>
       </span>
     </div>
   );
