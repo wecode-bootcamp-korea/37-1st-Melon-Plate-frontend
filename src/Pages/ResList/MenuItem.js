@@ -1,7 +1,7 @@
 import React from 'react';
 import './MenuItem.scss';
 
-const MenuItem = () => {
+const MenuItem = ({ storeList }) => {
   return (
     <div className="menuItem">
       <span className="menuItemTitle">카테고리 제목</span>

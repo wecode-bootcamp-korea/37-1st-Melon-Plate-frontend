@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import MenuItem from './MenuItem';
 import './StoreList.scss';
 
 const StoreList = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {}, []);
+
   return (
     <div className="storeList">
       <div className="storeListContainer">
@@ -15,7 +20,8 @@ const StoreList = () => {
             <button className="storeHashTagItem">#{title}</button>
           ))}
         </div>
-
+        <span>to string : {searchParams.toString()}</span>
+        <span>to string : {searchParams.get('address')}</span>
         <div className="menuItemList">
           <MenuItem />
         </div>
@@ -35,4 +41,10 @@ const HASHTAG = [
   '해장',
   '데이트',
   '회식 맛집',
+];
+
+const STORE_SORT = [
+  { menu: '삼겹살', limit: '10' },
+  { menu: '파스타', limit: '10' },
+  { menu: '치킨', limit: '10' },
 ];
