@@ -16,7 +16,6 @@ const Detail = () => {
       })
         .then(response => response.json())
         .then(result => {
-          console.log(result);
           setRestaurantData(result);
         }, []);
     };
@@ -33,7 +32,6 @@ const Detail = () => {
             <div className="storeInfoLeft">
               <span className="storeName">{restaurantData.name}</span>
               <span className="storeStar">{restaurantData.likes_count}</span>
-              {/* <p className="storeBranch">{RESTAURANT_LIST.branch}</p> */}
             </div>
             <div className="storeInfoRight">
               <button type="" className="reviewButton button">
