@@ -3,16 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import './Store.scss';
 
 const Store = ({ text }) => {
-  // const [
-  //   stoName,
-  //   rate,
-  //   address,
-  //   tel,
-  //   openTime,
-  //   closedTime,
-  //   closedDay,
-  //   category,
-  // ] = text;
   const navigate = useNavigate();
   const goToAdminEdit = () => {
     navigate('/admin/edit');
