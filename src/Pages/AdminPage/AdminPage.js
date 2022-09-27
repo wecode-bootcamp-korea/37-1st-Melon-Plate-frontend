@@ -4,20 +4,20 @@ import './AdminPage.scss';
 import Store from './Store';
 
 const AdminPage = () => {
-  const [storeData, setStoreData] = useState();
+  // const [storeData, setStoreData] = useState();
 
-  useEffect(() => {
-    fetch('https://api.github.com/orgs/nodejs', {
-      method: 'GET',
-    })
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        console.log(1, data);
-        setStoreData(data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch('https://api.github.com/orgs/nodejs', {
+  //     method: 'GET',
+  //   })
+  //     .then(response => {
+  //       return response.json();
+  //     })
+  //     .then(data => {
+  //       console.log(1, data);
+  //       setStoreData(data);
+  //     });
+  // }, []);
 
   const navigate = useNavigate();
   const goToAdminAdd = () => {
@@ -37,13 +37,13 @@ const AdminPage = () => {
         </button>
       </div>
       <div className="storeList">
-        {storeData.map(item => {
-          return <Store text={item} key={item.id} />;
-        })}
-
-        {/* {text.map(item => {
+        {/* {storeData.map(item => {
           return <Store text={item} key={item.id} />;
         })} */}
+
+        {text.map(item => {
+          return <Store text={item} key={item.id} />;
+        })}
       </div>
     </>
   );
