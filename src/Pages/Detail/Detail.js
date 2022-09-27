@@ -107,7 +107,7 @@ const Detail = () => {
               </th>
               <td className="tableTd data">
                 <ul className="tableTdUl">
-                  {restaurantData.menu.map((item, index) => (
+                  {restaurantData.menu?.map((item, index) => (
                     <li key={index} className="tableTdUlLi">
                       <span className="munuName data">{item.name}</span>
                       <span className="munuPrice gray">{item.price}</span>
