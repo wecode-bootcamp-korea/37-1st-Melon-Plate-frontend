@@ -18,6 +18,8 @@ const Header = () => {
       .then(data => setUser(data));
   }, []);
 
+  const pathList = ['/mypage', '/resultlist', '/reslist', '/storelist'];
+
   return (
     <div className="header">
       <Link to="/">
@@ -30,13 +32,8 @@ const Header = () => {
           />
         </div>
       </Link>
-      {location.pathname ===
-        ('/mypage' || '/resultlist' || '/reslist' || '/storelist') && (
-        <SearchForm />
-      )}
-
-      {location.pathname ===
-        ('/' || '/mypage' || '/resultlist' || '/reslist' || '/storelist') && (
+      {pathList.indexOf(location.pathname) !== -1 && <SearchForm />}
+      {pathList.indexOf(location.pathname) !== -1 && (
         <div className="headerLeft">
           <img
             className="headerCategories"
@@ -56,6 +53,7 @@ const Header = () => {
               <ProfileModal setProfileClicked={setProfileClicked} />
             )}
           </ModalPortal>
+          :!
         </div>
       )}
     </div>
