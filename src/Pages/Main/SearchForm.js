@@ -6,6 +6,8 @@ import './SearchForm.scss';
 const SearchForm = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
+  const [data, setData] = useState([]);
+  const accessToken = localStorage.getItem('TOKEN');
 
   const termChange = e => {
     setSearchTerm(e.target.value);
@@ -16,10 +18,8 @@ const SearchForm = () => {
     navigate('/resultlist');
   };
 
-  const [data, setData] = useState([]);
-
   useEffect(() => {
-    fetch(`http://192.168.205.167/search?query=${searchTerm}`, {
+    fetch(`http://172.20.10.11:8000/search?query=${searchTerm}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -49,7 +49,7 @@ const SearchForm = () => {
         </div>
         <button className="searchButton">검색</button>
       </form>
-      <SearchedResult data={data} />
+      <SearchedResult data={data} accessToken={accessToken} />
     </div>
   );
 };

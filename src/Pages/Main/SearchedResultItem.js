@@ -1,12 +1,12 @@
 import React from 'react';
 import './SearchedResultItem.scss';
 
-const SearchedResultItem = ({ data }) => {
+const SearchedResultItem = ({ data, onClick }) => {
   return (
-    <div className="searchedResultItem">
-      <span>{data.name}</span>
+    <div className="searchedResultItem" onClick={onClick}>
+      <span>{data?.name}</span>
       <span>
-        {data.category} - {data.address}
+        {data?.category} - {data?.address}
       </span>
     </div>
   );
