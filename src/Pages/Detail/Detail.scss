@@ -1,0 +1,131 @@
+.gray {
+  color: #9b9b9b;
+}
+
+.top {
+  height: 360px;
+  display: flex;
+  overflow-x: auto;
+}
+
+.storeInfo {
+  margin-left: 50px;
+  width: 800px;
+
+  .storeInfoHead {
+    height: 120px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e9e9e9;
+
+    .storeInfoWrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      justify-content: space-between;
+
+      .storeInfoLeft {
+        margin-left: 0px;
+
+        .storeName {
+          font-size: 35px;
+        }
+
+        .storeStar {
+          font-size: 30px;
+          color: #76ba99;
+          padding-left: 10px;
+        }
+
+        .storeBranch {
+          padding: 5px 0 15px;
+          font-size: 17px;
+          color: #9b9b9b;
+        }
+      }
+
+      .storeInfoRight {
+        display: flex;
+        justify-content: space-evenly;
+        width: 160px;
+        color: #9b9b9b;
+
+        .button {
+          display: block;
+          cursor: pointer;
+
+          &.button:hover {
+            color: #76ba99;
+          }
+
+          i {
+            display: block;
+            padding-bottom: 10px;
+            font-size: 35px;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    .storeStatus {
+      display: flex;
+      justify-content: space-between;
+      width: 110px;
+      padding: 10px 0 0 0;
+      margin-right: 30px;
+      white-space: normal;
+      font-size: 15px;
+      color: #9b9b9b;
+
+      .view::before {
+        content: '\f06e';
+        font-family: 'Font Awesome 6 Free';
+        padding-right: 4px;
+      }
+
+      .review::before {
+        content: '\f044';
+        font-family: 'Font Awesome 6 Free';
+        padding-right: 4px;
+      }
+    }
+  }
+}
+
+.storeData {
+  width: 60%;
+  padding: 20px 0;
+
+  .storeDataTable {
+    width: 100%;
+
+    .tableTh {
+      padding: 10px;
+      text-align: left;
+    }
+
+    .tableTd {
+      padding: 10px;
+
+      .tableTdUl {
+        display: flex;
+        flex-direction: column;
+
+        .tableTdUlLi {
+          display: flex;
+          flex-direction: row;
+          justify-content: start;
+          padding: 15px 0 5px;
+          border-bottom: 1px solid #e9e9e9;
+
+          .munuName {
+            flex: 1;
+            display: inline-block;
+            margin-right: 30px;
+            white-space: normal;
+          }
+        }
+      }
+    }
+  }
+}
