@@ -118,30 +118,20 @@ const TestSignup = ({ currentId }) => {
           {currentId === '일반 회원가입' && (
             <>
               <div>
-                <input
-                  className="gender"
-                  type="radio"
-                  name="gender"
-                  value="남"
-                  onChange={handleInput}
-                />
-                남자
-                <input
-                  className="gender"
-                  type="radio"
-                  name="gender"
-                  value="여"
-                  onChange={handleInput}
-                />
-                여자
-                <input
-                  className="gender"
-                  type="radio"
-                  name="gender"
-                  value=""
-                  onChange={handleInput}
-                />
-                비공개
+                {RADIO_LIST.map(type => {
+                  return (
+                    <React.Fragment key={type.id}>
+                      <input
+                        className="gender"
+                        type="radio"
+                        name="gender"
+                        value={type.value}
+                        onChange={handleInput}
+                      />
+                      <span>{type.title}</span>
+                    </React.Fragment>
+                  );
+                })}
               </div>
               <label>연령대</label>
               <select
@@ -163,7 +153,9 @@ const TestSignup = ({ currentId }) => {
 
           <button onClick={goToMain}>회원가입</button>
 
-          <Link to="/logintap">이미 가입하셨나요? 로그인</Link>
+          <Link to="/logintap" className="signupLink">
+            이미 가입하셨나요? 로그인
+          </Link>
         </form>
       </div>
     </div>
@@ -181,4 +173,10 @@ const INPUT_LIST = [
     name: 'pw',
     placeholder: '비밀번호(8글자 이상 20글자 미만)',
   },
+];
+
+const RADIO_LIST = [
+  { id: 1, value: '남', title: '남자' },
+  { id: 2, value: '여', title: '여자' },
+  { id: 3, value: '', title: '비공개' },
 ];
