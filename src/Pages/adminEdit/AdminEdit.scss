@@ -1,0 +1,94 @@
+@import '../../styles/variables.scss';
+
+.adminEdit {
+  position: fixed;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+
+  .adminEditTitle {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .inputTitle {
+    width: 100px;
+    color: $melonColor1;
+    font-weight: 500;
+  }
+
+  .adminEditInputSet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+  }
+
+  .adminEditBox {
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    align-items: center;
+
+    .inputText {
+      all: revert;
+      width: 200px;
+      height: 30px;
+      padding: 3px 15px;
+      border: none;
+      border-bottom: 1px solid gray;
+    }
+  }
+
+  .storeCategories {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin: 20px;
+  }
+
+  .closedDay {
+    display: flex;
+    height: 70px;
+
+    .inputTitle {
+      width: 100px;
+      color: $melonColor1;
+      font-weight: 500;
+    }
+
+    input {
+      all: revert;
+    }
+  }
+
+  .adminEditSave {
+    width: 100px;
+    height: 30px;
+    background-color: $melonColor2;
+    border-radius: 14px;
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
+.descriptionInput {
+  display: flex;
+
+  .inputTitle {
+    width: 100px;
+    color: $melonColor1;
+    font-weight: 500;
+  }
+
+  textarea {
+    width: 250px;
+    height: 100px;
+    margin-bottom: 20px;
+  }
+}
