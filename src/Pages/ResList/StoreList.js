@@ -6,13 +6,19 @@ import './StoreList.scss';
 const StoreList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const onClick = () => {
+    searchParams.set('address', '강남');
+    searchParams.set('menu', '삼겹살');
+    setSearchParams(searchParams);
+  };
+
   useEffect(() => {}, []);
 
   return (
     <div className="storeList">
       <div className="storeListContainer">
         <div className="storeListTitle">
-          <span>믿고 먹는 인기 맛집 ! </span>
+          <span onClick={onClick}>믿고 먹는 인기 맛집 ! </span>
           <span>조회수가 높은 식당을 한눈에 확인하세요</span>
         </div>
         <div className="storeHashTags">
@@ -20,8 +26,8 @@ const StoreList = () => {
             <button className="storeHashTagItem">#{title}</button>
           ))}
         </div>
-        <span>to string : {searchParams.toString()}</span>
-        <span>to string : {searchParams.get('address')}</span>
+        <span>to string : ?{searchParams.toString()}</span>
+
         <div className="menuItemList">
           <MenuItem />
         </div>
