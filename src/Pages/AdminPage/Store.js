@@ -8,7 +8,6 @@ const Store = ({ text }) => {
   const goToAdminEdit = () => {
     navigate('/admin/edit');
   };
-  // console.log(text);
   return (
     <div className="Store">
       <div className="storeWrap">

@@ -37,10 +37,6 @@ const AdminPage = () => {
         {storeData.map(item => {
           return <Store text={item} key={item.id} />;
         })}
-
-        {/* {text.map(item => {
-          return <Store text={item} key={item.id} />;
-        })} */}
       </div>
     </>
   );
