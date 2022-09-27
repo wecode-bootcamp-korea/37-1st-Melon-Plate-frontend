@@ -20,13 +20,15 @@ const Store = ({ text }) => {
         <div className="storeInfo">
           <div className="mainInfo">
             <span className="title">{text.stoName}</span>
-            <span className="grade">{text.star}</span>
+            <span className="grade">{text.rate}</span>
           </div>
           <div className="info">
-            <p className="address">{text.address}</p>
-            <p className="tel">{text.tel}</p>
-            <p className="hour">{text.hour}</p>
-            <p className="off ">{text.closedDay}</p>
+            <p className="address">주소 : {text.address}</p>
+            <p className="tel">전화번호 :{text.tel}</p>
+            <p className="hour">오픈시간 : {text.openTime}</p>
+            <p className="hour">마감시간 :{text.closedTime}</p>
+            <p className="off ">휴뮤일 : {text.closedDay}</p>
+            <p className="off ">음식종류 : {text.category}</p>
           </div>
         </div>
       </div>

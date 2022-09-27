@@ -4,29 +4,26 @@ import './AdminPage.scss';
 import Store from './Store';
 
 const AdminPage = () => {
-  // const [storeData, setStoreData] = useState();
+  const [storeData, setStoreData] = useState();
 
-  // useEffect(() => {
-  //   fetch('https://api.github.com/orgs/nodejs', {
-  //     method: 'GET',
-  //   })
-  //     .then(response => {
-  //       return response.json();
-  //     })
-  //     .then(data => {
-  //       console.log(1, data);
-  //       setStoreData(data);
-  //     });
-  // }, []);
+  useEffect(() => {
+    fetch('http://192.168.215.82:8000/user/admin', {
+      method: 'GET',
+      headers: {
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcl9pZCI6InJsYWRtZHRuIiwiYWRtaW4iOiJUUlVFIiwiaWF0IjoxNjY0MjQ1NDU3fQ.HQhElcCgI6HrXSUoXD-3Q3MoruW2PzRJWn8KD1uORrs',
+      },
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(data => setStoreData(data));
+  }, []);
 
   const navigate = useNavigate();
   const goToAdminAdd = () => {
     navigate('/admin/add');
   };
-
-  // useEffect(() => {
-  //   fetch();
-  // }, []);
 
   return (
     <>
@@ -37,13 +34,13 @@ const AdminPage = () => {
         </button>
       </div>
       <div className="storeList">
-        {/* {storeData.map(item => {
-          return <Store text={item} key={item.id} />;
-        })} */}
-
-        {text.map(item => {
+        {storeData.map(item => {
           return <Store text={item} key={item.id} />;
         })}
+
+        {/* {text.map(item => {
+          return <Store text={item} key={item.id} />;
+        })} */}
       </div>
     </>
   );
