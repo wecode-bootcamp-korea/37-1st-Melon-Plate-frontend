@@ -7,20 +7,28 @@ const ReviewWrite = () => {
   const [images, setImages] = useState([]);
   const [imgLength, setImgLength] = useState(0);
   const [text, setText] = useState('');
+  const [originPhoto, setOriginPhoto] = useState([]);
   const textLength = text.length;
   const greenMelon = `${process.env.PUBLIC_URL}/images/20596969-F8C3-4D15-9D89-16ECCE2090F5.jpeg`;
   const grayMelon = `${process.env.PUBLIC_URL}/images/07E08BB9-5390-41B4-9270-DC83C7D8ACE2.jpeg`;
 
-  const formGo = () => {
-    // fetch('/Mock/Mock.json', {
-    //   method: 'POST',
-    //   cache: 'no-cache',
-    //   body: 'formData',
-    // })
-    //   .then(res => res.json())
-    //   .then(res => {
-    //     console.log(res);
-    //   });
+  const formData = new FormData();
+  originPhoto.forEach(photo => {
+    formData.append('reviewImg', photo);
+  });
+  formData.append('rate', melonPoint);
+  formData.append('text', text);
+
+  const formGo = async e => {
+    e.preventDefault();
+    await fetch(`http://192.168.239.167:8000/review/new/1`, {
+      method: 'POST',
+      headers: {
+        enctype: 'multipart/form-data',
+      },
+      cache: 'no-cache',
+      body: formData,
+    }).then(res => res.json());
     localStorage.removeItem('text');
   };
   const textCount = e => {
@@ -35,7 +43,7 @@ const ReviewWrite = () => {
 
   const saveImages = e => {
     const fileArr = e.target.files;
-
+    setOriginPhoto(originPhoto.concat(...fileArr));
     let fileURLs = [];
     let file;
     let filesLength = fileArr.length > 10 ? 10 : fileArr.length;
@@ -50,11 +58,13 @@ const ReviewWrite = () => {
       reader.readAsDataURL(file);
     }
   };
+
   const Vialed = textLength > 0;
 
-  const clicked = e => {
-    e.preventDefault();
-    e.target.parentNode.remove();
+  const deleteImage = clickedImage => {
+    const imgIdx = images.findIndex(img => img === clickedImage);
+    setImages(images.filter((_, idx) => idx !== imgIdx));
+    setOriginPhoto(originPhoto.filter((_, idx) => idx !== imgIdx));
   };
 
   useEffect(() => {
@@ -75,9 +85,10 @@ const ReviewWrite = () => {
       setText(localStorage.getItem('text'));
     }
   }, []);
+
   return (
     <div className="reviewWrite">
-      <form className="reviewWritePage">
+      <form className="reviewWritePage" name="reviewImg">
         <div className="store">
           <span className="storeName">부촌육회 </span>
           <span>에 대한 솔직한 리뷰를 써주세요</span>
@@ -140,10 +151,18 @@ const ReviewWrite = () => {
               />
             </div>
             <ul className="photoInnerPhotos">
-              {images?.map((e, i) => (
-                <li key={i}>
-                  <img src={e} className="photoInnerPhotosImg" alt="melonImg" />
-                  <button className="photoInnerPhotosBtn" onClick={clicked}>
+              {images.map((el, i) => (
+                <li key={i} className="photoInnerPhotosList">
+                  <img
+                    src={el}
+                    className="photoInnerPhotosImg"
+                    alt="melonImg"
+                  />
+                  <button
+                    className="photoInnerPhotosBtn"
+                    type="button"
+                    onClick={() => deleteImage(el)}
+                  >
                     x
                   </button>
                 </li>
