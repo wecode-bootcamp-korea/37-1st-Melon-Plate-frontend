@@ -8,10 +8,6 @@ const StoreList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const menuListClick = e => {
-    console.log('0번째', e.target.childNodes[0].data);
-    console.log('1번째', e.target.childNodes[2].data);
-    console.log('1번째', e.target.childNodes[4].data);
-
     searchParams.set('address', e.target.childNodes[0].data);
     searchParams.set('menu', e.target.childNodes[2].data);
     searchParams.set('limit', e.target.childNodes[4].data);
