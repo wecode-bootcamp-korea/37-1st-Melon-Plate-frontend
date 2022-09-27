@@ -96,9 +96,7 @@ const Detail = () => {
             <tr>
               <th className="tableTh gray">휴무일</th>
               <td className="tableTd data" colSpan="2">
-                {restaurantData.closed_time === 'false'
-                  ? '금일 영업'
-                  : '금일 휴무'}
+                {restaurantData.closed_time}
               </td>
             </tr>
             <tr>
