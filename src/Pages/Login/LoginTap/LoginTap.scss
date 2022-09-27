@@ -1,0 +1,18 @@
+.logintabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 350px;
+
+  .category {
+    all: revert;
+    height: 50px;
+    width: 194px;
+    color: white;
+    background-color: #76ba99;
+    border: #76ba99 solid;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    font-weight: bolder;
+  }
+}
