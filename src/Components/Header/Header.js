@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import MenuDropDown from './MenuDropDown';
 import ProfileModal from './ProfileModal';
 import ModalPortal from '../../Portal';
+import SearchForm from '../../Pages/Main/SearchForm';
 import './Header.scss';
 
 const Header = () => {
@@ -29,27 +30,34 @@ const Header = () => {
           />
         </div>
       </Link>
-      {location.pathname !== '/' && <div>searchform</div>}
-      <div className="headerLeft">
-        <img
-          className="headerCategories"
-          src={CATEGORY_IMAGE}
-          alt="메뉴 열기"
-          onMouseOver={() => setMenuOpened(true)}
-        />
-        <img
-          className="headerProfileImg"
-          src={user.user_profile_img}
-          alt="프로필 이미지"
-          onClick={() => setProfileClicked(true)}
-        />
-        {menuOpened && <MenuDropDown setMenuOpened={setMenuOpened} />}
-        <ModalPortal>
-          {profileClicked && (
-            <ProfileModal setProfileClicked={setProfileClicked} />
-          )}
-        </ModalPortal>
-      </div>
+      {location.pathname ===
+        ('/mypage' || '/resultlist' || '/reslist' || '/storelist') && (
+        <SearchForm />
+      )}
+
+      {location.pathname ===
+        ('/' || '/mypage' || '/resultlist' || '/reslist' || '/storelist') && (
+        <div className="headerLeft">
+          <img
+            className="headerCategories"
+            src={CATEGORY_IMAGE}
+            alt="메뉴 열기"
+            onMouseOver={() => setMenuOpened(true)}
+          />
+          <img
+            className="headerProfileImg"
+            src={user.user_profile_img}
+            alt="프로필 이미지"
+            onClick={() => setProfileClicked(true)}
+          />
+          {menuOpened && <MenuDropDown setMenuOpened={setMenuOpened} />}
+          <ModalPortal>
+            {profileClicked && (
+              <ProfileModal setProfileClicked={setProfileClicked} />
+            )}
+          </ModalPortal>
+        </div>
+      )}
     </div>
   );
 };
