@@ -6,8 +6,10 @@ const ResultListContents = ({
   restaurantData,
   setRestaurantData,
   checkedList,
-  setCheckedList,
 }) => {
+  const numData = ['0', '1', '2', '3'];
+  const categoryData = ['한식', '일식', '중식', '양식', '카페', '주점', '기타'];
+
   useEffect(() => {
     fetch(`/data/restaurant_list.json`)
       .then(response => response.json())
@@ -17,23 +19,19 @@ const ResultListContents = ({
   const filterPriceRange = restaurantData.filter(
     // data => data.priceRange.includes('0') && data.category.includes('한식')
     data => {
-      if (checkedList) {
-        //console.log('data1 : true', checkedList);
-        return checkedList.includes(data.priceRange);
-      } else {
-        //console.log('data1 : false', checkedList);
+      if (checkedList.length === 0) {
         return data;
+      } else if (checkedList.filter(x => numData.includes(x))) {
+        return checkedList.includes(data.priceRange);
       }
     }
   );
 
   const filterCategory = filterPriceRange.filter(data => {
-    if (checkedList) {
-      //console.log('data2 : true');
-      return checkedList.includes(data.category);
-    } else {
-      //console.log('data2 : false');
+    if (checkedList.length < 5) {
       return data;
+    } else if (checkedList.filter(x => categoryData.includes(x))) {
+      return checkedList.includes(data.category);
     }
   });
 
@@ -51,7 +49,6 @@ const ResultListContents = ({
       category,
       viewCount,
       reviewCount,
-      priceRange,
     }) => (
       <li className="resultListContentsLi" key={id}>
         <figure className="restaurantItem">

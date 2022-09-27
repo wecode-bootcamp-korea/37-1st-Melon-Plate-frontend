@@ -7,6 +7,9 @@ const SearchBox = ({
   onCheckedElement,
   checkedList,
   setCheckedList,
+  radioInputStatus,
+  setRadioInputStatus,
+  handleClickRadioButton,
 }) => {
   return (
     <>
@@ -16,21 +19,21 @@ const SearchBox = ({
           <input
             type="radio"
             name="filterRadioBox"
-            value=""
+            value="popularity"
             className="radioBox"
             id="sorting1"
-            onClick={e => {
-              onCheckedElement(e.target.checked, e.target.value);
-            }}
+            onClick={() => handleClickRadioButton('popularity')}
+            checked={radioInputStatus === 'popularity'}
           />
           <label htmlFor="sorting1">인기순</label>
           <input
             type="radio"
             name="filterRadioBox"
-            value=""
+            value="rating"
             className="radioBox"
             id="sorting2"
-            onClick={onCheckedElement}
+            onClick={() => handleClickRadioButton('rating')}
+            checked={radioInputStatus === 'rating'}
           />
           <label htmlFor="sorting2">평점순</label>
         </p>

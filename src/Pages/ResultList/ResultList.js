@@ -7,13 +7,18 @@ import './ResultList.scss';
 const ResultList = () => {
   const [restaurantData, setRestaurantData] = useState([]);
   const [checkedList, setCheckedList] = useState([]);
+  const [radioInputStatus, setRadioInputStatus] = useState('');
+
+  const handleClickRadioButton = radioBtnName => {
+    console.log(radioBtnName);
+    setRadioInputStatus(radioBtnName);
+  };
 
   const searchData = event => {
     event.preventDefault();
-
-    fetch(`/data/restaurant_list.json`)
-      .then(response => response.json())
-      .then(result => setRestaurantData(result.items));
+    // fetch(`http://192.168.215.82:8000/detail/10`)
+    //   .then(response => response.json())
+    //   .then(result => setRestaurantData(result.items));
   };
 
   const onCheckedElement = (checked, item) => {
@@ -65,6 +70,9 @@ const ResultList = () => {
           onCheckedElement={onCheckedElement}
           checkedList={checkedList}
           setCheckedList={setCheckedList}
+          radioInputStatus={radioInputStatus}
+          setRadioInputStatus={setRadioInputStatus}
+          handleClickRadioButton={handleClickRadioButton}
         />
       </div>
     </article>
