@@ -3,7 +3,7 @@ import FoodMenu from './FoodMenu';
 import { INPUT_VALUES, CLOSED_DAY, CATEGORIES } from './adminEditData';
 import './AdminEdit.scss';
 
-const AdminEdit = () => {
+const AdminCreate = () => {
   const accesToken = localStorage.getItem('TOKEN');
 
   const [input, setInput] = useState({
@@ -17,6 +17,7 @@ const AdminEdit = () => {
     price_range: ' ',
     category_id: '',
   });
+
   const [imageInput, setImageInput] = useState();
   const [dayNum, setDayNum] = useState(0);
   const [menuId, setMenuId] = useState(1);
@@ -185,4 +186,4 @@ const AdminEdit = () => {
   );
 };
 
-export default AdminEdit;
+export default AdminCreate;

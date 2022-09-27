@@ -9,6 +9,7 @@ import ReviewWrite from './Pages/ReviewWrite/ReviewWrite';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import AdminEdit from './Pages/adminEdit/AdminEdit';
+import AdminCreate from './Pages/adminEdit/AdminCreate';
 
 function Router() {
   return (
@@ -22,6 +23,7 @@ function Router() {
         <Route path="/detail" element={<Detail />} />
         <Route path="/detail/write" element={<ReviewWrite />} />
         <Route path="/admin/edit" element={<AdminEdit />} />
+        <Route path="/admin/create" element={<AdminCreate />} />
       </Routes>
       <Footer />
     </BrowserRouter>

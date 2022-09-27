@@ -5,6 +5,7 @@ import './AdminEdit.scss';
 
 const AdminEdit = () => {
   const accesToken = localStorage.getItem('TOKEN');
+  const [store, setStore] = useState({});
 
   const [input, setInput] = useState({
     name: '',
