@@ -22,9 +22,6 @@ const TestSignup = ({ currentId }) => {
     name: '',
     gender: '',
   });
-
-  console.log(inputValues);
-
   const handleInput = event => {
     const { name, value } = event.target;
     setInputValues(prev => ({ ...prev, [name]: value }));
@@ -52,9 +49,6 @@ const TestSignup = ({ currentId }) => {
     userSignUp.append('admin', true);
   }
 
-  for (let value of userSignUp.values()) {
-    console.log(value);
-  }
   const goToMain = e => {
     e.preventDefault();
 
@@ -117,6 +111,7 @@ const TestSignup = ({ currentId }) => {
                 name={list.name}
                 placeholder={list.placeholder}
                 onChange={handleInput}
+                key={list.id}
               />
             );
           })}
