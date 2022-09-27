@@ -32,7 +32,7 @@ const Detail = () => {
           <div className="storeInfoWrap">
             <div className="storeInfoLeft">
               <span className="storeName">{restaurantData.name}</span>
-              <span className="storeStar">{restaurantData.likesCount}</span>
+              <span className="storeStar">{restaurantData.likes_count}</span>
               {/* <p className="storeBranch">{RESTAURANT_LIST.branch}</p> */}
             </div>
             <div className="storeInfoRight">
@@ -48,8 +48,8 @@ const Detail = () => {
           </div>
 
           <div className="storeStatus">
-            <span className="view">{restaurantData.view}</span>
-            <span className="review">{restaurantData.reviewCount}</span>
+            <span className="view">{restaurantData.view_count}</span>
+            <span className="review">{restaurantData.review_count}</span>
           </div>
         </div>
 
@@ -88,9 +88,9 @@ const Detail = () => {
               </td>
             </tr>
             <tr>
-              <th className="tableTh gray">영업 시간</th>
+              <th className="tableTh gray">오픈 시간</th>
               <td className="tableTd data" colSpan="2">
-                {restaurantData.open_time}:00 - {restaurantData.close_time}:00
+                {restaurantData.open_time} - {restaurantData.closed_time}
               </td>
             </tr>
             <tr>
@@ -101,7 +101,7 @@ const Detail = () => {
                   : '금일 휴무'}
               </td>
             </tr>
-            {/* <tr>
+            <tr>
               <th className="tableTh gray" rowSpan="3">
                 메뉴
               </th>
@@ -115,7 +115,7 @@ const Detail = () => {
                   ))}
                 </ul>
               </td>
-            </tr> */}
+            </tr>
           </table>
         </div>
       </div>
