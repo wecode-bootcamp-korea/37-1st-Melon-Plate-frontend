@@ -1,35 +1,42 @@
 import React, { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import MenuItem from './MenuItem';
 import './StoreList.scss';
 
 const StoreList = () => {
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const onClick = () => {
-    searchParams.set('address', '강남');
-    searchParams.set('menu', '삼겹살');
-    setSearchParams(searchParams);
-  };
+  const menuListClick = e => {
+    console.log('0번째', e.target.childNodes[0].data);
+    console.log('1번째', e.target.childNodes[2].data);
+    console.log('1번째', e.target.childNodes[4].data);
 
-  useEffect(() => {}, []);
+    searchParams.set('address', e.target.childNodes[0].data);
+    searchParams.set('menu', e.target.childNodes[2].data);
+    searchParams.set('limit', e.target.childNodes[4].data);
+    setSearchParams(searchParams);
+    navigate(`/resultlist?${searchParams.toString()}`);
+  };
 
   return (
     <div className="storeList">
       <div className="storeListContainer">
         <div className="storeListTitle">
-          <span onClick={onClick}>믿고 먹는 인기 맛집 ! </span>
-          <span>조회수가 높은 식당을 한눈에 확인하세요</span>
+          <span>멜론 플레이트 추천 맛집 ! </span>
+          <span>인기 식당을 한눈에 확인하세요</span>
         </div>
-        <div className="storeHashTags">
-          {HASHTAG.map(title => (
-            <button className="storeHashTagItem">#{title}</button>
-          ))}
-        </div>
-        <span>to string : ?{searchParams.toString()}</span>
 
         <div className="menuItemList">
-          <MenuItem />
+          {STORE_SORT.map(e => (
+            <MenuItem
+              address={e.address}
+              menu={e.menu}
+              limit={e.limit}
+              img={e.img}
+              menuListClick={menuListClick}
+            />
+          ))}
         </div>
       </div>
     </div>
@@ -38,19 +45,52 @@ const StoreList = () => {
 
 export default StoreList;
 
-const HASHTAG = [
-  '전체',
-  '선릉',
-  '주점',
-  '파스타',
-  '떡볶이',
-  '해장',
-  '데이트',
-  '회식 맛집',
-];
+// const HASHTAG = [
+//   '전체',
+//   '선릉',
+//   '주점',
+//   '파스타',
+//   '떡볶이',
+//   '해장',
+//   '데이트',
+//   '회식 맛집',
+// ];
 
 const STORE_SORT = [
-  { menu: '삼겹살', limit: '10' },
-  { menu: '파스타', limit: '10' },
-  { menu: '치킨', limit: '10' },
+  {
+    address: '선릉',
+    menu: '삼겹살',
+    limit: '10',
+    img: './images/samgyup.jpg',
+    description: '한국인의 소울푸드, 삼겹살 맛집!',
+  },
+  {
+    address: '강남',
+    menu: '떡볶이',
+    limit: '10',
+    img: './images/dduk.jpg',
+    description: '뭘 먹을지 고민될 땐 떡볶이를 드세요!',
+  },
+
+  {
+    address: '논현',
+    menu: '파스타',
+    limit: '10',
+    img: './images/pasta.jpg',
+    description: '데이트 장소를 찾고 있나요?',
+  },
+  {
+    address: '청담',
+    menu: '주점',
+    limit: '20',
+    img: './images/bar.jpg',
+    description: '불금을 즐기고 싶으신 분',
+  },
+  {
+    address: '신사',
+    menu: '돈까스',
+    limit: '10',
+    img: './images/porkcutlet.jpeg',
+    description: '',
+  },
 ];

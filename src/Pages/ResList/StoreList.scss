@@ -29,34 +29,10 @@
       }
     }
 
-    .storeHashTags {
-      display: flex;
-      justify-content: space-evenly;
-      margin-bottom: 20px;
-
-      .storeHashTagItem {
-        padding: 10px 20px;
-        min-width: 50px;
-        max-height: 15px;
-        text-overflow: hidden;
-        border: 1px solid gray;
-        border-radius: 20px;
-
-        &:hover {
-          background-color: #eaeaea;
-        }
-      }
-    }
-
-    .storeHashTagItemClicked {
-      border: $melonColor1;
-      color: $melonColor1;
-    }
-
     .menuItemList {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 10px;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
       padding: 10px;
     }
   }

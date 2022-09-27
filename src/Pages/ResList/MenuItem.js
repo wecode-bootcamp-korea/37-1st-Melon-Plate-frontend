@@ -1,11 +1,21 @@
 import React from 'react';
 import './MenuItem.scss';
 
-const MenuItem = ({ storeList }) => {
+const MenuItem = ({
+  menu,
+  address,
+  limit,
+  img,
+  description,
+  menuListClick,
+}) => {
   return (
-    <div className="menuItem">
-      <span className="menuItemTitle">카테고리 제목</span>
-      <span className="menuItemIntroduce">카테고리 간단 설명</span>
+    <div className="menuItem" style={{ backgroundImage: `url(${img})` }}>
+      <span className="menuItemTitle" onClick={menuListClick}>
+        {address} {menu} 베스트 {limit} 곳
+      </span>
+
+      <span className="menuItemIntroduce">{description}</span>
     </div>
   );
 };
