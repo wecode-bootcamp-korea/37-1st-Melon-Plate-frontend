@@ -24,7 +24,7 @@ const AdminPage = () => {
   const goToAdminAdd = () => {
     navigate('/admin/add');
   };
-
+  console.log(storeData);
   return (
     <>
       <div className="myStoreList">내 가게 리스트</div>
@@ -34,7 +34,7 @@ const AdminPage = () => {
         </button>
       </div>
       <div className="storeList">
-        {storeData.map(item => {
+        {storeData?.map(item => {
           return <Store text={item} key={item.id} />;
         })}
       </div>
