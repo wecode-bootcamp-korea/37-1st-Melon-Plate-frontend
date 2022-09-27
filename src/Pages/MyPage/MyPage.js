@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ModalPortal from './../../Portal';
 import ProfileEdit from './ProfileEdit';
-import './MyPage.scss';
 import LikedItem from './LikedItem';
 import ReviewedItem from './ReviewedItem';
-import { useNavigate } from 'react-router-dom';
+import './MyPage.scss';
 
 const MyPage = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState({});
   const [editClicked, setEditClicked] = useState(false);
-  const navigate = useNavigate();
+  const [likedStores, setLikedStores] = useState([]);
+  const [reviewedStores, setReviewedStores] = useState([]);
 
   useEffect(() => {
     fetch('./jiwonData/loginUser.json')
       .then(res => res.json())
       .then(data => setUser(data));
   }, []);
-
-  const editClick = () => {
-    setEditClicked(true);
-  };
 
   const logOutClick = () => {
     localStorage.removeItem('TOKEN');
@@ -56,12 +54,15 @@ const MyPage = () => {
             </span>
             <span className="userAgeAndGender">
               {user.user_age
-                ? `$(user.user_age)대 $(gender(user.user_gender))`
+                ? `${user.user_age}대 ${gender(user.user_gender)}`
                 : null}
             </span>
           </div>
           <div className="buttonSet">
-            <button className="profileEditBtn" onClick={editClick}>
+            <button
+              className="profileEditBtn"
+              onClick={() => setEditClicked(true)}
+            >
               프로필 수정
             </button>
             <button className="logOutBtn" onClick={logOutClick}>
@@ -74,27 +75,9 @@ const MyPage = () => {
             <div className="myPageMiniTitle">내가 좋아요 한 식당</div>
             <div className="myPageItemList">
               <LikedItem />
-              <LikedItem />
-              <LikedItem />
-              <LikedItem />
-              <LikedItem />
-              <LikedItem />
-              <LikedItem />
-              <LikedItem />
-              <LikedItem />
-              <LikedItem />
             </div>
           </div>
-          {/* <div className="myActionBox">
-            <div className="myPageMiniTitle">나의 예약 리스트</div>
-            <div className="myPageItemList">
-              <LikedItem />
-              <LikedItem />
-              <LikedItem />
-              <LikedItem />
-              <LikedItem />
-            </div>
-          </div> */}
+
           <div className="myActionBox2">
             <div className="myPageMiniTitle">내가 작성한 후기</div>
             <div className="myPageItemList">

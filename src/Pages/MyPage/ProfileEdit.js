@@ -2,9 +2,13 @@ import React, { useEffect, useState, useRef } from 'react';
 import './ProfileEdit.scss';
 
 const ProfileEdit = ({ setEditClicked }) => {
+  const fileInput = useRef(null);
+  const [imgFile, setImgFile] = useState({});
   const [imageSrc, setImageSrc] = useState(
     'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
   );
+  const [input, setInput] = useState({ nickname: '', age: '', gender: '' });
+
   const encodeFileToBase64 = fileBlob => {
     const reader = new FileReader();
     reader.readAsDataURL(fileBlob);
@@ -15,16 +19,11 @@ const ProfileEdit = ({ setEditClicked }) => {
       };
     });
   };
-  const fileInput = useRef(null);
-
-  const [imgFile, setImgFile] = useState({});
 
   const handleImageInput = e => {
     encodeFileToBase64(e.target.files[0]);
     setImgFile(e.target.files[0]);
   };
-
-  const [input, setInput] = useState({ nickname: '', age: '', gender: '' });
 
   const handleInput = e => {
     const { name, value } = e.target;
@@ -71,11 +70,7 @@ const ProfileEdit = ({ setEditClicked }) => {
           <span className="profileEditFormTitle">프로필 수정</span>
           <div className="profileImgEdit">
             <div className="profileImgContainer">
-              <img //프로필사진 기능구현
-                className="profileImg"
-                src={imageSrc}
-                alt="사진"
-              />
+              <img className="profileImg" src={imageSrc} alt="사진" />
 
               <input
                 className="profileImgInput"
