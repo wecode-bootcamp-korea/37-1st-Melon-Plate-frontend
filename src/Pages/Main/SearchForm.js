@@ -15,7 +15,7 @@ const SearchForm = () => {
 
   const termSubmit = e => {
     e.preventDefault();
-    navigate('/resultlist');
+    navigate(`/resultlist?query=${searchTerm}`);
   };
 
   useEffect(() => {
@@ -47,6 +47,7 @@ const SearchForm = () => {
             }}
           />
         </div>
+
         <button className="searchButton">검색</button>
       </form>
       <SearchedResult data={data} accessToken={accessToken} />

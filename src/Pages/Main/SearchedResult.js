@@ -10,11 +10,16 @@ const SearchedResult = ({ data, accessToken }) => {
     alert('로그인이 필요합니다');
     navigate('/logintap');
   };
+  const onItemClick = () => {
+    navigate('/detail/');
+  };
 
   return (
     <div className="searchedResult">
       {!accessToken ? (
-        data?.map(data => <SearchedResultItem data={data} key={data.id} />)
+        data?.map(data => (
+          <SearchedResultItem data={data} key={data.id} onClick={onItemClick} />
+        ))
       ) : (
         <SearchedResult data={data[random]} onClick={nonMemberClick} />
       )}
