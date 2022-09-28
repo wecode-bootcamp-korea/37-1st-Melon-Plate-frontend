@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ResultListContents from './Component/ResultListContents';
 import SearchBox from './Component/SearchBox';
 import './ResultList.scss';
@@ -11,29 +12,69 @@ const ResultList = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const location = useLocation();
+
+  console.log(searchParams);
+  console.log(checkedList);
+  console.log(location);
+
+  let { params } = useParams();
+
   const handleClickRadioButton = radioBtnName => {
+    console.log(radioBtnName);
     setRadioInputStatus(radioBtnName);
   };
 
   const searchData = event => {
     event.preventDefault();
 
+    // fetch(`http://192.168.215.167:3000/search?query=강남`)
+    //   .then(response => response.json())
+    //   .then(result => {
+    //     console.log(result.data);
+    //     setRestaurantData(result.data);
+    //   });
+
+    console.log({ radioInputStatus });
+
     fetch(`/data/restaurant_list.json`, {})
       .then(response => response.json())
       .then(result => {
+        console.log(result.data);
         setRestaurantData(result.data);
       });
   };
 
+  // useEffect(() => {
+  //   // fetch(`http://172.20.10.11:8000/search?query=강남`)
+  //   //   .then(response => response.json())
+  //   //   .then(result => console.log(result.data));
+  //   fetch(`/data/restaurant_list.json`)
+  //     .then(response => response.json())
+  //     .then(result => {
+  //       console.log(result);
+  //       setRestaurantData(result);
+  //     });
+  // }, []);
+  //setRestaurantData(result.data);
+
+  // const onCheckedElement = (checked, item) => {
+  //   if (checked) {
+  //     setCheckedList([...checkedList, item]);
+  //   } else if (!checked) {
+  //     setCheckedList(checkedList?.filter(el => el !== item));
+  //   }
+  // };
   const onCheckedElement = (checked, item) => {
     setSearchParams(item);
   };
 
   const movePages = () => {
     console.log('testPage');
-    fetch(`/data/restaurant_list.json`)
+    fetch(`http://172.20.10.11:8000/search?query={한식}`)
       .then(response => response.json())
       .then(result => {
+        console.log(result.data);
         setRestaurantData(result.data);
       });
   };

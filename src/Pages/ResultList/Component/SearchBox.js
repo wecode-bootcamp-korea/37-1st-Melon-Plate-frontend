@@ -1,4 +1,6 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import './SearchBox.scss';
 
 const SearchBox = ({
@@ -28,6 +30,31 @@ const SearchBox = ({
   };
   return (
     <>
+      {/* <div className="searchFilterBox searchFilterTop">
+        <label>검색 필터</label>
+        <p>
+          <input
+            type="radio"
+            name="filterRadioBox"
+            value="popularity"
+            className="radioBox"
+            id="sorting1"
+            onClick={() => handleClickRadioButton('popularity')}
+            checked={radioInputStatus === 'popularity'}
+          />
+          <label htmlFor="sorting1">인기순</label>
+          <input
+            type="radio"
+            name="filterRadioBox"
+            value="rating"
+            className="radioBox"
+            id="sorting2"
+            onClick={() => handleClickRadioButton('rating')}
+            checked={radioInputStatus === 'rating'}
+          />
+          <label htmlFor="sorting2">평점순</label>
+        </p>
+      </div> */}
       <div className="searchFilterBox searchFilterMid">
         <label>
           가격대<span>(중복가능)</span>
