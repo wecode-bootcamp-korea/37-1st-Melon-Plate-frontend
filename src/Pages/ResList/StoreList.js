@@ -4,6 +4,8 @@ import MenuItem from './MenuItem';
 import './StoreList.scss';
 
 const StoreList = () => {
+  const accessToken = localStorage.getItem('TOKEN');
+
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -17,8 +19,8 @@ const StoreList = () => {
     searchParams.set('category', category);
     searchParams.set('limit', limit);
     setSearchParams(searchParams);
-    // navigate(`/resultlist?${searchParams.toString()}`);
-    fetch(`http://192.168.215.167:3000/search?${searchParams}`)
+    navigate(`/resultlist?${searchParams.toString()}`);
+    fetch(`http://192.168.215.167:3000/main/search?${searchParams}`)
       .then(response => response.json())
       .then(result => console.log(result.data));
   };
