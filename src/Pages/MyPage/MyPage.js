@@ -8,15 +8,28 @@ import './MyPage.scss';
 
 const MyPage = () => {
   const navigate = useNavigate();
+  const accessToken = localStorage.getItem('TOKEN');
   const [user, setUser] = useState({});
+  const [likedStore, setLikedStore] = useState([]);
+  const [reviews, setReviews] = useState([]);
   const [editClicked, setEditClicked] = useState(false);
-  const [likedStores, setLikedStores] = useState([]);
-  const [reviewedStores, setReviewedStores] = useState([]);
 
   useEffect(() => {
-    fetch('./jiwonData/loginUser.json')
+    fetch('http://192.168.215.82:3000/user/profile', {
+      method: 'GET',
+      headers: {
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcl9pZCI6InJsYWRtZHRuIiwiYWRtaW4iOiJUUlVFIiwiaWF0IjoxNjY0MjQ1NDU3fQ.HQhElcCgI6HrXSUoXD-3Q3MoruW2PzRJWn8KD1uORrs',
+      },
+    })
       .then(res => res.json())
-      .then(data => setUser(data));
+      .then(
+        data => (
+          setUser(...data.profile),
+          setReviews(data.reviews),
+          setLikedStore(data.likes)
+        )
+      );
   }, []);
 
   const logOutClick = () => {
@@ -25,11 +38,11 @@ const MyPage = () => {
   };
 
   const gender = () => {
-    if (user.user_gender === 'female') {
+    if (user.gender === '여') {
       return '여성';
-    } else if (user.user_gender === 'male') {
+    } else if (user.gender === '남') {
       return '남성';
-    } else if (user.user_gender == null) {
+    } else if (user.gender == null) {
       return null;
     }
   };
@@ -43,19 +56,17 @@ const MyPage = () => {
           <img
             className="userProfileImg"
             alt="프로필 사진"
-            src={user.user_profile_img}
+            src={user.profile_image}
           />
           <div className="userProfileText">
             <span className="userNickname">
-              {user.user_nickname ? user.user_nickname : '손'}님, 안녕하세요!
+              {user.nickname ? user.nickname : '손'}님, 안녕하세요!
             </span>
             <span className="userId">
               @ {user.user_id ? user.user_id : '로그인 해주세요'}
             </span>
             <span className="userAgeAndGender">
-              {user.user_age
-                ? `${user.user_age}대 ${gender(user.user_gender)}`
-                : null}
+              {user.age ? `${user.age}대 ${gender(user.gender)}` : null}
             </span>
           </div>
           <div className="buttonSet">
@@ -74,15 +85,18 @@ const MyPage = () => {
           <div className="myActionBox">
             <div className="myPageMiniTitle">내가 좋아요 한 식당</div>
             <div className="myPageItemList">
-              <LikedItem />
+              {likedStore.map(e => (
+                <LikedItem item={e} key={e.stores_id} onClick={() => {}} />
+              ))}
             </div>
           </div>
 
           <div className="myActionBox2">
             <div className="myPageMiniTitle">내가 작성한 후기</div>
             <div className="myPageItemList">
-              <ReviewedItem />
-              <ReviewedItem />
+              {reviews.map(e => (
+                <ReviewedItem item={e} key={e.stores_id} />
+              ))}
             </div>
           </div>
         </div>

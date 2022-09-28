@@ -1,11 +1,11 @@
 import React from 'react';
 import './LikedItem.scss';
 
-const LikedItem = () => {
+const LikedItem = ({ item }) => {
   return (
     <div className="likedItem">
-      <div className="likedStoreLocation">식당 지역</div>
-      <div className="likedStoreName">식당 이름</div>
+      <div className="likedStoreLocation">{item.address}</div>
+      <div className="likedStoreName">{item.name}</div>
     </div>
   );
 };
