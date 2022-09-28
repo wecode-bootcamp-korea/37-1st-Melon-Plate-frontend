@@ -1,9 +1,15 @@
 import React from 'react';
 
 const reviewListMain = data => {
-  const { profileImg, nickname, reviewDate, reviewText, reviewImg, rate } =
-    data;
-
+  const {
+    profileImg,
+    nickname,
+    reviewDate,
+    reviewText,
+    reviewImg,
+    rate,
+    reviews,
+  } = data;
   return (
     <div className="reviewListMain">
       <span className="mainLeft">
@@ -13,8 +19,9 @@ const reviewListMain = data => {
         <div className="mainLeftName">{nickname}</div>
         <div className="mainLeftReviews">
           <i className="fa-solid fa-pen" />
-          0
-          <i className="fa-solid fa-people-group" />0
+          {reviews}
+          <i className="fa-solid fa-people-group" />
+          123
         </div>
       </span>
       <span className="mainCenter">

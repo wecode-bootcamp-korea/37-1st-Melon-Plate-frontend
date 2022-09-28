@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import ReviewList from '../../Components/ReviewList/ReviewList';
 import Melon from './Melon';
 import './ReviewWrite.scss';
 

@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-const ReviewListTop = () => {
+const ReviewListTop = data => {
   return (
     <div className="reviewListTop">
       <span className="topReviewLeft">
         <span className="topReviewLeftText">리뷰 </span>
-        <span className="topReviewLeftNumber"> (0)</span>
+        <span className="topReviewLeftNumber">({data.reviewCount})</span>
       </span>
       <span className="topReviewRight">
         <span className="topReviewRightBtn">

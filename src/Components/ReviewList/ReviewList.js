@@ -11,12 +11,10 @@ const ReviewList = () => {
       .then(res => res.json())
       .then(res => setData(res));
   }, []);
-
+  // <ReviewListTop reviewCount={data[0]?.reviewCount} />
   return (
     <div className="reviewList">
-      <ReviewListTop />
-
-      {data.map(list => {
+      {data?.map(list => {
         const {
           reviewText,
           rate,
@@ -24,6 +22,7 @@ const ReviewList = () => {
           reviewImg,
           profileImg,
           reviewDate,
+          reviews,
           id,
         } = list;
         return (
@@ -34,6 +33,7 @@ const ReviewList = () => {
             reviewImg={reviewImg}
             profileImg={profileImg}
             reviewDate={reviewDate}
+            reviews={reviews}
             key={id}
           />
         );
