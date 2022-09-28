@@ -12,6 +12,7 @@ const SearchBox = ({
   onCheckedElement,
   radioInputStatus,
   handleClickRadioButton,
+  handleChangeLink,
 }) => {
   const handleCancle = () => {
     console.log('cancle click!');
@@ -23,12 +24,12 @@ const SearchBox = ({
     //     setRestaurantData(result.data);
     //   });
 
-    fetch(`/data/restaurant_list.json`)
-      .then(response => response.json())
-      .then(result => {
-        console.log(result.data);
-        setRestaurantData(result.data);
-      });
+    // fetch(`/data/restaurant_list.json`)
+    //   .then(response => response.json())
+    //   .then(result => {
+    //     console.log(result.data);
+    //     setRestaurantData(result.data);
+    //   });
   };
   return (
     <>
@@ -68,12 +69,12 @@ const SearchBox = ({
                 <input
                   type="checkbox"
                   name=""
-                  value={menuList.priceRange}
+                  value={menuList.price}
                   className="checkBox"
                   id={'checkBoxMid' + menuList.id}
                   key={menuList.id}
                   onClick={e => {
-                    onCheckedElement(e.target.checked, menuList.priceRange);
+                    onCheckedPriceRange(e.target.checked, menuList.price);
                   }}
                 />
                 <label htmlFor={'checkBoxMid' + menuList.id}>
@@ -100,7 +101,7 @@ const SearchBox = ({
                   id={'checkBoxBot' + menuList.id}
                   key={menuList.id}
                   onClick={e => {
-                    onCheckedElement(e.target.checked, menuList.category);
+                    onCheckedCategory(e.target.checked, menuList.category);
                   }}
                 />
                 <label htmlFor={'checkBoxBot' + menuList.id}>
@@ -131,7 +132,6 @@ const SEARCH_MENU = [
   {
     id: 1,
     category: '한식',
-    queryData: 'http://192.168.215.167:3000/search?query=한식',
   },
   { id: 2, category: '중식' },
   { id: 3, category: '일식' },
@@ -148,10 +148,10 @@ const SEARCH_MENU = [
 ];
 
 const PRICE_DATA = [
-  { id: 1, name: '만원 미만', priceRange: '0' },
-  { id: 2, name: '1만원대', priceRange: '1' },
-  { id: 3, name: '2만원대', priceRange: '2' },
-  { id: 4, name: '3만원대', priceRange: '3' },
+  { id: 1, name: '만원 미만', price: '0' },
+  { id: 2, name: '1만원대', price: '1' },
+  { id: 3, name: '2만원대', price: '2' },
+  { id: 4, name: '3만원대', price: '3' },
 ];
 
 export default SearchBox;

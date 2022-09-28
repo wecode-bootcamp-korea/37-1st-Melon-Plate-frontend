@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   useParams,
   useSearchParams,
@@ -17,13 +17,19 @@ const ResultList = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const categoryValue = searchParams.get('category');
+  const priceRangeValue = searchParams.get('price');
+
+  console.log('ddd', categoryValue, priceRangeValue);
+
   //const location = useLocation();
   const navigate = useNavigate();
 
   // console.log(searchParams);
   // console.log(checkedList);
 
-  let { params } = useParams();
+  // let { params } = useParams();
+  const params = window.location.search;
 
   const handleClickRadioButton = radioBtnName => {
     console.log(radioBtnName);
@@ -33,34 +39,39 @@ const ResultList = () => {
   const searchData = event => {
     event.preventDefault();
 
-    // fetch(`http://192.168.215.167:3000/search?query=강남`)
+    // fetch(
+    //   `http://192.168.215.167:3000/search?query=강남&category=${categoryValue}&location=${priceRangeValue}&offDay=수`
+    // )
     //   .then(response => response.json())
     //   .then(result => {
     //     console.log(result.data);
     //     setRestaurantData(result.data);
     //   });
 
-    console.log({ radioInputStatus });
+    //console.log({ radioInputStatus });
 
-    fetch(`/data/restaurant_list.json`, {})
-      .then(response => response.json())
-      .then(result => {
-        console.log(result.data);
-        setRestaurantData(result.data);
-      });
+    // fetch(`/data/restaurant_list.json`, {})
+    //   .then(response => response.json())
+    //   .then(result => {
+    //     console.log(result.data);
+    //     setRestaurantData(result.data);
+    //   });
   };
 
-  // useEffect(() => {
-  //   // fetch(`http://172.20.10.11:8000/search?query=강남`)
-  //   //   .then(response => response.json())
-  //   //   .then(result => console.log(result.data));
-  //   fetch(`/data/restaurant_list.json`)
-  //     .then(response => response.json())
-  //     .then(result => {
-  //       console.log(result);
-  //       setRestaurantData(result);
-  //     });
-  // }, []);
+  useEffect(() => {
+    fetch(
+      `http://192.168.215.167:3000/search${params}&offDay=&location=&query=강남`
+    )
+      .then(response => response.json())
+      .then(result => console.log(result.data));
+    // fetch(`/data/restaurant_list.json`)
+    //   .then(response => response.json())
+    //   .then(result => {
+    //     console.log(result);
+    //     setRestaurantData(result);
+    //   });
+  }, [params]);
+
   //setRestaurantData(result.data);
 
   // const onCheckedElement = (checked, item) => {
@@ -70,6 +81,7 @@ const ResultList = () => {
   //     setCheckedList(checkedList?.filter(el => el !== item));
   //   }
   // };
+  console.log(params);
 
   const movePages = () => {
     console.log('testPage');
@@ -81,23 +93,43 @@ const ResultList = () => {
       });
   };
   /* SerchBox filter 클릭 함수 */
-  const onCheckedElement = (checked, item) => {
-    searchParams.set('priceRange', item);
-    searchParams.set('category', item);
-    setSearchParams(searchParams);
-    navigate(`/resultlist?${searchParams.toString()}`);
-    console.log(item);
-    //console.log(navigate);
+  const onCheckedPriceRange = (checked, item) => {
+    if (checked) {
+      searchParams.set('price', item);
+      setSearchParams(searchParams);
+      navigate(`/resultlist?${searchParams.toString()}`);
+      console.log(item);
+      //console.log(navigate);
+    }
+  };
+
+  const handleChangeLink = () => {
+    fetch(`http://172.20.10.11:8000/search?query={}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    })
+      .then(response => response.json(), {})
+      .then(result => {
+        console.log(result.data);
+        setRestaurantData(result.data);
+      });
   };
 
   /* SerchBox filter 클릭 함수 */
-  // const onCheckedCategory = (checked, item) => {
-  //   searchParams.set('priceRange', item);
-  //   setSearchParams(searchParams);
-  //   navigate(`/resultlist?${searchParams.toString()}`);
-  //   console.log(item);
-  //   //console.log(navigate);
-  // };
+  const onCheckedCategory = (checked, item) => {
+    if (checked) {
+      searchParams.set('category', item);
+      setSearchParams(searchParams);
+      navigate(`/resultlist?${searchParams.toString()}`);
+      console.log(item);
+      //console.log(navigate);
+    }
+    if (!checked) {
+      searchParams.set('', item);
+    }
+  };
 
   /* resultList 상단 메뉴 클릭 함수 시작 */
 
@@ -107,12 +139,17 @@ const ResultList = () => {
     navigate(`/resultlist?${searchParams.toString()}`);
     console.log(e);
 
-    fetch(`http://172.20.10.11:8000/search?query={한식}`, {})
-      .then(response => response.json())
-      .then(result => {
-        console.log(result.data);
-        setRestaurantData(result.data);
-      });
+    // fetch(`http://172.20.10.11:8000/search?query={한식}`, {
+    //   method: 'GET',
+    //   headers: {
+    //     'Content-Type': 'application/json;charset=utf-8',
+    //   },
+    // })
+    //   .then(response => response.json())
+    //   .then(result => {
+    //     console.log(result.data);
+    //     setRestaurantData(result.data);
+    //   });
   };
 
   /* resultList 상단 메뉴 클릭 함수 끝 */
@@ -161,10 +198,13 @@ const ResultList = () => {
       </div>
       <div className="searchFilterWrap">
         <SearchBox
+          handleChangeLink={handleChangeLink}
           searchData={searchData}
           restaurantData={restaurantData}
           setRestaurantData={setRestaurantData}
-          onCheckedElement={onCheckedElement}
+          // onCheckedElement={onCheckedElement}
+          onCheckedPriceRange={onCheckedPriceRange}
+          onCheckedCategory={onCheckedCategory}
           checkedList={checkedList}
           setCheckedList={setCheckedList}
           radioInputStatus={radioInputStatus}
