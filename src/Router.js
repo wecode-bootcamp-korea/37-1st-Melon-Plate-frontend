@@ -9,6 +9,7 @@ import ReviewWrite from './Pages/ReviewWrite/ReviewWrite';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import AdminPage from './Pages/AdminPage/AdminPage';
+import SignupTap from './Pages/Login/SignupTap/SignupTap';
 
 function Router() {
   return (
@@ -22,6 +23,7 @@ function Router() {
         <Route path="/detail" element={<Detail />} />
         <Route path="/detail/write" element={<ReviewWrite />} />
         <Route path="/adminpage" element={<AdminPage />} />
+        <Route path="/SignupTap" element={<SignupTap />} />
       </Routes>
       <Footer />
     </BrowserRouter>
