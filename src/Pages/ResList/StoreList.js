@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import MenuItem from './MenuItem';
 import './StoreList.scss';
 
@@ -9,16 +9,20 @@ const StoreList = () => {
 
   const params = window.location.search;
 
-  const menuListClick = (address, menu, limit, category) => {
-    searchParams.set('address', address);
+  const menuListClick = (location, menu, limit, category) => {
+    searchParams.set('query', '');
+    searchParams.set('price', 0);
+    searchParams.set('location', location);
     searchParams.set('menu', menu);
     searchParams.set('category', category);
     searchParams.set('limit', limit);
     setSearchParams(searchParams);
-    navigate(`/resultlist?${searchParams.toString()}`);
+    // navigate(`/resultlist?${searchParams.toString()}`);
+    fetch(`http://192.168.215.167:3000/search?${searchParams}`)
+      .then(response => response.json())
+      .then(result => console.log(result.data));
   };
 
-  console.log(params);
   return (
     <div className="storeList">
       <div className="storeListContainer">
@@ -29,10 +33,10 @@ const StoreList = () => {
 
         <div className="menuItemList">
           {STORE_SORT.map(
-            ({ img, address, menu, category, limit, description }) => (
+            ({ img, location, menu, category, limit, description }) => (
               <MenuItem
                 key={img}
-                address={address}
+                location={location}
                 menu={menu}
                 category={category}
                 limit={limit}
@@ -52,7 +56,7 @@ export default StoreList;
 
 const STORE_SORT = [
   {
-    address: '선릉',
+    location: '선릉',
     menu: '삼겹살',
     limit: '15',
     category: '',
@@ -60,7 +64,7 @@ const STORE_SORT = [
     description: '한국인의 소울푸드, 삼겹살 맛집!',
   },
   {
-    address: '강남',
+    location: '강남',
     menu: '피자',
     limit: '10',
     category: '',
@@ -69,7 +73,7 @@ const STORE_SORT = [
   },
 
   {
-    address: '논현',
+    location: '논현',
     menu: '파스타',
     category: '',
     limit: '10',
@@ -77,7 +81,7 @@ const STORE_SORT = [
     description: '데이트 장소를 찾고 있나요?',
   },
   {
-    address: '청담',
+    location: '청담',
     menu: '',
     category: '주점',
     limit: '20',
@@ -85,7 +89,7 @@ const STORE_SORT = [
     description: '불금을 즐기고 싶으신 분',
   },
   {
-    address: '신사',
+    location: '신사',
     menu: '돈까스',
     category: '',
     limit: '10',
@@ -93,7 +97,7 @@ const STORE_SORT = [
     description: '돈까스 싫어하시는 분 계신가요?',
   },
   {
-    address: '선릉',
+    location: '선릉',
     menu: '',
     category: '한식',
     limit: '10',

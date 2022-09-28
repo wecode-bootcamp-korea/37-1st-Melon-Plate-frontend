@@ -3,7 +3,7 @@ import './MenuItem.scss';
 
 const MenuItem = ({
   menu,
-  address,
+  location,
   limit,
   img,
   category,
@@ -14,9 +14,9 @@ const MenuItem = ({
     <div className="menuItem" style={{ backgroundImage: `url(${img})` }}>
       <span
         className="menuItemTitle"
-        onClick={() => menuListClick(address, menu, limit, category)}
+        onClick={() => menuListClick(location, menu, limit, category)}
       >
-        {address} {menu} {category} 베스트 {limit} 곳
+        {location} {menu} {category} 베스트 {limit} 곳
       </span>
 
       <span className="menuItemIntroduce">{description}</span>
