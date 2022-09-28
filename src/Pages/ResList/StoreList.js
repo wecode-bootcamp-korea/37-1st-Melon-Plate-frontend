@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import MenuItem from './MenuItem';
 import './StoreList.scss';
@@ -7,31 +7,13 @@ const StoreList = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // const mouseover = e => {
-  //   searchParams.set('address', e.target.childNodes[0].data);
-  //   searchParams.set('menu', e.target.childNodes[2].data);
-  //   searchParams.set('category', '');
-  //   searchParams.set('limit', e.target.childNodes[4].data);
-  //   setSearchParams(searchParams);
-  //   console.log(searchParams.toString());
-  //   // navigate(`/resultlist?${searchParams.toString()}`);
-  // };
-
   const menuListClick = e => {
     searchParams.set('address', e.target.childNodes[0].data);
     searchParams.set('menu', e.target.childNodes[2].data);
     searchParams.set('category', '');
     searchParams.set('limit', e.target.childNodes[4].data);
     setSearchParams(searchParams);
-    console.log(searchParams.toString());
-    fetch(`http://172.20.10.11:8000/list/seperate?${searchParams.toString()}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-      },
-    })
-      .then(res => res.json())
-      .then(result => console.log(result.data));
+    navigate(`/resultlist?${searchParams.toString()}`);
   };
 
   return (
@@ -51,7 +33,6 @@ const StoreList = () => {
               limit={e.limit}
               img={e.img}
               menuListClick={menuListClick}
-              // mouseover={mouseover}
             />
           ))}
         </div>
@@ -61,17 +42,6 @@ const StoreList = () => {
 };
 
 export default StoreList;
-
-// const HASHTAG = [
-//   '전체',
-//   '선릉',
-//   '주점',
-//   '파스타',
-//   '떡볶이',
-//   '해장',
-//   '데이트',
-//   '회식 맛집',
-// ];
 
 const STORE_SORT = [
   {
