@@ -6,9 +6,11 @@ import './Detail.scss';
 const Detail = () => {
   const [restaurantData, setRestaurantData] = useState({});
 
+  const hours = String();
+
   useEffect(() => {
     return () => {
-      fetch(`http://192.168.215.82:8000/detail/10`, {
+      fetch(`http://192.168.215.82:3000/detail/11`, {
         method: 'GET',
         headers: {
           authorization:
@@ -21,6 +23,8 @@ const Detail = () => {
         }, []);
     };
   }, []);
+
+  const createDate = new Date(restaurantData.create_at);
 
   return (
     <div className="detailWrap">
@@ -117,7 +121,14 @@ const Detail = () => {
         </div>
 
         <div className="updateDateWrap">
-          <p>업데이트 : {}</p>
+          <p>
+            업데이트 :
+            {createDate.getFullYear() +
+              '-' +
+              (createDate.getMonth() + 1) +
+              '-' +
+              createDate.getDate()}
+          </p>
         </div>
       </div>
       <div>
