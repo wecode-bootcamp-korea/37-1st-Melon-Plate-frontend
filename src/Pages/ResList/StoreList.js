@@ -1,11 +1,13 @@
 import React from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import MenuItem from './MenuItem';
 import './StoreList.scss';
 
 const StoreList = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const params = window.location.search;
 
   const menuListClick = (address, menu, limit, category) => {
     searchParams.set('address', address);
@@ -16,6 +18,7 @@ const StoreList = () => {
     navigate(`/resultlist?${searchParams.toString()}`);
   };
 
+  console.log(params);
   return (
     <div className="storeList">
       <div className="storeListContainer">
