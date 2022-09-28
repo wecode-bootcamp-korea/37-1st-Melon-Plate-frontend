@@ -20,7 +20,7 @@ function Router() {
         <Route path="/reslist" element={<ResList />} />
         <Route path="/resultlist" element={<ResultList />} />
         <Route path="/detail" element={<Detail />} />
-        <Route path="/detail/write" element={<ReviewWrite />} />
+        <Route path="/detail/write/:name" element={<ReviewWrite />} />
         <Route path="/SignupTap" element={<SignupTap />} />
       </Routes>
       <Footer />
