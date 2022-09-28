@@ -5,15 +5,43 @@ import './ReviewList.scss';
 
 const ReviewList = () => {
   const [data, setData] = useState([]);
+  const filterItemIncrease = event => {
+    const priceSorting = [...data];
+    const priceCompare = key => (a, b) => {
+      return b[key] - a[key];
+    };
+    priceSorting.sort(priceCompare('rate'));
+    setData(priceSorting);
+  };
+  const filterItemIncreaseReverse = event => {
+    const priceSorting = [...data];
+    const priceCompare = key => (a, b) => {
+      return a[key] - b[key];
+    };
+    priceSorting.sort(priceCompare('rate'));
+    setData(priceSorting);
+  };
+  const arr = async () => {
+    await fetch('/Mock/Mock.json')
+      .then(res => res.json())
+      .then(res => setData(res));
+  };
 
   useEffect(() => {
     fetch('/Mock/Mock.json')
       .then(res => res.json())
       .then(res => setData(res));
   }, []);
-  // <ReviewListTop reviewCount={data[0]?.reviewCount} />
+
   return (
     <div className="reviewList">
+      <ReviewListTop
+        reviewCount={data[0]?.reviewCount}
+        filterItemIncrease={filterItemIncrease}
+        filterItemIncreaseReverse={filterItemIncreaseReverse}
+        arr={arr}
+      />
+
       {data?.map(list => {
         const {
           reviewText,

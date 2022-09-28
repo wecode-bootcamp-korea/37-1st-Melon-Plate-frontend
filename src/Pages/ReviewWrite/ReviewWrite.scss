@@ -131,6 +131,9 @@
             position: relative;
             margin-right: 9px;
             margin-bottom: 9px;
+            &:hover .photoInnerPhotosBtnBox {
+              display: block;
+            }
 
             .photoInnerPhotosImg {
               width: 89px;
@@ -143,6 +146,16 @@
               left: 75px;
               font-size: 20px;
               color: azure;
+              z-index: 1;
+            }
+            .photoInnerPhotosBtnBox {
+              display: none;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 89px;
+              height: 89px;
+              background-color: rgba(0, 0, 0, 0.45);
             }
           }
         }

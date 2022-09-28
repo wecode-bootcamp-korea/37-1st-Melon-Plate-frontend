@@ -21,9 +21,14 @@
     .topReviewRight {
       .topReviewRightBtn {
         height: 23px;
+        padding-left: 10px;
 
         .topReviewRightBtns {
           color: #9b9b9b;
+          padding-right: 3px;
+          &:hover {
+            color: #76ba99;
+          }
         }
 
         i {
@@ -60,8 +65,14 @@
       }
 
       .mainLeftReviews {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
         font-size: 8px;
         text-align: center;
+        i {
+        }
       }
     }
 

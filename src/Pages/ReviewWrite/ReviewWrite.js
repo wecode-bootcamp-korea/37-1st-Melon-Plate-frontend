@@ -168,6 +168,7 @@ const ReviewWrite = () => {
                   >
                     x
                   </button>
+                  <div className="photoInnerPhotosBtnBox" />
                 </li>
               ))}
             </ul>
