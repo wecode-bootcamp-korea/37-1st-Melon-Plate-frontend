@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 // import SIGNUP_API from '../../../config';
+=======
+>>>>>>> main
 import './Login.scss';
 
 const TestLogin = ({ currentId }) => {
@@ -65,7 +68,7 @@ const TestLogin = ({ currentId }) => {
           />
 
           <button onClick={goToMain}>로그인</button>
-          <Link to="/logintap" className="link">
+          <Link to="/signtap" className="link">
             아직 회원이 아니신가요? 회원가입
           </Link>
         </form>

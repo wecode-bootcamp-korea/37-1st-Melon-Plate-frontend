@@ -1,0 +1,105 @@
+.reviewList {
+  width: 800px;
+
+  .reviewListTop {
+    display: flex;
+    justify-content: space-between;
+    height: 23px;
+    margin-bottom: 14px;
+
+    .topReviewLeft {
+      .topReviewLeftText {
+        font-size: 18px;
+        color: rgb(79, 79, 79);
+      }
+
+      .topReviewLeftNumber {
+        font-size: 18px;
+        color: gray;
+      }
+    }
+    .topReviewRight {
+      .topReviewRightBtn {
+        height: 23px;
+
+        .topReviewRightBtns {
+          color: gray;
+        }
+
+        i {
+          color: gray;
+        }
+      }
+    }
+  }
+  .reviewListMain {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid gainsboro;
+    margin-bottom: 5px;
+    line-height: 150%;
+
+    &:hover {
+      background-color: rgb(240, 241, 255);
+    }
+
+    .mainLeft {
+      width: 70px;
+      margin: 15px 35px 0px 8px;
+
+      .mainLeftPhotos {
+        width: 60px;
+        height: 60px;
+        border-radius: 100px;
+      }
+
+      .mainLeftName {
+        width: 60px;
+        font-size: 13px;
+      }
+
+      .mainLeftReviews {
+        font-size: 8px;
+      }
+    }
+
+    .mainCenter {
+      width: 605;
+
+      .mainCenterDay {
+        width: 600px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: gray;
+      }
+      .mainCenterPhoto {
+        margin: 20px 0px;
+
+        img {
+          width: 70px;
+          margin: 10px;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .mainRight {
+      position: relative;
+      width: 60;
+      margin-left: 22px;
+
+      .mainRightPoint {
+        position: absolute;
+        top: 12px;
+        right: 15px;
+        color: white;
+        font-size: 15px;
+      }
+    }
+
+    .mainRightMelon {
+      width: 40px;
+      border-radius: 20px;
+    }
+  }
+}
