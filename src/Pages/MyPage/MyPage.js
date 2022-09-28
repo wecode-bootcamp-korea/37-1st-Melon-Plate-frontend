@@ -102,7 +102,9 @@ const MyPage = () => {
         </div>
       </div>
       <ModalPortal>
-        {editClicked && <ProfileEdit setEditClicked={setEditClicked} />}
+        {editClicked && (
+          <ProfileEdit user={user} setEditClicked={setEditClicked} />
+        )}
       </ModalPortal>
     </div>
   );

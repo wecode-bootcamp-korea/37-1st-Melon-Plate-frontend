@@ -1,13 +1,15 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './ProfileEdit.scss';
 
-const ProfileEdit = ({ setEditClicked }) => {
+const ProfileEdit = ({ setEditClicked, user }) => {
   const fileInput = useRef(null);
   const [imgFile, setImgFile] = useState({});
-  const [imageSrc, setImageSrc] = useState(
-    'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
-  );
-  const [input, setInput] = useState({ nickname: '', age: '', gender: '' });
+  const [imageSrc, setImageSrc] = useState(user.profile_image);
+  const [input, setInput] = useState({
+    nickname: user.nickname,
+    age: user.age,
+    gender: user.gender,
+  });
 
   const encodeFileToBase64 = fileBlob => {
     const reader = new FileReader();
@@ -31,24 +33,26 @@ const ProfileEdit = ({ setEditClicked }) => {
   };
 
   const profileEditForm = new FormData();
-  profileEditForm.append('profileImg', imgFile);
+  profileEditForm.append('profile_image', imgFile);
   profileEditForm.append('nickname', input.nickname);
   profileEditForm.append('gender', input.gender);
   profileEditForm.append('age', input.age);
 
   const profileEditSave = e => {
     e.preventDefault();
-    fetch('api 주소', {
+    fetch('http://192.168.215.82:3000/user/profile', {
       method: 'PATCH',
       headers: {
         enctype: 'multipart/form-data',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcl9pZCI6InJsYWRtZHRuIiwiYWRtaW4iOiJUUlVFIiwiaWF0IjoxNjY0MjQ1NDU3fQ.HQhElcCgI6HrXSUoXD-3Q3MoruW2PzRJWn8KD1uORrs',
       },
       body: profileEditForm,
     })
       .then(res => res.json())
-      .catch(err => alert('프로필 수정에 문제가 생겼습니다.'))
-      .then(data => alert('프로필이 수정되었습니다.'));
-    setEditClicked(false);
+      .then(data => console.log(data))
+      .then(() => window.location.reload())
+      .then(() => setEditClicked(false));
   };
 
   return (
@@ -89,6 +93,7 @@ const ProfileEdit = ({ setEditClicked }) => {
                 placeholder="닉네임 변경"
                 onChange={handleInput}
                 name="nickname"
+                value={input.nickname}
               />
             </div>
             <div className="profileEditInputSet">
@@ -99,7 +104,7 @@ const ProfileEdit = ({ setEditClicked }) => {
                     className="profileEditGenderRadio"
                     type="radio"
                     name="gender"
-                    value="male"
+                    value={user.gender}
                     onChange={handleInput}
                   />
                   <span>남성</span>
@@ -109,7 +114,7 @@ const ProfileEdit = ({ setEditClicked }) => {
                     className="profileEditGenderRadio"
                     type="radio"
                     name="gender"
-                    value="female"
+                    value={user.gender}
                     onChange={handleInput}
                   />
                   <span>여성</span>
@@ -119,7 +124,7 @@ const ProfileEdit = ({ setEditClicked }) => {
                     className="profileEditGenderRadio"
                     type="radio"
                     name="gender"
-                    value="none"
+                    value={user.gender}
                     onChange={handleInput}
                   />
                   <span>비공개</span>
