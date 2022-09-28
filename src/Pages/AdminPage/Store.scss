@@ -1,6 +1,12 @@
 .Store {
   // height: 400px;
   // background-color: whitesmoke;
+  font-weight: bolder;
+  font-size: 18px;
+
+  a {
+    text-decoration: none;
+  }
 
   .storeWrap {
     display: flex;
@@ -50,7 +56,8 @@
     align-items: center;
     width: 100%;
 
-    button {
+    .edit {
+      all: unset;
       margin-right: 40px;
       background-color: #76ba99;
       width: 100px;
