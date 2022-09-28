@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Slide from './Slide';
+import ReviewList from '../../Components/ReviewList/ReviewList';
 import './Detail.scss';
 
 const Detail = () => {
@@ -114,6 +115,13 @@ const Detail = () => {
             </tr>
           </table>
         </div>
+
+        <div className="updateDateWrap">
+          <p>업데이트 : {}</p>
+        </div>
+      </div>
+      <div>
+        <ReviewList />
       </div>
     </div>
   );
