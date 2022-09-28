@@ -7,7 +7,7 @@ const TestLogin = ({ currentId }) => {
   const navigate = useNavigate();
 
   const [inputValues, setInputValues] = useState({
-    text: '',
+    userId: '',
     password: '',
   });
 
@@ -19,14 +19,12 @@ const TestLogin = ({ currentId }) => {
   const goToMain = e => {
     e.preventDefault();
 
-    fetch('https://f29c-211-106-114-186.jp.ngrok.io/user/signup', {
+    fetch('http://192.168.215.82:3000/user/signin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
       },
-      body: JSON.stringify({
-        inputValues,
-      }),
+      body: JSON.stringify(inputValues),
     })
       .then(response => {
         if (response.ok === true) {
@@ -39,10 +37,10 @@ const TestLogin = ({ currentId }) => {
         alert('아이디 또는 비밀번호가 틀렸습니다.');
       })
       .then(data => {
-        if (data.message === 'login success') {
-          localStorage.setItem('TOKEN', data.token);
-          navigate('/');
-        }
+        // if (data.message === 'login success') {
+        localStorage.setItem('TOKEN', data.token);
+        navigate('/');
+        // }
       });
   };
   return (
@@ -51,10 +49,10 @@ const TestLogin = ({ currentId }) => {
         <h2 className="title">{currentId}</h2>
         <form>
           <input
-            type="text"
+            type="userId"
             placeholder="아이디"
             onChange={handleInput}
-            name="text"
+            name="userId"
           />
           <input
             type="password"
