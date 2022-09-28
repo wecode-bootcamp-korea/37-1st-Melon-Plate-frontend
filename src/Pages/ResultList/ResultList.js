@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
-import { useParams, useSearchParams, useLocation } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import {
+  useParams,
+  useSearchParams,
+  useLocation,
+  Link,
+  useNavigate,
+} from 'react-router-dom';
 import ResultListContents from './Component/ResultListContents';
 import SearchBox from './Component/SearchBox';
 import './ResultList.scss';
@@ -12,11 +17,11 @@ const ResultList = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const location = useLocation();
+  //const location = useLocation();
+  const navigate = useNavigate();
 
-  console.log(searchParams);
-  console.log(checkedList);
-  console.log(location);
+  // console.log(searchParams);
+  // console.log(checkedList);
 
   let { params } = useParams();
 
@@ -65,9 +70,6 @@ const ResultList = () => {
   //     setCheckedList(checkedList?.filter(el => el !== item));
   //   }
   // };
-  const onCheckedElement = (checked, item) => {
-    setSearchParams(item);
-  };
 
   const movePages = () => {
     console.log('testPage');
@@ -78,6 +80,42 @@ const ResultList = () => {
         setRestaurantData(result.data);
       });
   };
+  /* SerchBox filter 클릭 함수 */
+  const onCheckedElement = (checked, item) => {
+    searchParams.set('priceRange', item);
+    searchParams.set('category', item);
+    setSearchParams(searchParams);
+    navigate(`/resultlist?${searchParams.toString()}`);
+    console.log(item);
+    //console.log(navigate);
+  };
+
+  /* SerchBox filter 클릭 함수 */
+  // const onCheckedCategory = (checked, item) => {
+  //   searchParams.set('priceRange', item);
+  //   setSearchParams(searchParams);
+  //   navigate(`/resultlist?${searchParams.toString()}`);
+  //   console.log(item);
+  //   //console.log(navigate);
+  // };
+
+  /* resultList 상단 메뉴 클릭 함수 시작 */
+
+  const categoryClick = e => {
+    searchParams.set('category', e);
+    setSearchParams(searchParams);
+    navigate(`/resultlist?${searchParams.toString()}`);
+    console.log(e);
+
+    fetch(`http://172.20.10.11:8000/search?query={한식}`, {})
+      .then(response => response.json())
+      .then(result => {
+        console.log(result.data);
+        setRestaurantData(result.data);
+      });
+  };
+
+  /* resultList 상단 메뉴 클릭 함수 끝 */
 
   return (
     <article className="resultList">
@@ -89,7 +127,9 @@ const ResultList = () => {
               return (
                 <button
                   key={menuList.id}
-                  onClick={movePages}
+                  onClick={e => {
+                    categoryClick(menuList.category);
+                  }}
                   className="categoryLink"
                 >
                   {menuList.category}
@@ -142,7 +182,6 @@ const SEARCH_MENU = [
   {
     id: 1,
     category: '한식',
-    queryData: '?query=한식',
   },
   { id: 2, category: '중식' },
   { id: 3, category: '일식' },

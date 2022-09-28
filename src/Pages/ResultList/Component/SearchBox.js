@@ -7,6 +7,8 @@ const SearchBox = ({
   searchData,
   restaurantData,
   setRestaurantData,
+  onCheckedPriceRange,
+  onCheckedCategory,
   onCheckedElement,
   radioInputStatus,
   handleClickRadioButton,
@@ -71,7 +73,7 @@ const SearchBox = ({
                   id={'checkBoxMid' + menuList.id}
                   key={menuList.id}
                   onClick={e => {
-                    onCheckedElement(e.target.checked, e.target.value);
+                    onCheckedElement(e.target.checked, menuList.priceRange);
                   }}
                 />
                 <label htmlFor={'checkBoxMid' + menuList.id}>
@@ -98,7 +100,7 @@ const SearchBox = ({
                   id={'checkBoxBot' + menuList.id}
                   key={menuList.id}
                   onClick={e => {
-                    onCheckedElement(e.target.checked, e.target.value);
+                    onCheckedElement(e.target.checked, menuList.category);
                   }}
                 />
                 <label htmlFor={'checkBoxBot' + menuList.id}>
