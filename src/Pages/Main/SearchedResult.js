@@ -23,8 +23,6 @@ const SearchedResult = ({ data, accessToken }) => {
       ) : (
         <SearchedResult data={data[random]} onClick={nonMemberClick} />
       )}
-
-      {/* <SearchedResultItem data={data} /> */}
     </div>
   );
 };
