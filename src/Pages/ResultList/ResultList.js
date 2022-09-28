@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import ResultListContents from './Component/ResultListContents';
 import SearchBox from './Component/SearchBox';
 import './ResultList.scss';
@@ -9,24 +9,33 @@ const ResultList = () => {
   const [checkedList, setCheckedList] = useState([]);
   const [radioInputStatus, setRadioInputStatus] = useState('');
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const handleClickRadioButton = radioBtnName => {
-    console.log(radioBtnName);
     setRadioInputStatus(radioBtnName);
   };
 
   const searchData = event => {
     event.preventDefault();
-    // fetch(`http://192.168.215.82:8000/detail/10`)
-    //   .then(response => response.json())
-    //   .then(result => setRestaurantData(result.items));
+
+    fetch(`/data/restaurant_list.json`, {})
+      .then(response => response.json())
+      .then(result => {
+        setRestaurantData(result.data);
+      });
   };
 
   const onCheckedElement = (checked, item) => {
-    if (checked) {
-      setCheckedList([...checkedList, item]);
-    } else if (!checked) {
-      setCheckedList(checkedList.filter(el => el !== item));
-    }
+    setSearchParams(item);
+  };
+
+  const movePages = () => {
+    console.log('testPage');
+    fetch(`/data/restaurant_list.json`)
+      .then(response => response.json())
+      .then(result => {
+        setRestaurantData(result.data);
+      });
   };
 
   return (
@@ -37,9 +46,13 @@ const ResultList = () => {
           <div className="category">
             {SEARCH_MENU.map(menuList => {
               return (
-                <Link key={menuList.id} to="#" className="categoryLink">
-                  {menuList.menuName}
-                </Link>
+                <button
+                  key={menuList.id}
+                  onClick={movePages}
+                  className="categoryLink"
+                >
+                  {menuList.category}
+                </button>
               );
             })}
           </div>
@@ -52,13 +65,15 @@ const ResultList = () => {
               setRestaurantData={setRestaurantData}
               checkedList={checkedList}
               setCheckedList={setCheckedList}
+              searchParams={searchParams}
+              setSearchParams={setSearchParams}
             />
           </ul>
           <div className="pagingContainer">
             <p className="paging">
-              <Link to="#" className="pagingLink">
+              <button onClick={movePages} className="pagingLink">
                 1
-              </Link>
+              </button>
             </p>
           </div>
         </div>
@@ -67,12 +82,15 @@ const ResultList = () => {
         <SearchBox
           searchData={searchData}
           restaurantData={restaurantData}
+          setRestaurantData={setRestaurantData}
           onCheckedElement={onCheckedElement}
           checkedList={checkedList}
           setCheckedList={setCheckedList}
           radioInputStatus={radioInputStatus}
           setRadioInputStatus={setRadioInputStatus}
           handleClickRadioButton={handleClickRadioButton}
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
         />
       </div>
     </article>
@@ -80,13 +98,23 @@ const ResultList = () => {
 };
 
 const SEARCH_MENU = [
-  { id: 1, menuName: '한식' },
-  { id: 2, menuName: '일식' },
-  { id: 3, menuName: '중식' },
-  { id: 4, menuName: '양식' },
-  { id: 5, menuName: '카페' },
-  { id: 6, menuName: '주점' },
-  { id: 7, menuName: '기타' },
+  {
+    id: 1,
+    category: '한식',
+    queryData: '?query=한식',
+  },
+  { id: 2, category: '중식' },
+  { id: 3, category: '일식' },
+  { id: 4, category: '양식' },
+  { id: 5, category: '분식' },
+  { id: 6, category: '고깃집' },
+  { id: 7, category: '치킨' },
+  { id: 8, category: '주점' },
+  { id: 9, category: '카페' },
+  { id: 10, category: '동남아음식' },
+  { id: 11, category: '빵집' },
+  { id: 12, category: '패스트푸드' },
+  { id: 13, category: '기타' },
 ];
 
 export default ResultList;
