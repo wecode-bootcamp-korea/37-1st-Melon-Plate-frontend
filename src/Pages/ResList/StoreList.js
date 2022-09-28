@@ -12,6 +12,7 @@ const StoreList = () => {
     searchParams.set('menu', e.target.childNodes[2].data);
     searchParams.set('category', '');
     searchParams.set('limit', e.target.childNodes[4].data);
+    searchParams.set('category', e.target.innerHTML);
     setSearchParams(searchParams);
     navigate(`/resultlist?${searchParams.toString()}`);
   };
