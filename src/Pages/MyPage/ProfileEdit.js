@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import './ProfileEdit.scss';
 
 const ProfileEdit = ({ setEditClicked, user }) => {
+  const accessToken = localStorage.getItem('TOKEN');
   const fileInput = useRef(null);
   const [imgFile, setImgFile] = useState({});
   const [imageSrc, setImageSrc] = useState(user.profile_image);
@@ -44,8 +45,7 @@ const ProfileEdit = ({ setEditClicked, user }) => {
       method: 'PATCH',
       headers: {
         enctype: 'multipart/form-data',
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcl9pZCI6InJsYWRtZHRuIiwiYWRtaW4iOiJUUlVFIiwiaWF0IjoxNjY0MjQ1NDU3fQ.HQhElcCgI6HrXSUoXD-3Q3MoruW2PzRJWn8KD1uORrs',
+        authorization: accessToken,
       },
       body: profileEditForm,
     })
