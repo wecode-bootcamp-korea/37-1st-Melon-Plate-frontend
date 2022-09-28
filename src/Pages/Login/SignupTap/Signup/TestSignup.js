@@ -52,7 +52,7 @@ const TestSignup = ({ currentId }) => {
   const goToMain = e => {
     e.preventDefault();
 
-    fetch('https://87ca-211-106-114-186.jp.ngrok.io/user/signup', {
+    fetch('http://192.168.215.82:3000/user/signup', {
       method: 'POST',
       headers: {
         enctype: 'multipart/form-data',
