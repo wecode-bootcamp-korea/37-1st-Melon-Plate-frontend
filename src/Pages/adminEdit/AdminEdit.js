@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FoodMenu from './FoodMenu';
 import { INPUT_VALUES, CLOSED_DAY, CATEGORIES } from './adminEditData';
 import './AdminEdit.scss';
@@ -7,16 +7,28 @@ const AdminEdit = () => {
   const accesToken = localStorage.getItem('TOKEN');
   const [store, setStore] = useState({});
 
+  useEffect(() => {
+    fetch('http://192.168.215.82:3000/admin/', {
+      method: 'GET',
+      headers: {
+        authorization: accesToken,
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    })
+      .then(res => res.json())
+      .then(result => (console.log(result), setStore(result)));
+  }, []);
+
   const [input, setInput] = useState({
-    name: '',
-    description: '',
-    address: '',
-    tel: '',
-    open_time: '',
-    closed_time: '',
+    name: store.name,
+    description: store.description,
+    address: store.address,
+    tel: store.tel,
+    open_time: store.open_time,
+    closed_time: store.closed_time,
     closed_day_id: '',
-    price_range: ' ',
-    category_id: '',
+    price_range: store.price_range,
+    category_id: store.category_id,
   });
 
   const [imageInput, setImageInput] = useState();
@@ -94,8 +106,7 @@ const AdminEdit = () => {
       method: 'POST',
       headers: {
         enctype: 'multipart/form-data',
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcl9pZCI6InJsYWRtZHRuIiwiYWRtaW4iOiJUUlVFIiwiaWF0IjoxNjY0MTkyODQ3fQ.qLNqJxeoxxqVjnvHqtAHRDtA5-C9e2k1zkeqyu2Ag6g',
+        authorization: accesToken,
       },
       body: adminEditForm,
     })
@@ -106,12 +117,58 @@ const AdminEdit = () => {
   return (
     <div className="adminEdit">
       <div className="adminEditBox">
-        <div className="adminEditTitle">내 가게 등록하기</div>
+        <div className="adminEditTitle">내 가게 수정하기</div>
         <div className="adminImageInputSet">
           <div className="inputTitle">대표 사진</div>
           <input type="file" accept="image/*" onChange={saveImage} />
         </div>
-        {INPUT_VALUES.map(
+        <div className="adminEditInputSet">
+          <div className="inputTitle">상호명</div>
+          <input
+            className="inputText"
+            type="text"
+            name="name"
+            onChange={saveInput}
+          />
+        </div>
+        <div className="adminEditInputSet">
+          <div className="inputTitle">주소</div>
+          <input
+            className="inputText"
+            type="text"
+            name="address"
+            onChange={saveInput}
+          />
+        </div>
+        <div className="adminEditInputSet">
+          <div className="inputTitle">전화번호</div>
+          <input
+            className="inputText"
+            type="tel"
+            name="tel"
+            onChange={saveInput}
+          />
+        </div>
+        <div className="adminEditInputSet">
+          <div className="inputTitle">오픈 시간</div>
+          <input
+            className="inputText"
+            type="time"
+            name="time"
+            onChange={saveInput}
+          />
+        </div>
+        <div className="adminEditInputSet">
+          <div className="inputTitle">마감 시간</div>
+          <input
+            className="inputText"
+            type="time"
+            name="time"
+            onChange={saveInput}
+          />
+        </div>
+
+        {/* {INPUT_VALUES.map(
           ({ id, title, type, placeholder, inputName, step, min, max }) => (
             <div className="adminEditInputSet" key={id}>
               <div className="inputTitle"> {title}</div>
@@ -127,7 +184,7 @@ const AdminEdit = () => {
               />
             </div>
           )
-        )}
+        )} */}
         <div className="storeCategories">
           <div className="inputTitle">식당 카테고리</div>
           <select className="inputText" onChange={saveInput} name="category_id">
