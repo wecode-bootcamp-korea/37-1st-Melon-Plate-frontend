@@ -6,6 +6,7 @@ import './AdminEdit.scss';
 const AdminEdit = () => {
   const accesToken = localStorage.getItem('TOKEN');
   const [store, setStore] = useState({});
+  const [menuData, setMenuData] = useState([]);
 
   useEffect(() => {
     fetch('http://192.168.215.82:3000/admin/', {
@@ -34,7 +35,7 @@ const AdminEdit = () => {
   const [imageInput, setImageInput] = useState();
   const [dayNum, setDayNum] = useState(0);
   const [menuId, setMenuId] = useState(1);
-  const [menus, setMenus] = useState([]);
+  const [menus, setMenus] = useState(menuData);
   const [menuInput, setMenuInput] = useState({
     id: menuId,
     name: '',
