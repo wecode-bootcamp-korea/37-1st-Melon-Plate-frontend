@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Melon from './Melon';
 import './ReviewWrite.scss';
 
 const ReviewWrite = () => {
+  const params = useParams();
   const [melonPoint, setMelonPoint] = useState(10);
   const [images, setImages] = useState([]);
   const [imgLength, setImgLength] = useState(0);
@@ -90,7 +92,7 @@ const ReviewWrite = () => {
     <div className="reviewWrite">
       <form className="reviewWritePage" name="reviewImg">
         <div className="store">
-          <span className="storeName">부촌육회 </span>
+          <span className="storeName">{params.name} </span>
           <span>에 대한 솔직한 리뷰를 써주세요</span>
         </div>
         <div className="melon">
