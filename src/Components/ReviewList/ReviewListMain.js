@@ -10,6 +10,7 @@ const reviewListMain = data => {
     rate,
     reviews,
   } = data;
+  const date = new Date(reviewDate);
   return (
     <div className="reviewListMain">
       <span className="mainLeft">
@@ -25,7 +26,13 @@ const reviewListMain = data => {
         </div>
       </span>
       <span className="mainCenter">
-        <div className="mainCenterDay">{reviewDate}</div>
+        <div className="mainCenterDay">
+          {date.getFullYear() +
+            '-' +
+            (date.getMonth() + 1) +
+            '-' +
+            date.getDay()}
+        </div>
         <div className="mainCenterReview">{reviewText}</div>
         <div className="mainCenterPhoto">
           {reviewImg.map(e => {

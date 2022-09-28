@@ -21,7 +21,7 @@ const ReviewList = () => {
     priceSorting.sort(priceCompare('rate'));
     setData(priceSorting);
   };
-  const arr = async () => {
+  const resetSort = async () => {
     await fetch('/Mock/Mock.json')
       .then(res => res.json())
       .then(res => setData(res));
@@ -32,14 +32,13 @@ const ReviewList = () => {
       .then(res => res.json())
       .then(res => setData(res));
   }, []);
-
   return (
     <div className="reviewList">
       <ReviewListTop
-        reviewCount={data[0]?.reviewCount}
+        reviewCount={data?.reviewCount}
         filterItemIncrease={filterItemIncrease}
         filterItemIncreaseReverse={filterItemIncreaseReverse}
-        arr={arr}
+        resetSort={resetSort}
       />
 
       {data?.map(list => {

@@ -4,7 +4,7 @@ const ReviewListTop = ({
   reviewCount,
   filterItemIncrease,
   filterItemIncreaseReverse,
-  arr,
+  resetSort,
 }) => {
   return (
     <div className="reviewListTop">
@@ -33,7 +33,7 @@ const ReviewListTop = ({
           </span>
         </span>
         <span className="topReviewRightBtn">
-          <button className="topReviewRightBtns" onClick={arr}>
+          <button className="topReviewRightBtns" onClick={resetSort}>
             최근순
           </button>
           <span>
