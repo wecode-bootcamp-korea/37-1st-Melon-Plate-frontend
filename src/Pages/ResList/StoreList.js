@@ -7,12 +7,31 @@ const StoreList = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
+  // const mouseover = e => {
+  //   searchParams.set('address', e.target.childNodes[0].data);
+  //   searchParams.set('menu', e.target.childNodes[2].data);
+  //   searchParams.set('category', '');
+  //   searchParams.set('limit', e.target.childNodes[4].data);
+  //   setSearchParams(searchParams);
+  //   console.log(searchParams.toString());
+  //   // navigate(`/resultlist?${searchParams.toString()}`);
+  // };
+
   const menuListClick = e => {
     searchParams.set('address', e.target.childNodes[0].data);
     searchParams.set('menu', e.target.childNodes[2].data);
+    searchParams.set('category', '');
     searchParams.set('limit', e.target.childNodes[4].data);
     setSearchParams(searchParams);
-    navigate(`/resultlist?${searchParams.toString()}`);
+    console.log(searchParams.toString());
+    fetch(`http://172.20.10.11:8000/list/seperate?${searchParams.toString()}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    })
+      .then(res => res.json())
+      .then(result => console.log(result.data));
   };
 
   return (
@@ -26,11 +45,13 @@ const StoreList = () => {
         <div className="menuItemList">
           {STORE_SORT.map(e => (
             <MenuItem
+              key={e.img}
               address={e.address}
               menu={e.menu}
               limit={e.limit}
               img={e.img}
               menuListClick={menuListClick}
+              // mouseover={mouseover}
             />
           ))}
         </div>
@@ -56,13 +77,13 @@ const STORE_SORT = [
   {
     address: '선릉',
     menu: '삼겹살',
-    limit: '10',
+    limit: '15',
     img: './images/samgyup.jpg',
     description: '한국인의 소울푸드, 삼겹살 맛집!',
   },
   {
     address: '강남',
-    menu: '떡볶이',
+    menu: '피자',
     limit: '10',
     img: './images/dduk.jpg',
     description: '뭘 먹을지 고민될 땐 떡볶이를 드세요!',
