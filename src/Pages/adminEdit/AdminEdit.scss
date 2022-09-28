@@ -26,23 +26,13 @@
   }
 
   .adminEditBox {
-<<<<<<< HEAD
-    position: fixed;
-    left: 50%;
-    transform: translate(-50%, 5%);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-top: 80px;
-=======
-    display: flex;
-    flex-direction: column;
-    margin-top: 80px;
+    margin-top: 10px;
     position: fixed;
     left: 50%;
-    transform: translate(-50%, 20%);
+    transform: translate(-50%, 10%);
     align-items: center;
->>>>>>> main
 
     .inputText {
       all: revert;
@@ -52,19 +42,6 @@
       border: none;
       border-bottom: 1px solid gray;
     }
-<<<<<<< HEAD
-
-    .inputText2 {
-      all: revert;
-      width: 140px;
-      height: 30px;
-      margin-left: 40px;
-      padding: 3px 15px;
-      border: none;
-      border-bottom: 1px solid gray;
-    }
-=======
->>>>>>> main
   }
 
   .storeCategories {
@@ -93,17 +70,10 @@
   .adminEditSave {
     width: 100px;
     height: 30px;
-<<<<<<< HEAD
-    text-align: center;
-    margin-top: 20px;
-    background-color: $melonColor2;
-    border-radius: 14px;
-=======
     background-color: $melonColor2;
     border-radius: 14px;
     text-align: center;
     margin-top: 20px;
->>>>>>> main
   }
 }
 

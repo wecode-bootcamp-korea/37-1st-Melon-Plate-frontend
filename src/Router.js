@@ -23,12 +23,9 @@ function Router() {
         <Route path="/resultlist" element={<ResultList />} />
         <Route path="/detail" element={<Detail />} />
         <Route path="/detail/write" element={<ReviewWrite />} />
-<<<<<<< HEAD
         <Route path="/admin/edit" element={<AdminEdit />} />
         <Route path="/admin/create" element={<AdminCreate />} />
-=======
         <Route path="/SignupTap" element={<SignupTap />} />
->>>>>>> main
       </Routes>
       <Footer />
     </BrowserRouter>
