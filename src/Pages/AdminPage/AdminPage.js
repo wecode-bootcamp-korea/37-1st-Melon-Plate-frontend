@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './AdminPage.scss';
 import Store from './Store';
-import { TEXT } from './TEXT';
+// import { TEXT } from './TEXT';
 
 const AdminPage = () => {
   //통신시 사용
@@ -36,15 +36,15 @@ const AdminPage = () => {
         </button>
       </div>
       <div className="storeList">
-        {TEXT?.map(item => {
+        {/* {TEXT?.map(item => {
           //통신이 안될시 mock데이터로 확인하는 코드//
           return <Store TEXT={item} key={item.id} />;
-        })}
+        })} */}
 
         {/* 통신시 확인하는 코드 */}
-        {/* {storeData?.map(item => {
+        {storeData?.map(item => {
           return <Store text={item} key={item.id} />;
-        })} */}
+        })}
       </div>
     </>
   );

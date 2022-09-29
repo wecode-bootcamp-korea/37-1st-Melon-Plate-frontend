@@ -1,0 +1,133 @@
+@import '../../styles/variables.scss';
+
+.profileModalBack {
+  background-color: black;
+  opacity: 0.5;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.profileEditBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  gap: 30px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  z-index: 100;
+
+  i {
+    position: absolute;
+    display: flex;
+    top: 2%;
+    right: 2%;
+    background-color: lightgray;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .profileEditForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    gap: 20px;
+    width: 70%;
+
+    .profileEditFormTitle {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .profileImgContainer {
+      .profileImg {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      .profileImgInput {
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        opacity: 0;
+      }
+    }
+
+    .profileTextEdit {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+
+      .profileEditInputSet {
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        .inputSetTitle {
+          width: 30%;
+          font-weight: 600;
+          color: $melonColor1;
+        }
+
+        .profileEditGenderWrap {
+          display: flex;
+          flex-direction: row;
+          gap: 20px;
+
+          .profileEditGender {
+            display: flex;
+
+            .profileEditGenderRadio {
+              all: revert;
+            }
+          }
+        }
+        .profileEditInput {
+          width: 60%;
+          padding: 5px 10px;
+          border: 1px solid gray;
+          border-radius: 6px;
+        }
+      }
+    }
+    .profileEditSaveBtn {
+      text-align: center;
+      height: 40px;
+      width: 80px;
+      border-radius: 20px;
+      background-color: $melonColor2;
+      cursor: pointer;
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+      &:hover {
+        background-color: $melonColor1;
+      }
+    }
+  }
+}

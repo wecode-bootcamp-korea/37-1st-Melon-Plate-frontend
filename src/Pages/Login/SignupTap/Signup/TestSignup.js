@@ -52,7 +52,7 @@ const TestSignup = ({ currentId }) => {
   const goToMain = e => {
     e.preventDefault();
 
-    fetch('https://87ca-211-106-114-186.jp.ngrok.io/user/signup', {
+    fetch('http://192.168.215.82:3000/user/signup', {
       method: 'POST',
       headers: {
         enctype: 'multipart/form-data',
@@ -70,7 +70,7 @@ const TestSignup = ({ currentId }) => {
         alert('회원가입 실패');
       })
       .then(data => {
-        if (data.message === 'login success') {
+        if (data.message === `Welcome ${nickname}!`) {
           localStorage.setItem('TOKEN', data.token);
           alert('회원가입이 완료되었습니다.');
         }

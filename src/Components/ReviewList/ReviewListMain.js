@@ -1,9 +1,17 @@
 import React from 'react';
 
 const reviewListMain = data => {
-  const { profileImg, nickname, reviewDate, reviewText, reviewImg, rate } =
-    data;
-
+  const {
+    profileImg,
+    nickname,
+    reviewDate,
+    reviewText,
+    reviewImg,
+    rate,
+    reviews,
+  } = data;
+  const date = new Date(reviewDate);
+  const ratePoint = Math.floor(rate);
   return (
     <div className="reviewListMain">
       <span className="mainLeft">
@@ -13,12 +21,19 @@ const reviewListMain = data => {
         <div className="mainLeftName">{nickname}</div>
         <div className="mainLeftReviews">
           <i className="fa-solid fa-pen" />
-          0
-          <i className="fa-solid fa-people-group" />0
+          {reviews}
+          <i className="fa-solid fa-people-group" />
+          123
         </div>
       </span>
       <span className="mainCenter">
-        <div className="mainCenterDay">{reviewDate}</div>
+        <div className="mainCenterDay">
+          {date.getFullYear() +
+            '-' +
+            (date.getMonth() + 1) +
+            '-' +
+            date.getDay()}
+        </div>
         <div className="mainCenterReview">{reviewText}</div>
         <div className="mainCenterPhoto">
           {reviewImg.map(e => {
@@ -32,7 +47,7 @@ const reviewListMain = data => {
           className="mainRightMelon"
           alt="melonImg"
         />
-        <div className="mainRightPoint">{rate}</div>
+        <div className="mainRightPoint">{ratePoint}</div>
       </span>
     </div>
   );

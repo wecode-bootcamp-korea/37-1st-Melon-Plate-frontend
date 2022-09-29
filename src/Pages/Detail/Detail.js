@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Slide from './Slide';
 import ReviewList from '../../Components/ReviewList/ReviewList';
 import './Detail.scss';
+import ReviewList from '../../Components/ReviewList/ReviewList';
 
 const Detail = () => {
   const [restaurantData, setRestaurantData] = useState({});
@@ -143,6 +144,9 @@ const Detail = () => {
               </td>
             </tr>
           </table>
+          <div>
+            <ReviewList />
+          </div>
         </div>
 
         <div className="updateDateWrap">

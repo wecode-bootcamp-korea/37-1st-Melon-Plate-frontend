@@ -6,8 +6,11 @@ import StoreList from './Pages/ResList/StoreList';
 import ResultList from './Pages/ResultList/ResultList';
 import Detail from './Pages/Detail/Detail';
 import ReviewWrite from './Pages/ReviewWrite/ReviewWrite';
+import MyPage from './Pages/MyPage/MyPage';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
+import AdminEdit from './Pages/adminEdit/AdminEdit';
+import AdminCreate from './Pages/adminEdit/AdminCreate';
 import AdminPage from './Pages/AdminPage/AdminPage';
 import SignupTap from './Pages/Login/SignupTap/SignupTap';
 
@@ -21,7 +24,10 @@ function Router() {
         <Route path="/reslist" element={<StoreList />} />
         <Route path="/resultlist" element={<ResultList />} />
         <Route path="/detail" element={<Detail />} />
-        <Route path="/detail/write/:name" element={<ReviewWrite />} />
+        <Route path="/detail/write" element={<ReviewWrite />} />
+        <Route path="/admin/edit/:id" element={<AdminEdit />} />
+        <Route path="/admin/create" element={<AdminCreate />} />
+        <Route path="/mypage" element={<MyPage />} />
         <Route path="/adminpage" element={<AdminPage />} />
         <Route path="/SignupTap" element={<SignupTap />} />
       </Routes>

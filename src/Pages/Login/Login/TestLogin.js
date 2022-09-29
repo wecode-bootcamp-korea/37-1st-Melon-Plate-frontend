@@ -7,7 +7,7 @@ const TestLogin = ({ currentId }) => {
   const navigate = useNavigate();
 
   const [inputValues, setInputValues] = useState({
-    text: '',
+    userId: '',
     password: '',
   });
 
@@ -19,28 +19,22 @@ const TestLogin = ({ currentId }) => {
   const goToMain = e => {
     e.preventDefault();
 
-    fetch('https://f29c-211-106-114-186.jp.ngrok.io/user/signup', {
+    fetch('http://192.168.215.82:3000/user/signin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
       },
-      body: JSON.stringify({
-        inputValues,
-      }),
+      body: JSON.stringify(inputValues),
     })
-      .then(response => {
-        if (response.ok === true) {
-          return response.json();
-        } else {
-          throw new Error('응답을 받을수 없음!');
-        }
-      })
-      .catch(error => {
-        alert('아이디 또는 비밀번호가 틀렸습니다.');
-      })
+      .then(response => response.json())
+
       .then(data => {
-        if (data.message === 'login success') {
-          localStorage.setItem('TOKEN', data.token);
+        // return console.log(data);
+        localStorage.setItem('TOKEN', data.accessToken);
+        localStorage.setItem('nickname', data.nickname);
+        if (currentId === '사장님로그인' && data.admin === 'TRUE') {
+          navigate('/adminpage');
+        } else if (currentId === '로그인' && data.admin === '') {
           navigate('/');
         }
       });
@@ -51,10 +45,10 @@ const TestLogin = ({ currentId }) => {
         <h2 className="title">{currentId}</h2>
         <form>
           <input
-            type="text"
+            type="userId"
             placeholder="아이디"
             onChange={handleInput}
-            name="text"
+            name="userId"
           />
           <input
             type="password"
@@ -62,9 +56,8 @@ const TestLogin = ({ currentId }) => {
             onChange={handleInput}
             name="password"
           />
-
           <button onClick={goToMain}>로그인</button>
-          <Link to="/signtap" className="link">
+          <Link to="/signuptap" className="link">
             아직 회원이 아니신가요? 회원가입
           </Link>
         </form>
