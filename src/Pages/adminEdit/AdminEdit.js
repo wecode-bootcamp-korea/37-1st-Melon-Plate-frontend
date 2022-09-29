@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import FoodMenu from './FoodMenu';
 import { INPUT_VALUES, CLOSED_DAY, CATEGORIES } from './adminEditData';
 import './AdminEdit.scss';
-import { useParams } from 'react-router-dom';
 
 const AdminEdit = () => {
   const accessToken = localStorage.getItem('TOKEN');
@@ -47,8 +46,6 @@ const AdminEdit = () => {
     name: '',
     price: '',
   });
-
-  console.log(menus);
 
   const saveInput = e => {
     const { name, value } = e.target;
@@ -121,6 +118,7 @@ const AdminEdit = () => {
     })
       .then(res => res.json())
       .then(result => console.log(result));
+    navigate('/adminpage');
   };
 
   return (

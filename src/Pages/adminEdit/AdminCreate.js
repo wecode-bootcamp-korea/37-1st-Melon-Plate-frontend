@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import FoodMenu from './FoodMenu';
 import { INPUT_VALUES, CLOSED_DAY, CATEGORIES } from './adminEditData';
 import './AdminEdit.scss';
-import { useNavigate } from 'react-router-dom';
 
 const AdminCreate = () => {
   const accesToken = localStorage.getItem('TOKEN');
@@ -89,10 +89,6 @@ const AdminCreate = () => {
   adminEditForm.append('price_range', price_range);
   adminEditForm.append('category_id', category_id);
   adminEditForm.append('food_menu', JSON.stringify(menus));
-
-  console.log(input);
-  console.log(menus);
-  console.log(dayNum);
 
   const editSaveClick = () => {
     fetch('http://192.168.215.82:3000/store', {
