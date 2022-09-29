@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import ReviewList from '../../Components/ReviewList/ReviewList';
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import Melon from './Melon';
 import './ReviewWrite.scss';
 
 const ReviewWrite = () => {
+  const Navigate = useNavigate();
   const params = useParams();
   const [melonPoint, setMelonPoint] = useState(10);
   const [images, setImages] = useState([]);
@@ -22,6 +22,12 @@ const ReviewWrite = () => {
   });
   formData.append('rate', melonPoint);
   formData.append('text', text);
+
+  const canceler = e => {
+    e.preventDefault();
+    localStorage.removeItem('text');
+    Navigate('/detail');
+  };
 
   const formGo = async e => {
     e.preventDefault();
@@ -185,7 +191,9 @@ const ReviewWrite = () => {
             나중에 이어쓰기
           </button>
           <div>
-            <button className="btnCancel">취소</button>
+            <button className="btnCancel" onClick={canceler}>
+              취소
+            </button>
             <button
               className={!Vialed ? 'btnReview' : 'btnReviewChange'}
               disabled={!Vialed}
