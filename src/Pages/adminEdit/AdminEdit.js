@@ -9,7 +9,7 @@ const AdminEdit = () => {
   const [menuData, setMenuData] = useState([]);
 
   useEffect(() => {
-    fetch('http://192.168.215.82:3000/store/10', {
+    fetch('http://192.168.215.82:3000/store/135', {
       method: 'GET',
       headers: {
         authorization: accesToken,
@@ -17,7 +17,11 @@ const AdminEdit = () => {
       },
     })
       .then(res => res.json())
-      .then(result => (console.log(result), setStore(result)));
+      .then(
+        result => (
+          console.log(result), setInput(result), setMenus(result.food_menu)
+        )
+      );
   }, []);
 
   const [input, setInput] = useState({
@@ -41,6 +45,8 @@ const AdminEdit = () => {
     name: '',
     price: '',
   });
+
+  console.log(menus);
 
   const saveInput = e => {
     const { name, value } = e.target;

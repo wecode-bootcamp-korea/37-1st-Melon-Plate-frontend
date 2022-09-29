@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import FoodMenu from './FoodMenu';
 import { INPUT_VALUES, CLOSED_DAY, CATEGORIES } from './adminEditData';
 import './AdminEdit.scss';
+import { useNavigate } from 'react-router-dom';
 
 const AdminCreate = () => {
   const accesToken = localStorage.getItem('TOKEN');
+  const navigate = useNavigate();
 
   const [input, setInput] = useState({
     name: '',
@@ -88,8 +90,12 @@ const AdminCreate = () => {
   adminEditForm.append('category_id', category_id);
   adminEditForm.append('food_menu', JSON.stringify(menus));
 
+  console.log(input);
+  console.log(menus);
+  console.log(dayNum);
+
   const editSaveClick = () => {
-    fetch('https://87ca-211-106-114-186.jp.ngrok.io/store/create', {
+    fetch('http://192.168.215.82:3000/store', {
       method: 'POST',
       headers: {
         enctype: 'multipart/form-data',
@@ -100,6 +106,7 @@ const AdminCreate = () => {
     })
       .then(res => res.json())
       .then(result => console.log(result));
+    navigate('/adminpage');
   };
 
   return (
