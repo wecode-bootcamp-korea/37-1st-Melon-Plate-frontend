@@ -58,6 +58,14 @@
             color: #76ba99;
           }
 
+          &.likeButton:hover .melonIconBlack {
+            display: none;
+          }
+
+          &.likeButton:hover .melonIconColor {
+            display: block;
+          }
+
           i {
             display: block;
             padding-bottom: 10px;
@@ -65,11 +73,15 @@
             text-align: center;
           }
 
-          .melonIcon {
+          .melonIconBlack,
+          .melonIconColor {
             display: flex;
             width: 36px;
             margin: 0 auto;
             padding: 0 0 5px 0;
+          }
+          .melonIconColor {
+            display: none;
           }
         }
       }

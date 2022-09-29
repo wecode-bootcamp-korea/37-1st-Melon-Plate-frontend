@@ -48,12 +48,12 @@ const Detail = () => {
                 <img
                   src="images/07E08BB9-5390-41B4-9270-DC83C7D8ACE2.jpeg"
                   alt="melonIcon"
-                  className="melonIcon"
+                  className="melonIconBlack"
                 />
                 <img
                   src="images/20596969-F8C3-4D15-9D89-16ECCE2090F5.jpeg"
                   alt="melonIcon"
-                  className="melonIcon"
+                  className="melonIconColor"
                 />
                 <span>가고 싶다</span>
               </button>
