@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import ReviewList from '../../Components/ReviewList/ReviewList';
+import { useNavigate, useParams } from 'react-router-dom';
 import Melon from './Melon';
 import './ReviewWrite.scss';
 
 const ReviewWrite = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const [melonPoint, setMelonPoint] = useState(10);
   const [images, setImages] = useState([]);
@@ -23,10 +23,16 @@ const ReviewWrite = () => {
   formData.append('rate', melonPoint);
   formData.append('text', text);
 
+  const canceler = e => {
+    e.preventDefault();
+    localStorage.removeItem('text');
+    navigate('/detail');
+  };
+
   const formGo = async e => {
     e.preventDefault();
     localStorage.removeItem('text');
-    await fetch(`http://192.168.239.167:8000/review/new/1`, {
+    await fetch(`http://192.168.239.167:3000/review/new/1`, {
       method: 'POST',
       headers: {
         authorization: Token,
@@ -35,6 +41,7 @@ const ReviewWrite = () => {
       cache: 'no-cache',
       body: formData,
     }).then(res => res.json());
+    navigate('/detail');
   };
   const textCount = e => {
     setText(e.target.value);
@@ -64,7 +71,7 @@ const ReviewWrite = () => {
     }
   };
 
-  const Vialed = textLength > 0;
+  const isValid = textLength > 0;
 
   const deleteImage = clickedImage => {
     const imgIdx = images.findIndex(img => img === clickedImage);
@@ -178,17 +185,19 @@ const ReviewWrite = () => {
         </div>
         <div className="result">
           <button
-            className={!Vialed ? 'btn' : 'btnChange'}
-            disabled={!Vialed}
+            className={!isValid ? 'btn' : 'btnChange'}
+            disabled={!isValid}
             onClick={saveText}
           >
             나중에 이어쓰기
           </button>
           <div>
-            <button className="btnCancel">취소</button>
+            <button className="btnCancel" onClick={canceler}>
+              취소
+            </button>
             <button
-              className={!Vialed ? 'btnReview' : 'btnReviewChange'}
-              disabled={!Vialed}
+              className={!isValid ? 'btnReview' : 'btnReviewChange'}
+              disabled={!isValid}
               onClick={formGo}
             >
               리뷰 올리기
