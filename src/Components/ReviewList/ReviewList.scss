@@ -15,19 +15,24 @@
 
       .topReviewLeftNumber {
         font-size: 18px;
-        color: gray;
+        color: #9b9b9b;
       }
     }
     .topReviewRight {
       .topReviewRightBtn {
         height: 23px;
+        padding-left: 10px;
 
         .topReviewRightBtns {
-          color: gray;
+          color: #9b9b9b;
+          padding-right: 3px;
+          &:hover {
+            color: #76ba99;
+          }
         }
 
         i {
-          color: gray;
+          color: #9b9b9b;
         }
       }
     }
@@ -56,10 +61,18 @@
       .mainLeftName {
         width: 60px;
         font-size: 13px;
+        text-align: center;
       }
 
       .mainLeftReviews {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
         font-size: 8px;
+        text-align: center;
+        i {
+        }
       }
     }
 

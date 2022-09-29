@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import ReviewList from '../../Components/ReviewList/ReviewList';
 import Melon from './Melon';
 import './ReviewWrite.scss';
 
 const ReviewWrite = () => {
+  const params = useParams();
   const [melonPoint, setMelonPoint] = useState(10);
   const [images, setImages] = useState([]);
   const [imgLength, setImgLength] = useState(0);
@@ -11,6 +14,7 @@ const ReviewWrite = () => {
   const textLength = text.length;
   const greenMelon = `${process.env.PUBLIC_URL}/images/20596969-F8C3-4D15-9D89-16ECCE2090F5.jpeg`;
   const grayMelon = `${process.env.PUBLIC_URL}/images/07E08BB9-5390-41B4-9270-DC83C7D8ACE2.jpeg`;
+  const Token = localStorage.getItem('TOKEN');
 
   const formData = new FormData();
   originPhoto.forEach(photo => {
@@ -21,15 +25,16 @@ const ReviewWrite = () => {
 
   const formGo = async e => {
     e.preventDefault();
+    localStorage.removeItem('text');
     await fetch(`http://192.168.239.167:8000/review/new/1`, {
       method: 'POST',
       headers: {
+        authorization: Token,
         enctype: 'multipart/form-data',
       },
       cache: 'no-cache',
       body: formData,
     }).then(res => res.json());
-    localStorage.removeItem('text');
   };
   const textCount = e => {
     setText(e.target.value);
@@ -90,7 +95,7 @@ const ReviewWrite = () => {
     <div className="reviewWrite">
       <form className="reviewWritePage" name="reviewImg">
         <div className="store">
-          <span className="storeName">부촌육회 </span>
+          <span className="storeName">{params.name} </span>
           <span>에 대한 솔직한 리뷰를 써주세요</span>
         </div>
         <div className="melon">
@@ -165,6 +170,7 @@ const ReviewWrite = () => {
                   >
                     x
                   </button>
+                  <div className="photoInnerPhotosBtnBox" />
                 </li>
               ))}
             </ul>
