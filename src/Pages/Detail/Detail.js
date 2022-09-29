@@ -10,8 +10,8 @@ const Detail = () => {
 
   useEffect(() => {
     return () => {
-      fetch(`http://192.168.215.82:3000/detail/11`, {
-        method: 'GET',
+      fetch(`http://192.168.215.82:3000/detail/10`, {
+        method: 'get',
         headers: {
           authorization:
             'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcl9pZCI6InJsYWRtZHRuIiwiYWRtaW4iOiJUUlVFIiwiaWF0IjoxNjY0MjQ1NDU3fQ.HQhElcCgI6HrXSUoXD-3Q3MoruW2PzRJWn8KD1uORrs',
@@ -44,7 +44,17 @@ const Detail = () => {
                 <span>리뷰 쓰기</span>
               </button>
               <button type="" className="likeButton button">
-                <i className="fa-star fa-regular" />
+                {/* <i className="fa-star fa-regular" /> */}
+                <img
+                  src="images/07E08BB9-5390-41B4-9270-DC83C7D8ACE2.jpeg"
+                  alt="melonIcon"
+                  className="melonIcon"
+                />
+                <img
+                  src="images/20596969-F8C3-4D15-9D89-16ECCE2090F5.jpeg"
+                  alt="melonIcon"
+                  className="melonIcon"
+                />
                 <span>가고 싶다</span>
               </button>
             </div>
@@ -130,9 +140,9 @@ const Detail = () => {
               createDate.getDate()}
           </p>
         </div>
-      </div>
-      <div>
-        <ReviewList />
+        <div>
+          <ReviewList />
+        </div>
       </div>
     </div>
   );
