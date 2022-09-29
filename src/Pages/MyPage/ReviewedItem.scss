@@ -1,0 +1,34 @@
+.reviewedItem {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: 100%;
+
+  .reviewedItemTitle {
+    display: flex;
+
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+
+    .likedStoreLocation {
+      color: gray;
+      font-size: 12px;
+      margin-right: 10px;
+    }
+  }
+
+  .reviewedItemComment {
+    font-size: 14px;
+    padding-left: 20px;
+    height: 54px;
+    line-height: 130%;
+
+    overflow: hidden;
+    display: -webkit-box;
+    white-space: normal;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+}
