@@ -6,6 +6,7 @@ import './Detail.scss';
 
 const Detail = () => {
   const [restaurantData, setRestaurantData] = useState({});
+  const restaurantId = '10';
 
   useEffect(() => {
     return () => {
@@ -18,6 +19,7 @@ const Detail = () => {
       })
         .then(response => response.json())
         .then(result => {
+          // console.log(result);
           setRestaurantData(result);
         }, []);
     };
@@ -25,10 +27,12 @@ const Detail = () => {
 
   const createDate = new Date(restaurantData.create_at);
 
+  console.log(restaurantData.reviewImg);
+
   return (
     <div className="detailWrap">
       <div className="top">
-        <Slide />
+        <Slide restaurantDataImage={restaurantData.reviewImg} />
       </div>
       <div className="storeInfo">
         <div className="storeInfoHead">
@@ -47,7 +51,7 @@ const Detail = () => {
                 <span>리뷰 쓰기</span>
               </button> */}
               <Link
-                to={`/detail/write/${restaurantData.id}`}
+                to={`/detail/write/${restaurantData.name}`}
                 className="reviewButton button"
               >
                 <i className="fa-regular fa-pen-to-square" />

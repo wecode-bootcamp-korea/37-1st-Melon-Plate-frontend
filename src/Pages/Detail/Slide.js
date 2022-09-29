@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useRef, useEffect } from 'react';
 import './Slide.scss';
 
-const Slide = () => {
+const Slide = ({ restaurantDataImage }) => {
   const IMAGE_DATAS = useRef([
     {
       id: '1',
@@ -25,12 +25,18 @@ const Slide = () => {
       url: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAzMzBfNzAg%2FMDAxNjE3MDcxNTIwMTk2.rthUlGA-zS81dh9Ey7perhpoArElzxHGij0ov06MMugg.SWoX76VwQfmfaixRUfdriW9zQeSNqO65-QbnMGJ7AC4g.JPEG.co3187%2FIMG_8809.jpg&type=a340',
     },
   ]);
+  const image = { restaurantDataImage };
+
+  console.log(image);
 
   const [current, setCurrent] = useState(0);
   const [style, setStyle] = useState({
     marginLeft: `-${current}00%`,
   });
   const imgSize = useRef(IMAGE_DATAS.current.length);
+  const imgSize2 = image.length;
+
+  console.log(imgSize2);
 
   const moveSlide = i => {
     let nextIndex = current + i;

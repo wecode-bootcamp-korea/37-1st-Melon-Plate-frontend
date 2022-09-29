@@ -21,7 +21,7 @@ function Router() {
         <Route path="/reslist" element={<StoreList />} />
         <Route path="/resultlist" element={<ResultList />} />
         <Route path="/detail" element={<Detail />} />
-        <Route path="/detail/write/:id" element={<ReviewWrite />} />
+        <Route path="/detail/write/:name" element={<ReviewWrite />} />
         <Route path="/adminpage" element={<AdminPage />} />
         <Route path="/SignupTap" element={<SignupTap />} />
       </Routes>
