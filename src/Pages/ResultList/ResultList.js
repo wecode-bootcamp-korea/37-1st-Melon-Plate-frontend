@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams, useNavigate, useParams } from 'react-router-dom';
 import ResultListContents from './Component/ResultListContents';
 import SearchBox from './Component/SearchBox';
 import './Resultlist.scss';
@@ -11,12 +11,13 @@ const ResultList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const navigate = useNavigate();
-  const params = window.location.search;
+  // const params = window.location.search;
+  const params = useParams();
   const params2 = `&location=&menu=&limit=&filter=&offDay=&price=`;
   const accessToken = localStorage.getItem('TOKEN');
 
   const getFetchData = () => {
-    fetch(`http://192.168.215.167:3000/main/search${params}${params2}`, {
+    fetch(`http://192.168.215.167:3000/main/search${params.id}${params2}`, {
       method: 'GET',
       headers: {
         authorization: accessToken,
