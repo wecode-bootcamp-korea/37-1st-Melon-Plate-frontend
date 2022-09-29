@@ -12,8 +12,17 @@
   background-image: url('../../../public/images/main-back.png');
   background-size: contain;
 
+  a {
+    text-decoration: none;
+    color: white;
+
+    &:visited {
+      text-decoration: none;
+    }
+  }
+
   .welcomeMessage {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 500;
     color: white;
   }
