@@ -10,20 +10,16 @@ const ResultList = () => {
   const [radioInputStatus, setRadioInputStatus] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const categoryValue = searchParams.get('category');
-  const priceRangeValue = searchParams.get('price');
   const navigate = useNavigate();
   const params = window.location.search;
-  const accessToken = localStorage.getItem('TOKEN');
   const params2 = `&location=&menu=&limit=&filter=&offDay=&price=`;
-
-  // console.log('*****', categoryValue, priceRangeValue); //
+  const accessToken = localStorage.getItem('TOKEN');
 
   const getFetchData = () => {
     fetch(`http://192.168.215.167:3000/main/search${params}${params2}`, {
-      // authorization: accessToken,
       method: 'GET',
       headers: {
+        authorization: accessToken,
         'Content-Type': 'application/json;charset=utf-8',
       },
     })
@@ -32,35 +28,13 @@ const ResultList = () => {
   };
 
   useEffect(() => getFetchData(), []);
-
-  //const location = useLocation();
-
-  // let { params } = useParams();
-
   const searchData = event => {
     event.preventDefault();
 
-    // fetch(
-    //   `http://192.168.215.167:3000/main/search${params}&location=&menu=&limit=&filter=&offDay=`,
-    //   {
-    //     // fetch(`/data/restaurant_list.json`, {
-    //     method: 'GET',
-    //     headers: {
-    //       'Content-Type': 'application/json;charset=utf-8',
-    //     },
-    //   }
-    // )
-    //   .then(response => response.json())
-    //   //.then(result => console.log(result.data));
-    //   .then(result => setRestaurantData(result.data));
     getFetchData();
     searchParams.delete('query');
     navigate(`/resultlist?${searchParams.toString()}`);
   };
-
-  // const movePages = () => {
-  //   console.log('testPage');
-  // };
 
   /* SerchBox filter priceRange 클릭 함수 */
   const onCheckedPriceRange = (checked, item) => {
@@ -79,14 +53,6 @@ const ResultList = () => {
     }
   };
 
-  /* 라디오 버튼 함수  */
-  const handleClickRadioButton = (e, radioBtnName) => {
-    // console.log(e, radioBtnName);
-    // searchParams.set('rating', radioBtnName);
-    // setSearchParams(searchParams);
-    // setRadioInputStatus(radioBtnName);
-  };
-
   /* resultList 상단 메뉴 클릭 함수 */
 
   const categoryClick = e => {
@@ -97,22 +63,6 @@ const ResultList = () => {
     navigate(`/resultlist?${searchParams.toString()}`);
     getFetchData();
   };
-
-  /* 제거 예정  */
-
-  // const handleChangeLink = () => {
-  //   fetch(`http://172.20.10.11:8000/search?query={}`, {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json;charset=utf-8',
-  //     },
-  //   })
-  //     .then(response => response.json(), {})
-  //     .then(result => {
-  //       console.log(result.data);
-  //       setRestaurantData(result.data);
-  //     });
-  // };
 
   return (
     <article className="resultList">
@@ -145,20 +95,13 @@ const ResultList = () => {
               setCheckedList={setCheckedList}
               searchParams={searchParams}
               setSearchParams={setSearchParams}
+              getFetchData={getFetchData}
             />
           </ul>
-          {/* <div className="pagingContainer">
-            <p className="paging">
-              <button onClick={movePages} className="pagingLink">
-                1
-              </button>
-            </p>
-          </div> */}
         </div>
       </div>
       <div className="searchFilterWrap">
         <SearchBox
-          handleClickRadioButton={handleClickRadioButton}
           searchData={searchData}
           restaurantData={restaurantData}
           setRestaurantData={setRestaurantData}
