@@ -114,7 +114,6 @@ const AdminEdit = () => {
       .then(res => res.json())
       .then(result => console.log(result));
   };
-  console.log(input);
 
   return (
     <div className="adminEdit">
