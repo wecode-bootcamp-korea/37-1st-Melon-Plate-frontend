@@ -1,0 +1,42 @@
+.foodMenu {
+  display: flex;
+  flex-direction: column;
+
+  .menuItemset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    .menuName,
+    .menuPrice {
+      width: 100px;
+      border-bottom: 1px solid gray;
+      padding: 10px;
+    }
+
+    button {
+      background-color: gray;
+      width: 30px;
+      height: 30px;
+      color: white;
+      font-size: 30px;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 15px;
+    }
+  }
+
+  .addedMenu {
+    span {
+      display: inline-block;
+      width: 140px;
+      padding: 8px;
+    }
+
+    .deleteButton {
+      padding: 5px;
+      cursor: pointer;
+    }
+  }
+}

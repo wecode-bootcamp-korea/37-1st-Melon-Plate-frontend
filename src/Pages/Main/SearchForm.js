@@ -53,7 +53,7 @@ const SearchForm = () => {
 
         <button className="searchButton">검색</button>
       </form>
-      <SearchedResult data={data} accessToken={accessToken} />
+      {/* <SearchedResult data={data} accessToken={accessToken} /> */}
     </div>
   );
 };
