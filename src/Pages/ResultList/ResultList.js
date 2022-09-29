@@ -17,25 +17,17 @@ const ResultList = () => {
   const accessToken = localStorage.getItem('TOKEN');
   const params2 = `&location=&menu=&limit=&filter=&offDay=&price=`;
 
-  console.log('*****', categoryValue, priceRangeValue); //
+  // console.log('*****', categoryValue, priceRangeValue); //
 
   const getFetchData = () => {
-    fetch(
-      `http://192.168.215.167:3000/main/search${params}${params2}`,
-      {
-        // authorization: accessToken,
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-        },
-      }
-
-      //   authorization: accessToken,
-      // , {
-      // }
-    )
+    fetch(`http://192.168.215.167:3000/main/search${params}${params2}`, {
+      // authorization: accessToken,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    })
       .then(response => response.json())
-      // .then(result => console.log(result.data));
       .then(result => setRestaurantData(result.data));
   };
 
@@ -66,72 +58,44 @@ const ResultList = () => {
     navigate(`/resultlist?${searchParams.toString()}`);
   };
 
-  // `http://192.168.215.167:3000/main/search${params}&price=&location=&menu=&limit=&query=강남`
-
-  //setRestaurantData(result.data);
-
-  // const onCheckedElement = (checked, item) => {
-  //   if (checked) {
-  //     setCheckedList([...checkedList, item]);
-  //   } else if (!checked) {
-  //     setCheckedList(checkedList?.filter(el => el !== item));
-  //   }
+  // const movePages = () => {
+  //   console.log('testPage');
   // };
-  console.log(params);
 
-  const movePages = () => {
-    console.log('testPage');
-  };
-
-  /* SerchBox filter 클릭 함수 */
+  /* SerchBox filter priceRange 클릭 함수 */
   const onCheckedPriceRange = (checked, item) => {
     if (checked) {
+      //searchParams.delete('category', item);
       searchParams.set('price', item);
       setSearchParams(searchParams);
-      // navigate(`/resultlist?${searchParams.toString()}`);
-      console.log(item);
-      //console.log(navigate);
     }
   };
 
-  /* SerchBox filter 클릭 함수 */
+  /* SerchBox filter category 클릭 함수 */
   const onCheckedCategory = (checked, item) => {
     if (checked) {
       searchParams.set('category', item);
       setSearchParams(searchParams);
-      // navigate(`/resultlist?${searchParams.toString()}`);
-      console.log(item);
-      //console.log(navigate);
     }
   };
 
   /* 라디오 버튼 함수  */
   const handleClickRadioButton = (e, radioBtnName) => {
-    console.log(e, radioBtnName);
-    searchParams.set('rating', radioBtnName);
-    setSearchParams(searchParams);
+    // console.log(e, radioBtnName);
+    // searchParams.set('rating', radioBtnName);
+    // setSearchParams(searchParams);
     // setRadioInputStatus(radioBtnName);
   };
 
   /* resultList 상단 메뉴 클릭 함수 */
 
   const categoryClick = e => {
+    searchParams.delete('query');
+    searchParams.delete('price');
     searchParams.set('category', e);
     setSearchParams(searchParams);
     navigate(`/resultlist?${searchParams.toString()}`);
-    console.log(e);
     getFetchData();
-    // fetch(`http://172.20.10.11:8000/search?query=${searchParams.toString()}`, {
-    //   method: 'GET',
-    //   headers: {
-    //     'Content-Type': 'application/json;charset=utf-8',
-    //   },
-    // })
-    //   .then(response => response.json())
-    //   .then(result => {
-    //     console.log(result.data);
-    //     setRestaurantData(result.data);
-    //   });
   };
 
   /* 제거 예정  */
@@ -183,23 +147,21 @@ const ResultList = () => {
               setSearchParams={setSearchParams}
             />
           </ul>
-          <div className="pagingContainer">
+          {/* <div className="pagingContainer">
             <p className="paging">
               <button onClick={movePages} className="pagingLink">
                 1
               </button>
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="searchFilterWrap">
         <SearchBox
-          // handleChangeLink={handleChangeLink}
           handleClickRadioButton={handleClickRadioButton}
           searchData={searchData}
           restaurantData={restaurantData}
           setRestaurantData={setRestaurantData}
-          // onCheckedElement={onCheckedElement}
           onCheckedPriceRange={onCheckedPriceRange}
           onCheckedCategory={onCheckedCategory}
           checkedList={checkedList}
