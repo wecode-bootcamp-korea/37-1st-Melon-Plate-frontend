@@ -1,0 +1,39 @@
+@import '../../styles/variables.scss';
+
+.storeList {
+  .storeListContainer {
+    position: absolute;
+    top: 0;
+    margin-top: 80px;
+    width: 100%;
+    text-align: center;
+    background-color: white;
+
+    .storeListTitle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      height: 100px;
+
+      span:nth-child(1) {
+        font-size: 24px;
+        color: $melonColor1;
+        font-weight: 600;
+      }
+
+      span:nth-child(2) {
+        font-size: 16px;
+        color: gray;
+      }
+    }
+
+    .menuItemList {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding: 10px;
+    }
+  }
+}
