@@ -26,21 +26,17 @@ const TestLogin = ({ currentId }) => {
       },
       body: JSON.stringify(inputValues),
     })
-      .then(response => {
-        if (response.ok === true) {
-          return response.json();
-        } else {
-          throw new Error('응답을 받을수 없음!');
-        }
-      })
-      .catch(error => {
-        alert('아이디 또는 비밀번호가 틀렸습니다.');
-      })
+      .then(response => response.json())
+
       .then(data => {
-        localStorage.setItem('TOKEN', data.token);
-        if (currentId === '사장님로그인') {
+        // return console.log(data);
+        localStorage.setItem('TOKEN', data.accessToken);
+        localStorage.setItem('nickname', data.nickname);
+        if (currentId === '사장님로그인' && data.admin === 'TRUE') {
           navigate('/adminpage');
-        } else navigate('/');
+        } else if (currentId === '로그인' && data.admin === '') {
+          navigate('/');
+        }
       });
   };
   return (
