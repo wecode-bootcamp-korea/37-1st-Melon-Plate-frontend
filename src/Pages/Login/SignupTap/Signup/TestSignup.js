@@ -70,7 +70,7 @@ const TestSignup = ({ currentId }) => {
         alert('회원가입 실패');
       })
       .then(data => {
-        if (data.message === 'login success') {
+        if (data.message === `Welcome ${nickname}!`) {
           localStorage.setItem('TOKEN', data.token);
           alert('회원가입이 완료되었습니다.');
         }
