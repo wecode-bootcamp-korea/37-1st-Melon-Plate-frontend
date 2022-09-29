@@ -5,37 +5,45 @@ import './ReviewList.scss';
 
 const ReviewList = () => {
   const [data, setData] = useState([]);
+  const Token = localStorage.getItem('TOKEN');
   const filterItemIncrease = event => {
-    const priceSorting = [...data];
-    const priceCompare = key => (a, b) => {
+    const rateSorting = [...data];
+    const rateCompare = key => (a, b) => {
       return b[key] - a[key];
     };
-    priceSorting.sort(priceCompare('rate'));
-    setData(priceSorting);
+    rateSorting.sort(rateCompare('rate'));
+    setData(rateSorting);
   };
   const filterItemIncreaseReverse = event => {
-    const priceSorting = [...data];
-    const priceCompare = key => (a, b) => {
+    const rateSorting = [...data];
+    const rateCompare = key => (a, b) => {
       return a[key] - b[key];
     };
-    priceSorting.sort(priceCompare('rate'));
-    setData(priceSorting);
+    rateSorting.sort(rateCompare('rate'));
+    setData(rateSorting);
   };
   const resetSort = async () => {
-    await fetch('/Mock/Mock.json')
+    await fetch('http://192.168.215.82:3000/detail/10/reviews', {
+      method: 'GET',
+      headers: { authorization: Token },
+    })
       .then(res => res.json())
       .then(res => setData(res));
   };
 
   useEffect(() => {
-    fetch('/Mock/Mock.json')
+    fetch('http://192.168.215.82:3000/detail/10/reviews', {
+      method: 'GET',
+      headers: { authorization: Token },
+    })
       .then(res => res.json())
       .then(res => setData(res));
   }, []);
+  console.log(data);
   return (
     <div className="reviewList">
       <ReviewListTop
-        reviewCount={data?.reviewCount}
+        reviewCount={data[0]?.reviewCount}
         filterItemIncrease={filterItemIncrease}
         filterItemIncreaseReverse={filterItemIncreaseReverse}
         resetSort={resetSort}

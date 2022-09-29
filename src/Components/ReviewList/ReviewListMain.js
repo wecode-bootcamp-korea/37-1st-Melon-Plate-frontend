@@ -11,6 +11,7 @@ const reviewListMain = data => {
     reviews,
   } = data;
   const date = new Date(reviewDate);
+  const ratePoint = Math.floor(rate);
   return (
     <div className="reviewListMain">
       <span className="mainLeft">
@@ -46,7 +47,7 @@ const reviewListMain = data => {
           className="mainRightMelon"
           alt="melonImg"
         />
-        <div className="mainRightPoint">{rate}</div>
+        <div className="mainRightPoint">{ratePoint}</div>
       </span>
     </div>
   );
