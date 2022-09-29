@@ -23,8 +23,8 @@ function Router() {
         <Route path="/logintap" element={<LoginTap />} />
         <Route path="/reslist" element={<StoreList />} />
         <Route path="/resultlist" element={<ResultList />} />
-        <Route path="/detail" element={<Detail />} />
-        <Route path="/detail/write" element={<ReviewWrite />} />
+        <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/detail/write/:name" element={<ReviewWrite />} />
         <Route path="/admin/edit/:id" element={<AdminEdit />} />
         <Route path="/admin/create" element={<AdminCreate />} />
         <Route path="/mypage" element={<MyPage />} />

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SearchedResult from './SearchedResult';
+import API from '../../config';
 import './SearchForm.scss';
 
 const SearchForm = () => {
@@ -15,12 +16,14 @@ const SearchForm = () => {
 
   const termSubmit = e => {
     e.preventDefault();
-    navigate(`/resultlist?query=${searchTerm}`);
+    navigate(
+      `/resultlist?query=${searchTerm}&filter=&price=&location=&category=&menu=&limit=&offDay`
+    );
   };
 
   useEffect(() => {
     fetch(
-      `http://172.20.10.11:3000/main/search?query=${searchTerm}&filter=&price=&location=&category=&menu=&offDay=&limit=`,
+      `${API.resultList}?query=${searchTerm}&filter=&price=&location=&category=&menu=&limit=&offDay`,
       {
         method: 'GET',
         headers: {
@@ -53,7 +56,7 @@ const SearchForm = () => {
 
         <button className="searchButton">검색</button>
       </form>
-      {/* <SearchedResult data={data} accessToken={accessToken} /> */}
+      {/* {data && <SearchedResult data={data} accessToken={accessToken} />} */}
     </div>
   );
 };

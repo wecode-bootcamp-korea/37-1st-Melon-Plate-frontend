@@ -47,6 +47,7 @@
       text-align: center;
       border: 1px solid #bbb;
       border-radius: 6px;
+      cursor: pointer;
     }
 
     &:checked + label {
@@ -75,12 +76,14 @@
       color: #fff;
       border: 1px solid #fff;
       border-radius: 6px;
+      cursor: pointer;
     }
 
     .cancleBtn {
       background: #aaa;
       color: #fff;
       border: 1px solid #aaa;
+      cursor: pointer;
     }
   }
 }

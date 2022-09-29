@@ -1,172 +1,183 @@
-.gray {
-  color: #9b9b9b;
-}
+.detailWrap {
+  padding-top: 60px;
 
-.top {
-  height: 360px;
-  display: flex;
-  justify-content: center;
-  overflow-x: auto;
-}
+  .gray {
+    color: #9b9b9b;
+  }
 
-.storeInfo {
-  margin: 0 auto;
-  width: 800px;
+  .top {
+    height: 360px;
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 
-  .storeInfoHead {
-    height: 120px;
-    margin-bottom: 30px;
-    border-bottom: 1px solid gainsboro;
+    &.top::-webkit-scrollbar {
+      display: none;
+    }
+  }
 
-    .storeInfoWrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      justify-content: space-between;
+  .storeInfo {
+    margin: 0 auto;
+    width: 800px;
 
-      .storeInfoLeft {
-        margin-left: 0px;
+    .storeInfoHead {
+      height: 120px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid gainsboro;
 
-        .storeName {
-          font-size: 35px;
+      .storeInfoWrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        justify-content: space-between;
+
+        .storeInfoLeft {
+          margin-left: 0px;
+
+          .storeName {
+            font-size: 35px;
+          }
+
+          .storeStar {
+            font-size: 30px;
+            color: #76ba99;
+            padding-left: 10px;
+          }
+
+          .storeBranch {
+            padding: 5px 0 15px;
+            font-size: 17px;
+            color: #9b9b9b;
+          }
         }
 
-        .storeStar {
-          font-size: 30px;
-          color: #76ba99;
-          padding-left: 10px;
-        }
-
-        .storeBranch {
-          padding: 5px 0 15px;
-          font-size: 17px;
+        .storeInfoRight {
+          display: flex;
+          justify-content: space-evenly;
+          width: 160px;
           color: #9b9b9b;
+
+          .button {
+            display: block;
+            cursor: pointer;
+
+            &.button:hover {
+              color: #76ba99;
+            }
+
+            &.likeButton:hover .melonIconBlack {
+              display: none;
+            }
+
+            &.likeButton:hover .melonIconColor {
+              display: block;
+            }
+
+            i {
+              display: block;
+              padding-bottom: 10px;
+              font-size: 35px;
+              text-align: center;
+            }
+
+            .melonIconBlack,
+            .melonIconColor {
+              display: flex;
+              width: 36px;
+              margin: 0 auto;
+              padding: 0 0 5px 0;
+            }
+            .melonIconColor {
+              display: none;
+            }
+          }
+
+          .reviewButton {
+            text-decoration: none;
+            color: #9b9b9b;
+            cursor: pointer;
+          }
         }
       }
 
-      .storeInfoRight {
+      .storeStatus {
         display: flex;
-        justify-content: space-evenly;
-        width: 160px;
+        justify-content: space-between;
+        width: 110px;
+        padding: 10px 0 0 0;
+        margin-right: 30px;
+        white-space: normal;
+        font-size: 15px;
         color: #9b9b9b;
 
-        .button {
-          display: block;
-          cursor: pointer;
-
-          &.button:hover {
-            color: #76ba99;
-          }
-
-          &.likeButton:hover .melonIconBlack {
-            display: none;
-          }
-
-          &.likeButton:hover .melonIconColor {
-            display: block;
-          }
-
-          i {
-            display: block;
-            padding-bottom: 10px;
-            font-size: 35px;
-            text-align: center;
-          }
-
-          .melonIconBlack,
-          .melonIconColor {
-            display: flex;
-            width: 36px;
-            margin: 0 auto;
-            padding: 0 0 5px 0;
-          }
-          .melonIconColor {
-            display: none;
-          }
+        .view::before {
+          content: '\f06e';
+          font-family: 'Font Awesome 6 Free';
+          padding-right: 4px;
         }
 
-        .reviewButton {
-          text-decoration: none;
-          color: #9b9b9b;
+        .review::before {
+          content: '\f044';
+          font-family: 'Font Awesome 6 Free';
+          padding-right: 4px;
         }
-      }
-    }
-
-    .storeStatus {
-      display: flex;
-      justify-content: space-between;
-      width: 110px;
-      padding: 10px 0 0 0;
-      margin-right: 30px;
-      white-space: normal;
-      font-size: 15px;
-      color: #9b9b9b;
-
-      .view::before {
-        content: '\f06e';
-        font-family: 'Font Awesome 6 Free';
-        padding-right: 4px;
-      }
-
-      .review::before {
-        content: '\f044';
-        font-family: 'Font Awesome 6 Free';
-        padding-right: 4px;
       }
     }
   }
-}
 
-.storeData {
-  width: 60%;
-  padding: 20px 0;
+  .storeData {
+    width: 60%;
+    padding: 20px 0;
 
-  .storeDataTable {
-    width: 100%;
+    .storeDataTable {
+      width: 100%;
 
-    .tableTh {
-      padding: 10px;
-      text-align: left;
-    }
+      .tableTh {
+        padding: 10px;
+        text-align: left;
+      }
 
-    .tableTd {
-      padding: 10px;
+      .tableTd {
+        padding: 10px;
 
-      .tableTdUl {
-        display: flex;
-        flex-direction: column;
-
-        .tableTdUlLi {
+        .tableTdUl {
           display: flex;
-          flex-direction: row;
-          justify-content: start;
-          padding: 15px 0 5px;
-          border-bottom: 1px solid gainsboro;
+          flex-direction: column;
 
-          .munuName {
-            flex: 1;
-            display: inline-block;
-            margin-right: 30px;
-            white-space: normal;
+          .tableTdUlLi {
+            display: flex;
+            flex-direction: row;
+            justify-content: start;
+            padding: 15px 0 5px;
+            border-bottom: 1px solid gainsboro;
+
+            .munuName {
+              flex: 1;
+              display: inline-block;
+              margin-right: 30px;
+              white-space: normal;
+            }
           }
         }
       }
     }
   }
-}
 
-.updateDateWrap {
-  display: flex;
-  flex-direction: row-reverse;
-  width: 100%;
-  margin: 20px auto;
-  padding: 20px 0;
-  border-bottom: 1px solid gainsboro;
-  text-align: left;
+  .updateDateWrap {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px 0;
+    border-bottom: 1px solid gainsboro;
+    text-align: left;
 
-  p {
-    width: 130px;
-    font-size: 13px;
-    color: #9b9b9b;
+    p {
+      width: 130px;
+      font-size: 13px;
+      color: #9b9b9b;
+    }
   }
 }

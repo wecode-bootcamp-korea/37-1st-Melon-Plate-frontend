@@ -8,10 +8,14 @@ const StoreList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const menuListClick = (address, menu, limit, category) => {
-    searchParams.set('address', address);
+    searchParams.set('location', address);
     searchParams.set('menu', menu);
     searchParams.set('category', category);
     searchParams.set('limit', limit);
+    searchParams.set('query', '');
+    searchParams.set('offDay', '');
+    searchParams.set('price', '');
+    searchParams.set('filter', '');
     setSearchParams(searchParams);
     navigate(`/resultlist?${searchParams.toString()}`);
   };
@@ -66,7 +70,7 @@ const STORE_SORT = [
   },
 
   {
-    address: '논현',
+    address: '역삼',
     menu: '파스타',
     category: '',
     limit: '10',
@@ -74,7 +78,7 @@ const STORE_SORT = [
     description: '데이트 장소를 찾고 있나요?',
   },
   {
-    address: '청담',
+    address: '선릉',
     menu: '',
     category: '주점',
     limit: '20',
@@ -82,7 +86,7 @@ const STORE_SORT = [
     description: '불금을 즐기고 싶으신 분',
   },
   {
-    address: '신사',
+    address: '강남',
     menu: '돈까스',
     category: '',
     limit: '10',

@@ -4,6 +4,7 @@ import ModalPortal from './../../Portal';
 import ProfileEdit from './ProfileEdit';
 import LikedItem from './LikedItem';
 import ReviewedItem from './ReviewedItem';
+import API from '../../config';
 import './MyPage.scss';
 
 const MyPage = () => {
@@ -15,7 +16,7 @@ const MyPage = () => {
   const [editClicked, setEditClicked] = useState(false);
 
   useEffect(() => {
-    fetch('http://192.168.215.82:3000/user/profile', {
+    fetch(`${API.profile}`, {
       method: 'GET',
       headers: {
         authorization: accessToken,
@@ -33,6 +34,7 @@ const MyPage = () => {
 
   const logOutClick = () => {
     localStorage.removeItem('TOKEN');
+    localStorage.removeItem('nickname');
     navigate('/');
   };
 

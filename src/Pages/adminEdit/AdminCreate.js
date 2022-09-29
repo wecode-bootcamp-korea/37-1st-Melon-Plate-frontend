@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FoodMenu from './FoodMenu';
 import { INPUT_VALUES, CLOSED_DAY, CATEGORIES } from './adminEditData';
+import API from '../../config';
 import './AdminEdit.scss';
 
 const AdminCreate = () => {
@@ -90,8 +91,8 @@ const AdminCreate = () => {
   adminEditForm.append('category_id', category_id);
   adminEditForm.append('food_menu', JSON.stringify(menus));
 
-  const editSaveClick = () => {
-    fetch('http://192.168.215.82:3000/store', {
+  const editSaveClick = async () => {
+    await fetch(`${API.adminEdit}`, {
       method: 'POST',
       headers: {
         enctype: 'multipart/form-data',
@@ -101,7 +102,8 @@ const AdminCreate = () => {
     })
       .then(res => res.json())
       .then(result => console.log(result));
-    navigate('/adminpage');
+    await navigate('/adminpage');
+    window.location.reload();
   };
 
   return (
@@ -158,7 +160,7 @@ const AdminCreate = () => {
           <textarea
             onChange={saveInput}
             name="description"
-            placeholder="가게에 대해 설명해주세요 (최대 1000자)"
+            placeholder="가게에 대해 설명해주세요 (최대 1,000자)"
             maxLength="1000"
           />
         </div>

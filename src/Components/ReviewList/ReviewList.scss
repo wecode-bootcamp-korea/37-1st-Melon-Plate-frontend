@@ -89,7 +89,7 @@
         margin: 20px 0px;
 
         img {
-          width: 70px;
+          height: 100px;
           margin: 10px;
           object-fit: cover;
         }
@@ -107,6 +107,7 @@
         right: 15px;
         color: white;
         font-size: 15px;
+        text-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
       }
     }
 

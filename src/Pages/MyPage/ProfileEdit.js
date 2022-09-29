@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import API from '../../config';
 import './ProfileEdit.scss';
 
 const ProfileEdit = ({ setEditClicked, user }) => {
@@ -41,7 +42,7 @@ const ProfileEdit = ({ setEditClicked, user }) => {
 
   const profileEditSave = e => {
     e.preventDefault();
-    fetch('http://192.168.215.82:3000/user/profile', {
+    fetch(`${API.profile}`, {
       method: 'PATCH',
       headers: {
         enctype: 'multipart/form-data',
