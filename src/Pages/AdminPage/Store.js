@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Store.scss';
 
-const Store = ({ TEXT }) => {
+const Store = ({ text }) => {
   const {
     image,
     name,
@@ -13,7 +13,7 @@ const Store = ({ TEXT }) => {
     closed_time,
     closed_day,
     category_id,
-  } = TEXT;
+  } = text;
 
   return (
     <div className="store">
@@ -22,7 +22,7 @@ const Store = ({ TEXT }) => {
         <div className="storeInfo">
           <div className="mainInfo">
             <span className="title">{name}</span>
-            {TEXT.rate !== 0 ? (
+            {text.rate !== 0 ? (
               <span className="grade">{rate}</span>
             ) : (
               <span className='="grade'> 평가가 없습니다.</span>
@@ -39,7 +39,7 @@ const Store = ({ TEXT }) => {
         </div>
       </div>
       <div className="modifyButton">
-        <Link key={TEXT.id} to={`/admin/edit/${TEXT.id}`}>
+        <Link key={text.id} to={`/admin/edit/${text.id}`}>
           <button className="edit">수정하기</button>
         </Link>
       </div>
