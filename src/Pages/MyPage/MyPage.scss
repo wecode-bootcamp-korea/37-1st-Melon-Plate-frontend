@@ -1,0 +1,127 @@
+@import '../../styles/variables.scss';
+
+.myPage {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+
+  .myPageUserInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+    width: 80%;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+
+    .userProfileImg {
+      width: 100px;
+      height: 100px;
+      border-radius: 50px;
+      border: 5px solid $melonColor3;
+    }
+
+    .userProfileText {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      .userNickname {
+        font-size: 20px;
+      }
+    }
+
+    .buttonSet {
+      display: flex;
+      gap: 10px;
+
+      .profileEditBtn {
+        background-color: $melonColor1;
+        color: white;
+        height: 40px;
+        padding: 5px 20px;
+        border-radius: 14px;
+
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+
+      .logOutBtn {
+        background-color: lightgray;
+        color: white;
+        height: 40px;
+        padding: 5px 20px;
+        border-radius: 14px;
+
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+
+  .myPageMiniTitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: $melonColor1;
+    padding: 10px 0;
+    display: flex;
+    width: 80%;
+  }
+
+  .myPageBox {
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-evenly;
+    align-items: center;
+    margin-top: 80px;
+    width: 100%;
+
+    .myPageTitle {
+      font-size: 24px;
+      margin-bottom: 20px;
+      font-weight: 600;
+      display: flex;
+    }
+    .myActions {
+      display: flex;
+      width: 80%;
+      margin-top: 20px;
+
+      .myActionBox {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        .myPageItemList {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          align-items: center;
+          width: 95%;
+          padding: 5px;
+          border: 1px solid #eaeaea;
+          border-radius: 12px;
+        }
+      }
+      .myActionBox2 {
+        display: flex;
+        flex-direction: column;
+        flex: 2;
+
+        .myPageItemList {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          align-items: center;
+          width: 95%;
+          padding: 5px;
+          border: 1px solid #eaeaea;
+          border-radius: 12px;
+        }
+      }
+    }
+  }
+}

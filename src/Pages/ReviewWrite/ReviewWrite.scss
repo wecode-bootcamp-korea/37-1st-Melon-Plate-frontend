@@ -1,0 +1,233 @@
+.reviewWrite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 101px;
+
+  .reviewWritePage {
+    display: flex;
+    flex-direction: column;
+    width: 678px;
+
+    .store {
+      height: 40.93px;
+      margin-bottom: 20px;
+
+      .storeName {
+        color: #ced89e;
+        font-size: 30px;
+      }
+    }
+
+    .melon {
+      height: 206px;
+      border: 1px solid gainsboro;
+      border-radius: 5px;
+
+      .point {
+        display: flex;
+        align-items: center;
+        position: relative;
+        height: 36px;
+        width: 175px;
+        margin: 10px auto;
+        margin-bottom: 20px;
+
+        .pointResultSpan {
+          display: flex;
+          justify-content: space-between;
+          position: absolute;
+          left: 0;
+          transition: width 0.3s;
+          overflow: hidden;
+
+          .melonImg {
+            width: 30px;
+            margin-left: 5px;
+          }
+        }
+
+        .pointResult {
+          display: flex;
+          justify-content: space-between;
+          position: relative;
+
+          .melonImg {
+            width: 30px;
+            margin-left: 5px;
+          }
+        }
+
+        input {
+          position: absolute;
+          left: 0;
+          margin-left: -5px;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          cursor: pointer;
+          z-index: 1;
+        }
+      }
+
+      .review {
+        position: relative;
+        margin-left: 10px;
+        height: 150px;
+        width: 100%;
+
+        .reviewInput {
+          height: 90%;
+          width: 90%;
+          border: none;
+          resize: none;
+          outline-color: white;
+        }
+
+        .span {
+          position: absolute;
+          right: 20px;
+          bottom: -5px;
+          color: gray;
+        }
+      }
+    }
+
+    .photo {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+      width: 676px;
+
+      .photoInner {
+        display: flex;
+        position: relative;
+        margin-top: 20px;
+        margin-right: 9px;
+        margin-bottom: 40px;
+        width: 100%;
+        height: 100%;
+
+        .photoInnerLabel {
+          position: relative;
+          margin-right: 9px;
+          margin-bottom: 9px;
+
+          .photoInnerLength {
+            position: absolute;
+            bottom: 2px;
+            left: 60px;
+            color: gray;
+          }
+        }
+
+        .photoInnerPhotos {
+          display: flex;
+          flex-wrap: wrap;
+          margin-left: 9px;
+          margin-bottom: 9px;
+
+          li {
+            position: relative;
+            margin-right: 9px;
+            margin-bottom: 9px;
+            &:hover .photoInnerPhotosBtnBox {
+              display: block;
+            }
+
+            .photoInnerPhotosImg {
+              width: 89px;
+              height: 89px;
+              margin: 0px, 9px, 9px, 0px;
+            }
+
+            .photoInnerPhotosBtn {
+              position: absolute;
+              left: 75px;
+              font-size: 20px;
+              color: azure;
+              z-index: 1;
+            }
+            .photoInnerPhotosBtnBox {
+              display: none;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 89px;
+              height: 89px;
+              background-color: rgba(0, 0, 0, 0.45);
+            }
+          }
+        }
+
+        .photoInnerInput {
+          display: none;
+        }
+
+        .photoInnerInputFile {
+          position: relative;
+          width: 89px;
+          height: 89px;
+          border: 1px dotted darkblue;
+          font-size: 50px;
+          color: gainsboro;
+
+          i {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+          }
+        }
+      }
+    }
+
+    .result {
+      display: flex;
+      justify-content: space-between;
+
+      .btn {
+        border: 1px solid gray;
+        padding: 15px 20px;
+        border-radius: 50px;
+        font-size: 16px;
+        color: gainsboro;
+      }
+
+      .btnChange {
+        padding: 15px 20px;
+        border: 1px solid #76ba99;
+        border-radius: 50px;
+        font-size: 16px;
+        color: #76ba99;
+      }
+
+      .btnCancel {
+        padding: 15px 50px;
+        border: 1px solid gray;
+        border-radius: 50px;
+        font-size: 16px;
+        color: gray;
+      }
+
+      .btnReview {
+        padding: 15px 30px;
+        margin-left: 15px;
+        border-radius: 50px;
+        background-color: gainsboro;
+        font-size: 16px;
+        border: 1px solid gainsboro;
+        color: white;
+      }
+
+      .btnReviewChange {
+        padding: 15px 30px;
+        margin-left: 15px;
+        background-color: #76ba99;
+        color: white;
+        border-radius: 50px;
+        border: 1px solid #76ba99;
+        font-size: 16px;
+      }
+    }
+  }
+}

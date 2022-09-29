@@ -1,12 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './SearchedResultItem.scss';
 
-const SearchedResultItem = () => {
+const SearchedResultItem = ({ data }) => {
   return (
-    <div className="searchedResultItem">
-      <span>식당 이름 </span>
-      <span>식당 지역 - 음식 종류 </span>
-    </div>
+    <Link to={`/detail/${data.id}`}>
+      <div className="searchedResultItem">
+        <span>{data?.name}</span>
+        <span>
+          {data?.category} - {data?.address}
+        </span>
+      </div>
+    </Link>
   );
 };
 
