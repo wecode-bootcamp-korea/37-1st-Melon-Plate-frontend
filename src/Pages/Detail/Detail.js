@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import Slide from './Slide';
-import './Detail.scss';
 import ReviewList from '../../Components/ReviewList/ReviewList';
+import './Detail.scss';
 
 const Detail = () => {
   const [restaurantData, setRestaurantData] = useState({});
+  const accessToken = localStorage.getItem('TOKEN');
+  const params = useParams();
 
   useEffect(() => {
     return () => {
-      fetch(`http://192.168.215.82:8000/detail/10`, {
-        method: 'GET',
+      fetch(`http://192.168.215.82:3000/detail/${params.id}`, {
+        method: 'get',
         headers: {
-          authorization:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcl9pZCI6InJsYWRtZHRuIiwiYWRtaW4iOiJUUlVFIiwiaWF0IjoxNjY0MjQ1NDU3fQ.HQhElcCgI6HrXSUoXD-3Q3MoruW2PzRJWn8KD1uORrs',
+          authorization: accessToken,
         },
       })
         .then(response => response.json())
@@ -22,10 +24,12 @@ const Detail = () => {
     };
   }, []);
 
+  const createDate = new Date(restaurantData.create_at);
+
   return (
     <div className="detailWrap">
       <div className="top">
-        <Slide />
+        <Slide restaurantDataImage={restaurantData.reviewImg} />
       </div>
       <div className="storeInfo">
         <div className="storeInfoHead">
@@ -35,12 +39,25 @@ const Detail = () => {
               <span className="storeStar">{restaurantData.likes_count}</span>
             </div>
             <div className="storeInfoRight">
-              <button type="" className="reviewButton button">
+              <Link
+                to={`/detail/write/${restaurantData.name}`}
+                className="reviewButton button"
+              >
                 <i className="fa-regular fa-pen-to-square" />
                 <span>리뷰 쓰기</span>
-              </button>
+              </Link>
+
               <button type="" className="likeButton button">
-                <i className="fa-star fa-regular" />
+                <img
+                  src="/images/07E08BB9-5390-41B4-9270-DC83C7D8ACE2.jpeg"
+                  alt="melonIcon"
+                  className="melonIconBlack"
+                />
+                <img
+                  src="/images/20596969-F8C3-4D15-9D89-16ECCE2090F5.jpeg"
+                  alt="melonIcon"
+                  className="melonIconColor"
+                />
                 <span>가고 싶다</span>
               </button>
             </div>
@@ -117,6 +134,20 @@ const Detail = () => {
           <div>
             <ReviewList />
           </div>
+        </div>
+
+        <div className="updateDateWrap">
+          <p>
+            업데이트 :
+            {createDate.getFullYear() +
+              '-' +
+              (createDate.getMonth() + 1) +
+              '-' +
+              createDate.getDate()}
+          </p>
+        </div>
+        <div>
+          <ReviewList />
         </div>
       </div>
     </div>
