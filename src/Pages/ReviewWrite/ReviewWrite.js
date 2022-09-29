@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Melon from './Melon';
 import './ReviewWrite.scss';
 
@@ -32,7 +32,7 @@ const ReviewWrite = () => {
   const formGo = async e => {
     e.preventDefault();
     localStorage.removeItem('text');
-    await fetch(`http://192.168.239.167:8000/review/new/1`, {
+    await fetch(`http://192.168.239.167:3000/review/new/1`, {
       method: 'POST',
       headers: {
         authorization: Token,
@@ -41,6 +41,7 @@ const ReviewWrite = () => {
       cache: 'no-cache',
       body: formData,
     }).then(res => res.json());
+    Navigate('/detail');
   };
   const textCount = e => {
     setText(e.target.value);
