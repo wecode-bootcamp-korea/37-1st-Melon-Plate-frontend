@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Slide from './Slide';
 import ReviewList from '../../Components/ReviewList/ReviewList';
 import './Detail.scss';
 
 const Detail = () => {
   const [restaurantData, setRestaurantData] = useState({});
-
-  const hours = String();
 
   useEffect(() => {
     return () => {
@@ -39,19 +38,31 @@ const Detail = () => {
               <span className="storeStar">{restaurantData.likes_count}</span>
             </div>
             <div className="storeInfoRight">
-              <button type="" className="reviewButton button">
+              {/* <button]
+                onClick[]={reviewWriteClick}
+                type="button"
+                className="reviewButton button"
+              >
                 <i className="fa-regular fa-pen-to-square" />
                 <span>리뷰 쓰기</span>
-              </button>
+              </button> */}
+              <Link
+                to={`/detail/write/${restaurantData.id}`}
+                className="reviewButton button"
+              >
+                <i className="fa-regular fa-pen-to-square" />
+                <span>리뷰 쓰기</span>
+              </Link>
+
               <button type="" className="likeButton button">
                 {/* <i className="fa-star fa-regular" /> */}
                 <img
-                  src="images/07E08BB9-5390-41B4-9270-DC83C7D8ACE2.jpeg"
+                  src="/images/07E08BB9-5390-41B4-9270-DC83C7D8ACE2.jpeg"
                   alt="melonIcon"
                   className="melonIconBlack"
                 />
                 <img
-                  src="images/20596969-F8C3-4D15-9D89-16ECCE2090F5.jpeg"
+                  src="/images/20596969-F8C3-4D15-9D89-16ECCE2090F5.jpeg"
                   alt="melonIcon"
                   className="melonIconColor"
                 />
