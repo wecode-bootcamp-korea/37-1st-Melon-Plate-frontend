@@ -4,6 +4,7 @@ import MenuDropDown from './MenuDropDown';
 import ProfileModal from './ProfileModal';
 import ModalPortal from '../../Portal';
 import './Header.scss';
+import SearchForm from '../../Pages/Main/SearchForm';
 
 const Header = () => {
   const location = useLocation();
@@ -29,7 +30,7 @@ const Header = () => {
           />
         </div>
       </Link>
-      {location.pathname !== '/' && <div>searchform</div>}
+      {location.pathname !== '/' && <SearchForm />}
       <div className="headerLeft">
         <img
           className="headerCategories"

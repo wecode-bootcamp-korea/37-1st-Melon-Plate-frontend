@@ -6,6 +6,7 @@ import StoreList from './Pages/ResList/StoreList';
 import ResultList from './Pages/ResultList/ResultList';
 import Detail from './Pages/Detail/Detail';
 import ReviewWrite from './Pages/ReviewWrite/ReviewWrite';
+import MyPage from './Pages/MyPage/MyPage';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import AdminEdit from './Pages/adminEdit/AdminEdit';
@@ -26,6 +27,7 @@ function Router() {
         <Route path="/detail/write" element={<ReviewWrite />} />
         <Route path="/admin/edit/:id" element={<AdminEdit />} />
         <Route path="/admin/create" element={<AdminCreate />} />
+        <Route path="/mypage" element={<MyPage />} />
         <Route path="/adminpage" element={<AdminPage />} />
         <Route path="/SignupTap" element={<SignupTap />} />
       </Routes>
