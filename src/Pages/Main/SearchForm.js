@@ -19,14 +19,17 @@ const SearchForm = () => {
   };
 
   useEffect(() => {
-    fetch(`http://172.20.10.11:8000/search?query=${searchTerm}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-      },
-    })
+    fetch(
+      `http://172.20.10.11:3000/main/search?query=${searchTerm}&filter=&price=&location=&category=&menu=&offDay=&limit=`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+      }
+    )
       .then(res => res.json())
-      .then(result => setData(result.data));
+      .then(result => (console.log(result.data), setData(result.data)));
   }, [searchTerm]);
 
   return (

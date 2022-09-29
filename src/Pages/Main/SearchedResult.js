@@ -16,13 +16,18 @@ const SearchedResult = ({ data, accessToken }) => {
 
   return (
     <div className="searchedResult">
-      {!accessToken ? (
-        data?.map(data => (
-          <SearchedResultItem data={data} key={data.id} onClick={onItemClick} />
-        ))
-      ) : (
-        <SearchedResult data={data[random]} onClick={nonMemberClick} />
-      )}
+      {
+        accessToken
+          ? data?.map(data => (
+              <SearchedResultItem
+                data={data}
+                key={data?.id}
+                onClick={onItemClick}
+              />
+            ))
+          : null
+        // <SearchedResult data={data[random]} onClick={nonMemberClick} />
+      }
     </div>
   );
 };
