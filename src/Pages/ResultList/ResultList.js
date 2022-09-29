@@ -15,12 +15,13 @@ const ResultList = () => {
   const navigate = useNavigate();
   const params = window.location.search;
   const accessToken = localStorage.getItem('TOKEN');
+  const params2 = `&location=&menu=&limit=&filter=&offDay=&price=`;
 
   console.log('*****', categoryValue, priceRangeValue); //
 
   const getFetchData = () => {
     fetch(
-      `http://192.168.215.167:3000/main/search${params}&location=&menu=&limit=&filter=&offDay=&price=`,
+      `http://192.168.215.167:3000/main/search${params}${params2}`,
       {
         // authorization: accessToken,
         method: 'GET',
@@ -61,6 +62,7 @@ const ResultList = () => {
     //   //.then(result => console.log(result.data));
     //   .then(result => setRestaurantData(result.data));
     getFetchData();
+    searchParams.delete('query');
     navigate(`/resultlist?${searchParams.toString()}`);
   };
 
