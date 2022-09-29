@@ -7,10 +7,13 @@ import ReviewList from '../../Components/ReviewList/ReviewList';
 
 const Detail = () => {
   const [restaurantData, setRestaurantData] = useState({});
+  const accessToken = localStorage.getItem('TOKEN');
   const restaurantId = '10';
+  const params = window.location.search;
 
   useEffect(() => {
     return () => {
+      // fetch(`http://192.168.215.82:3000/detail/${params}`, {
       fetch(`http://192.168.215.82:3000/detail/10`, {
         method: 'get',
         headers: {
@@ -20,7 +23,6 @@ const Detail = () => {
       })
         .then(response => response.json())
         .then(result => {
-          // console.log(result);
           setRestaurantData(result);
         }, []);
     };
@@ -43,14 +45,6 @@ const Detail = () => {
               <span className="storeStar">{restaurantData.likes_count}</span>
             </div>
             <div className="storeInfoRight">
-              {/* <button]
-                onClick[]={reviewWriteClick}
-                type="button"
-                className="reviewButton button"
-              >
-                <i className="fa-regular fa-pen-to-square" />
-                <span>리뷰 쓰기</span>
-              </button> */}
               <Link
                 to={`/detail/write/${restaurantData.name}`}
                 className="reviewButton button"
@@ -60,7 +54,6 @@ const Detail = () => {
               </Link>
 
               <button type="" className="likeButton button">
-                {/* <i className="fa-star fa-regular" /> */}
                 <img
                   src="/images/07E08BB9-5390-41B4-9270-DC83C7D8ACE2.jpeg"
                   alt="melonIcon"
