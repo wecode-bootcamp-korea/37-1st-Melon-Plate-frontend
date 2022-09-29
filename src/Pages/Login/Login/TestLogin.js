@@ -37,10 +37,10 @@ const TestLogin = ({ currentId }) => {
         alert('아이디 또는 비밀번호가 틀렸습니다.');
       })
       .then(data => {
-        // if (data.message === 'login success') {
         localStorage.setItem('TOKEN', data.token);
-        navigate('/');
-        // }
+        if (currentId === '사장님로그인') {
+          navigate('/adminpage');
+        } else navigate('/');
       });
   };
   return (
@@ -60,9 +60,8 @@ const TestLogin = ({ currentId }) => {
             onChange={handleInput}
             name="password"
           />
-
           <button onClick={goToMain}>로그인</button>
-          <Link to="/signtap" className="link">
+          <Link to="/signuptap" className="link">
             아직 회원이 아니신가요? 회원가입
           </Link>
         </form>
