@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Slide from './Slide';
 import './Detail.scss';
+import ReviewList from '../../Components/ReviewList/ReviewList';
 
 const Detail = () => {
   const [restaurantData, setRestaurantData] = useState({});
@@ -113,6 +114,9 @@ const Detail = () => {
               </td>
             </tr>
           </table>
+          <div>
+            <ReviewList />
+          </div>
         </div>
       </div>
     </div>
