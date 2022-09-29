@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Slide from './Slide';
 import ReviewList from '../../Components/ReviewList/ReviewList';
 import './Detail.scss';
@@ -7,17 +7,14 @@ import './Detail.scss';
 const Detail = () => {
   const [restaurantData, setRestaurantData] = useState({});
   const accessToken = localStorage.getItem('TOKEN');
-  const restaurantId = '10';
-  const params = window.location.search;
+  const params = useParams();
 
   useEffect(() => {
     return () => {
-      // fetch(`http://192.168.215.82:3000/detail/${params}`, {
-      fetch(`http://192.168.215.82:3000/detail/10`, {
+      fetch(`http://192.168.215.82:3000/detail/${params.id}`, {
         method: 'get',
         headers: {
-          authorization:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcl9pZCI6InJsYWRtZHRuIiwiYWRtaW4iOiJUUlVFIiwiaWF0IjoxNjY0MjQ1NDU3fQ.HQhElcCgI6HrXSUoXD-3Q3MoruW2PzRJWn8KD1uORrs',
+          authorization: accessToken,
         },
       })
         .then(response => response.json())
@@ -28,8 +25,6 @@ const Detail = () => {
   }, []);
 
   const createDate = new Date(restaurantData.create_at);
-
-  console.log(restaurantData.reviewImg);
 
   return (
     <div className="detailWrap">
