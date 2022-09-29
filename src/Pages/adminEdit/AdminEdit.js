@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import FoodMenu from './FoodMenu';
-import { INPUT_VALUES, CLOSED_DAY, CATEGORIES } from './adminEditData';
 import './AdminEdit.scss';
 
 const AdminEdit = () => {

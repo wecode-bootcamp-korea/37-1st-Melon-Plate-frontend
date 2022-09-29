@@ -95,8 +95,7 @@ const AdminCreate = () => {
       method: 'POST',
       headers: {
         enctype: 'multipart/form-data',
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcl9pZCI6InJsYWRtZHRuIiwiYWRtaW4iOiJUUlVFIiwiaWF0IjoxNjY0MTkyODQ3fQ.qLNqJxeoxxqVjnvHqtAHRDtA5-C9e2k1zkeqyu2Ag6g',
+        authorization: accesToken,
       },
       body: adminEditForm,
     })
