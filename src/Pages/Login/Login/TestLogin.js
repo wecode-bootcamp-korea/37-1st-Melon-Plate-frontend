@@ -64,7 +64,7 @@ const TestLogin = ({ currentId }) => {
           />
 
           <button onClick={goToMain}>로그인</button>
-          <Link to="/signtap" className="link">
+          <Link to="/signuptap" className="link">
             아직 회원이 아니신가요? 회원가입
           </Link>
         </form>
