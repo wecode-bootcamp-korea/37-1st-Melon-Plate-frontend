@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './AdminPage.scss';
+import API from '../../config';
 import Store from './Store';
-// import { TEXT } from './TEXT';
+import './AdminPage.scss';
 
 const AdminPage = () => {
   //통신시 사용
+  const accessToken = localStorage.getItem('TOKEN');
   const [storeData, setStoreData] = useState([]);
 
   useEffect(() => {
-    fetch('http://192.168.215.82:3000/user/admin', {
+    fetch(`${API.adminPage}`, {
       method: 'GET',
       headers: {
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcl9pZCI6InJsYWRtZHRuIiwiYWRtaW4iOiJUUlVFIiwiaWF0IjoxNjY0MjQ1NDU3fQ.HQhElcCgI6HrXSUoXD-3Q3MoruW2PzRJWn8KD1uORrs',
+        authorization: accessToken,
+        'Content-Type': 'application/json;charset=utf-8',
       },
     })
       .then(response => {
@@ -32,7 +33,7 @@ const AdminPage = () => {
       <div className="myStoreList">내 가게 리스트</div>
       <div className="addInfo">
         <button className="add" onClick={goToAdminAdd}>
-          추가하기
+          새로운 가게 추가하기
         </button>
       </div>
       <div className="storeList">
@@ -42,9 +43,10 @@ const AdminPage = () => {
         })} */}
 
         {/* 통신시 확인하는 코드 */}
-        {storeData?.map(item => {
-          return <Store text={item} key={item.id} />;
-        })}
+        {storeData.length &&
+          storeData.map(item => {
+            return <Store text={item} key={item.id} />;
+          })}
       </div>
     </>
   );

@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import API from '../../../../config';
 import './Signup.scss';
 
 const TestSignup = ({ currentId }) => {
@@ -48,33 +49,37 @@ const TestSignup = ({ currentId }) => {
   if (currentId === '사장님회원가입') {
     userSignUp.append('admin', true);
   }
-
+  //
   const goToMain = e => {
     e.preventDefault();
 
-    fetch('http://192.168.215.82:3000/user/signup', {
+    fetch(`${API.signup}`, {
       method: 'POST',
       headers: {
         enctype: 'multipart/form-data',
       },
       body: userSignUp,
     })
-      .then(response => {
-        if (response.ok === true) {
-          return response.json();
-        } else {
-          throw new Error('응답을 받을수 없음!');
-        }
-      })
-      .catch(error => {
-        alert('회원가입 실패');
-      })
-      .then(data => {
-        if (data.message === `Welcome ${nickname}!`) {
-          localStorage.setItem('TOKEN', data.token);
-          alert('회원가입이 완료되었습니다.');
-        }
-      });
+      .then(response => response.json())
+      //   {
+      //   if (response.ok === true) {
+      //     return response.json();
+      //   } else {
+      //     throw new Error('응답을 받을수 없음!');
+      //   }
+      // })
+      // .catch(error => {
+      //   alert('회원가입 실패');
+      // })
+      .then(
+        data => console.log(data)
+        //    {
+        //   if (data.message === `Welcome ${nickname}!`) {
+        //     localStorage.setItem('TOKEN', data.token);
+        //     alert('회원가입이 완료되었습니다.');
+        //   }
+        // }
+      );
   };
 
   return (

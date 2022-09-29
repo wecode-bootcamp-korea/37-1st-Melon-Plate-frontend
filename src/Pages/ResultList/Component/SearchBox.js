@@ -1,7 +1,15 @@
 import React from 'react';
 import './SearchBox.scss';
 
-const SearchBox = ({ searchData, onCheckedPriceRange, onCheckedCategory }) => {
+const SearchBox = ({
+  searchData,
+  onCheckedPriceRange,
+  onCheckedCategory,
+  getFetchData,
+}) => {
+  const cancleBtn = () => {
+    getFetchData();
+  };
   return (
     <>
       <div className="searchFilterBox searchFilterMid">
@@ -55,7 +63,7 @@ const SearchBox = ({ searchData, onCheckedPriceRange, onCheckedCategory }) => {
         </p>
       </div>
       <form className="formWrap">
-        <button type="button" className="cancleBtn button">
+        <button type="button" onClick={cancleBtn} className="cancleBtn button">
           취소
         </button>
         <button type="button" onClick={searchData} className="submitBtn button">

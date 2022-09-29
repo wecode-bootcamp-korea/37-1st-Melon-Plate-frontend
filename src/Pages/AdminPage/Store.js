@@ -12,7 +12,7 @@ const Store = ({ text }) => {
     open_time,
     closed_time,
     closed_day,
-    category_id,
+    category,
   } = text;
 
   return (
@@ -25,7 +25,7 @@ const Store = ({ text }) => {
             {text.rate !== 0 ? (
               <span className="grade">{rate}</span>
             ) : (
-              <span className='="grade'> 평가가 없습니다.</span>
+              <span className='="grade'> 평가 없음</span>
             )}
           </div>
           <div className="info">
@@ -34,7 +34,7 @@ const Store = ({ text }) => {
             <p className="hour">오픈시간 : {open_time}</p>
             <p className="hour">마감시간 : {closed_time}</p>
             <p className="off ">휴뮤일 : {closed_day}</p>
-            <p className="off ">음식종류 : {category_id}</p>
+            <p className="off ">음식종류 : {category}</p>
           </div>
         </div>
       </div>

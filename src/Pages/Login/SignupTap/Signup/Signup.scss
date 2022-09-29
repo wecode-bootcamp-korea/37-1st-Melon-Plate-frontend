@@ -1,6 +1,6 @@
 .userInfo {
   position: absolute;
-  top: 55%;
+  top: 600px;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
@@ -46,12 +46,26 @@
   button {
     width: 100%;
     margin-top: 16px;
+    margin-bottom: 20px;
     padding: 14px;
     border: none;
     border-radius: 6px;
     background-color: #76ba99;
     color: rgb(255, 255, 255);
     cursor: pointer;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  a {
+    text-decoration: none;
+
+    &:visited {
+      color: gray;
+      text-decoration: none;
+    }
   }
 
   .link {

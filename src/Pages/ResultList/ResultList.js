@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate, useParams } from 'react-router-dom';
 import ResultListContents from './Component/ResultListContents';
 import SearchBox from './Component/SearchBox';
-import './Resultlist.scss';
+import API from '../../config';
+import './ResultList.scss';
 
 const ResultList = () => {
   const [restaurantData, setRestaurantData] = useState([]);
@@ -11,13 +12,12 @@ const ResultList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const navigate = useNavigate();
-  // const params = window.location.search;
-  const params = useParams();
+  const params = window.location.search;
+  // const params = useParams();
   const params2 = `&location=&menu=&limit=&filter=&offDay=&price=`;
   const accessToken = localStorage.getItem('TOKEN');
-
   const getFetchData = () => {
-    fetch(`http://192.168.215.167:3000/main/search${params.id}${params2}`, {
+    fetch(`${API.resultList}${params}`, {
       method: 'GET',
       headers: {
         authorization: accessToken,
@@ -31,9 +31,8 @@ const ResultList = () => {
   useEffect(() => getFetchData(), []);
   const searchData = event => {
     event.preventDefault();
-
     getFetchData();
-    searchParams.delete('query');
+    // searchParams.delete('query');
     navigate(`/resultlist?${searchParams.toString()}`);
   };
 
@@ -57,8 +56,8 @@ const ResultList = () => {
   /* resultList 상단 메뉴 클릭 함수 */
 
   const categoryClick = e => {
-    searchParams.delete('query');
-    searchParams.delete('price');
+    // searchParams.delete('query');
+    // searchParams.delete('price');
     searchParams.set('category', e);
     setSearchParams(searchParams);
     navigate(`/resultlist?${searchParams.toString()}`);
@@ -71,7 +70,7 @@ const ResultList = () => {
         <div className="resultListTitleWrap">
           <h1 className="resultListTitle">강남 맛집 인기 검색순위</h1>
           <div className="category">
-            {SEARCH_MENU.map(menuList => {
+            {SEARCH_MENU?.map(menuList => {
               return (
                 <button
                   key={menuList.id}
@@ -114,6 +113,7 @@ const ResultList = () => {
           setRadioInputStatus={setRadioInputStatus}
           searchParams={searchParams}
           setSearchParams={setSearchParams}
+          getFetchData={getFetchData}
         />
       </div>
     </article>

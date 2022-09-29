@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import API from '../../../config';
 import './Login.scss';
 
 const TestLogin = ({ currentId }) => {
   const navigate = useNavigate();
 
   const [inputValues, setInputValues] = useState({
-    userId: '',
+    user_id: '',
     password: '',
   });
 
@@ -15,11 +16,9 @@ const TestLogin = ({ currentId }) => {
     const { name, value } = event.target;
     setInputValues(prev => ({ ...prev, [name]: value }));
   };
-
   const goToMain = e => {
     e.preventDefault();
-
-    fetch('http://192.168.215.82:3000/user/signin', {
+    fetch(`${API.login}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -28,28 +27,36 @@ const TestLogin = ({ currentId }) => {
     })
       .then(response => response.json())
 
-      .then(data => {
-        // return console.log(data);
-        localStorage.setItem('TOKEN', data.accessToken);
-        localStorage.setItem('nickname', data.nickname);
-        if (currentId === '사장님로그인' && data.admin === 'TRUE') {
-          navigate('/adminpage');
-        } else if (currentId === '로그인' && data.admin === '') {
-          navigate('/');
-        }
-      });
+      .then(
+        data => (
+          console.log(data),
+          localStorage.setItem('TOKEN', data.accessToken),
+          localStorage.setItem('nickname', data.nickname),
+          currentId === '사장님로그인' && data.admin === 'true'
+            ? navigate('/adminpage')
+            : navigate('/')
+        )
+      );
+
+    // if (currentId === '사장님로그인') {
+    //   navigate('/adminpage');
+    // } else if (currentId === '로그인') {
+    //   navigate('/');
+    // }
   };
+
   return (
     <div>
       <div className="userInfo">
         <h2 className="title">{currentId}</h2>
         <form>
           <input
-            type="userId"
+            type="text"
             placeholder="아이디"
             onChange={handleInput}
-            name="userId"
+            name="user_id"
           />
+
           <input
             type="password"
             placeholder="비밀번호"

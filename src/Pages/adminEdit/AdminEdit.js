@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import FoodMenu from './FoodMenu';
+import { CLOSED_DAY, CATEGORIES } from './adminEditData';
+import API from '../../config';
 import './AdminEdit.scss';
 
 const AdminEdit = () => {
@@ -7,9 +10,10 @@ const AdminEdit = () => {
   const [store, setStore] = useState({});
   const [menuData, setMenuData] = useState([]);
   const storeId = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://192.168.215.82:3000/store/${storeId.id}`, {
+    fetch(`${API.adminEdit}/${storeId.id}`, {
       method: 'GET',
       headers: {
         authorization: accessToken,
@@ -107,7 +111,7 @@ const AdminEdit = () => {
   adminEditForm.append('food_menu', JSON.stringify(menus));
 
   const editSaveClick = () => {
-    fetch('http://192.168.215.82:3000/store/10', {
+    fetch(`${API.adminEdit}/${storeId.id}`, {
       method: 'PATCH',
       headers: {
         enctype: 'multipart/form-data',
@@ -118,6 +122,7 @@ const AdminEdit = () => {
       .then(res => res.json())
       .then(result => console.log(result));
     navigate('/adminpage');
+    window.location.reload();
   };
 
   return (
@@ -207,7 +212,7 @@ const AdminEdit = () => {
           <textarea
             onChange={saveInput}
             name="description"
-            placeholder="가게에 대해 설명해주세요 (최대 1000자)"
+            placeholder="가게에 대해 설명해주세요 (최대 1,000자)"
             maxLength="1000"
             value={input.description}
           />

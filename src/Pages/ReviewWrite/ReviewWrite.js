@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Melon from './Melon';
+import API from '../../config';
 import './ReviewWrite.scss';
 
 const ReviewWrite = () => {
@@ -16,6 +17,7 @@ const ReviewWrite = () => {
   const grayMelon = `${process.env.PUBLIC_URL}/images/07E08BB9-5390-41B4-9270-DC83C7D8ACE2.jpeg`;
   const Token = localStorage.getItem('TOKEN');
 
+  const [storeName, setStoreName] = useState('');
   const formData = new FormData();
   originPhoto.forEach(photo => {
     formData.append('reviewImg', photo);
@@ -29,10 +31,24 @@ const ReviewWrite = () => {
     navigate('/detail');
   };
 
+  console.log(params);
+
+  useEffect(() => {
+    fetch(`${API.reviewWrite}/${params.name}`, {
+      method: 'GET',
+      headers: {
+        authorization: Token,
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    })
+      .then(response => response.json())
+      .then(result => setStoreName(result[0].name));
+  }, []);
+
   const formGo = async e => {
     e.preventDefault();
     localStorage.removeItem('text');
-    await fetch(`http://192.168.239.167:3000/review/new/1`, {
+    await fetch(`${API.reviewWrite}`, {
       method: 'POST',
       headers: {
         authorization: Token,
@@ -41,7 +57,7 @@ const ReviewWrite = () => {
       cache: 'no-cache',
       body: formData,
     }).then(res => res.json());
-    navigate('/detail');
+    navigate(`/detail/${params.name}`);
   };
   const textCount = e => {
     setText(e.target.value);
@@ -102,7 +118,7 @@ const ReviewWrite = () => {
     <div className="reviewWrite">
       <form className="reviewWritePage" name="reviewImg">
         <div className="store">
-          <span className="storeName">{params.name} </span>
+          <span className="storeName">{storeName} </span>
           <span>에 대한 솔직한 리뷰를 써주세요</span>
         </div>
         <div className="melon">
