@@ -1,7 +1,7 @@
-import React from 'react';
+// import React from 'react';
 
-const ResList = () => {
-  return <div>reslist</div>;
-};
+// const ResList = () => {
+//   return <div>reslist</div>;
+// };
 
-export default ResList;
+// export default ResList;

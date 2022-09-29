@@ -1,0 +1,115 @@
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css';
+
+.resultList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+  min-height: 750px;
+  margin: 0 auto;
+
+  .contentsWrap {
+    width: 800px;
+
+    .resultListTitleWrap {
+      width: 800px;
+      margin: 0 auto;
+      padding: 15px 24px;
+
+      .resultListTitle {
+        margin: 0 auto;
+        padding: 10px 15px;
+        font-size: 29px;
+        color: #76ba99;
+        line-height: 1.5;
+      }
+
+      .category {
+        padding: 15px;
+        border: 1px solid #aaa;
+        border-radius: 6px;
+
+        > .categoryLink {
+          font-size: 15px;
+          color: #666;
+          text-decoration: none;
+
+          &::after {
+            content: '|';
+            padding: 0 10px;
+          }
+
+          &:nth-last-child(1)::after {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .resultListContentsWrap {
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 800px;
+
+      .resultListContentsUl {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: start;
+        margin-top: 10px;
+      }
+    }
+
+    .pagingContainer {
+      margin: 10px 0;
+
+      .paging {
+        padding: 15px 0;
+
+        .pagingLink {
+          display: inline-block;
+          width: 40px;
+          height: 40px;
+          margin: 0 5px;
+          font-size: 21px;
+          color: #666;
+          text-decoration: none;
+          text-align: center;
+          line-height: 40px;
+          border: 1px solid #76ba99;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .resultList {
+    .contentsWrap {
+      order: 2;
+      width: 100%;
+      min-width: 400px;
+
+      .resultListTitleWrap {
+        width: 100%;
+        min-width: 400px;
+      }
+
+      .resultListContentsWrap {
+        width: 100%;
+
+        .resultListContentsUl .resultListContentsLi {
+          width: 100%;
+        }
+      }
+    }
+
+    .searchFilterWrap {
+      order: 1;
+      width: 100%;
+      min-width: 400px;
+      height: 100%;
+    }
+  }
+}
