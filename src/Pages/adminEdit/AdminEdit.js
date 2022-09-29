@@ -2,17 +2,19 @@ import React, { useEffect, useState } from 'react';
 import FoodMenu from './FoodMenu';
 import { INPUT_VALUES, CLOSED_DAY, CATEGORIES } from './adminEditData';
 import './AdminEdit.scss';
+import { useParams } from 'react-router-dom';
 
 const AdminEdit = () => {
-  const accesToken = localStorage.getItem('TOKEN');
+  const accessToken = localStorage.getItem('TOKEN');
   const [store, setStore] = useState({});
   const [menuData, setMenuData] = useState([]);
+  const storeId = useParams();
 
   useEffect(() => {
-    fetch('http://192.168.215.82:3000/store/135', {
+    fetch(`http://192.168.215.82:3000/store/${storeId.id}`, {
       method: 'GET',
       headers: {
-        authorization: accesToken,
+        authorization: accessToken,
         'Content-Type': 'application/json;charset=utf-8',
       },
     })
@@ -113,7 +115,7 @@ const AdminEdit = () => {
       method: 'PATCH',
       headers: {
         enctype: 'multipart/form-data',
-        authorization: accesToken,
+        authorization: accessToken,
       },
       body: adminEditForm,
     })
