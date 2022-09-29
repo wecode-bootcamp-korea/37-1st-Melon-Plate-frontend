@@ -4,7 +4,7 @@ import Melon from './Melon';
 import './ReviewWrite.scss';
 
 const ReviewWrite = () => {
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const params = useParams();
   const [melonPoint, setMelonPoint] = useState(10);
   const [images, setImages] = useState([]);
@@ -26,7 +26,7 @@ const ReviewWrite = () => {
   const canceler = e => {
     e.preventDefault();
     localStorage.removeItem('text');
-    Navigate('/detail');
+    navigate('/detail');
   };
 
   const formGo = async e => {
@@ -41,7 +41,7 @@ const ReviewWrite = () => {
       cache: 'no-cache',
       body: formData,
     }).then(res => res.json());
-    Navigate('/detail');
+    navigate('/detail');
   };
   const textCount = e => {
     setText(e.target.value);
@@ -71,7 +71,7 @@ const ReviewWrite = () => {
     }
   };
 
-  const Vialed = textLength > 0;
+  const isValid = textLength > 0;
 
   const deleteImage = clickedImage => {
     const imgIdx = images.findIndex(img => img === clickedImage);
@@ -185,8 +185,8 @@ const ReviewWrite = () => {
         </div>
         <div className="result">
           <button
-            className={!Vialed ? 'btn' : 'btnChange'}
-            disabled={!Vialed}
+            className={!isValid ? 'btn' : 'btnChange'}
+            disabled={!isValid}
             onClick={saveText}
           >
             나중에 이어쓰기
@@ -196,8 +196,8 @@ const ReviewWrite = () => {
               취소
             </button>
             <button
-              className={!Vialed ? 'btnReview' : 'btnReviewChange'}
-              disabled={!Vialed}
+              className={!isValid ? 'btnReview' : 'btnReviewChange'}
+              disabled={!isValid}
               onClick={formGo}
             >
               리뷰 올리기
