@@ -24,7 +24,7 @@ function Router() {
         <Route path="/resultlist" element={<ResultList />} />
         <Route path="/detail" element={<Detail />} />
         <Route path="/detail/write" element={<ReviewWrite />} />
-        <Route path="/admin/edit" element={<AdminEdit />} />
+        <Route path="/admin/edit/:id" element={<AdminEdit />} />
         <Route path="/admin/create" element={<AdminCreate />} />
         <Route path="/adminpage" element={<AdminPage />} />
         <Route path="/SignupTap" element={<SignupTap />} />

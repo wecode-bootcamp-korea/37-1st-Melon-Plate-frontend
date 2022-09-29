@@ -9,7 +9,7 @@ const AdminEdit = () => {
   const [menuData, setMenuData] = useState([]);
 
   useEffect(() => {
-    fetch('http://192.168.215.82:3000/admin/', {
+    fetch('http://192.168.215.82:3000/store/10', {
       method: 'GET',
       headers: {
         authorization: accesToken,
@@ -103,8 +103,8 @@ const AdminEdit = () => {
   adminEditForm.append('food_menu', JSON.stringify(menus));
 
   const editSaveClick = () => {
-    fetch('https://87ca-211-106-114-186.jp.ngrok.io/store/create', {
-      method: 'POST',
+    fetch('http://192.168.215.82:3000/store/10', {
+      method: 'PATCH',
       headers: {
         enctype: 'multipart/form-data',
         authorization: accesToken,
@@ -114,6 +114,7 @@ const AdminEdit = () => {
       .then(res => res.json())
       .then(result => console.log(result));
   };
+  console.log(input);
 
   return (
     <div className="adminEdit">
@@ -130,6 +131,7 @@ const AdminEdit = () => {
             type="text"
             name="name"
             onChange={saveInput}
+            value={input.name}
           />
         </div>
         <div className="adminEditInputSet">
@@ -139,6 +141,7 @@ const AdminEdit = () => {
             type="text"
             name="address"
             onChange={saveInput}
+            value={input.address}
           />
         </div>
         <div className="adminEditInputSet">
@@ -148,6 +151,7 @@ const AdminEdit = () => {
             type="tel"
             name="tel"
             onChange={saveInput}
+            value={input.tel}
           />
         </div>
         <div className="adminEditInputSet">
@@ -155,8 +159,9 @@ const AdminEdit = () => {
           <input
             className="inputText"
             type="time"
-            name="time"
+            name="open_time"
             onChange={saveInput}
+            value={input.open_time}
           />
         </div>
         <div className="adminEditInputSet">
@@ -164,28 +169,11 @@ const AdminEdit = () => {
           <input
             className="inputText"
             type="time"
-            name="time"
+            name="closed_time"
             onChange={saveInput}
+            value={input.closed_time}
           />
         </div>
-
-        {/* {INPUT_VALUES.map(
-          ({ id, title, type, placeholder, inputName, step, min, max }) => (
-            <div className="adminEditInputSet" key={id}>
-              <div className="inputTitle"> {title}</div>
-              <input
-                className="inputText"
-                type={type}
-                placeholder={placeholder}
-                name={inputName}
-                onChange={saveInput}
-                step={step}
-                min={min}
-                max={max}
-              />
-            </div>
-          )
-        )} */}
         <div className="storeCategories">
           <div className="inputTitle">식당 카테고리</div>
           <select className="inputText" onChange={saveInput} name="category_id">
@@ -217,6 +205,7 @@ const AdminEdit = () => {
             name="description"
             placeholder="가게에 대해 설명해주세요 (최대 1000자)"
             maxLength="1000"
+            value={input.description}
           />
         </div>
         <div className="adminEditInputSet">
@@ -227,6 +216,7 @@ const AdminEdit = () => {
             type="number"
             placeholder="1인당 가격대"
             onChange={saveInput}
+            value={input.price_range}
           />
           <span>만원</span>
         </div>
