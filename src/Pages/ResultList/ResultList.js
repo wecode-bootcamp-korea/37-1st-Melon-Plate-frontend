@@ -8,24 +8,23 @@ const ResultList = () => {
   const [restaurantData, setRestaurantData] = useState([]);
   const [checkedList, setCheckedList] = useState([]);
   const [radioInputStatus, setRadioInputStatus] = useState('');
-
   const [searchParams, setSearchParams] = useSearchParams();
 
   const categoryValue = searchParams.get('category');
   const priceRangeValue = searchParams.get('price');
-
   const navigate = useNavigate();
-
   const params = window.location.search;
 
-  console.log('url', categoryValue, priceRangeValue); //
+  console.log('*****', categoryValue, priceRangeValue); //
 
   useEffect(() => {
-    fetch(`http://192.168.215.167:3000/main/search${params}`)
+    fetch(
+      `http://192.168.215.167:3000/main/search${params}&location=&menu=&limit=&filter=&offDay=&query=강남`
+    )
       .then(response => response.json())
-      .then(result => console.log(result.data));
-    // .then(result => setRestaurantData(result.data));
-  }, [params]);
+      // .then(result => console.log(result.data));
+      .then(result => setRestaurantData(result.data));
+  }, []);
 
   //const location = useLocation();
 
@@ -34,24 +33,24 @@ const ResultList = () => {
 
   // let { params } = useParams();
 
-  // const handleClickRadioButton = radioBtnName => {
-  //   console.log(radioBtnName);
-  //   setRadioInputStatus(radioBtnName);
-  // };
-
   const searchData = event => {
     event.preventDefault();
 
-    fetch(`http://192.168.215.167:3000/main/search${params}`, {
-      // fetch(`/data/restaurant_list.json`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-      },
-    })
+    fetch(
+      `http://192.168.215.167:3000/main/search${params}&location=&menu=&limit=&filter=&offDay=&query=강남`,
+      {
+        // fetch(`/data/restaurant_list.json`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+      }
+    )
       .then(response => response.json())
-      // .then(result => console.log(result.data));
+      //.then(result => console.log(result.data));
       .then(result => setRestaurantData(result.data));
+
+    navigate(`/resultlist?${searchParams.toString()}`);
   };
 
   // `http://192.168.215.167:3000/main/search${params}&price=&location=&menu=&limit=&query=강남`
@@ -70,12 +69,13 @@ const ResultList = () => {
   const movePages = () => {
     console.log('testPage');
   };
+
   /* SerchBox filter 클릭 함수 */
   const onCheckedPriceRange = (checked, item) => {
     if (checked) {
       searchParams.set('price', item);
       setSearchParams(searchParams);
-      navigate(`/resultlist?${searchParams.toString()}`);
+      // navigate(`/resultlist?${searchParams.toString()}`);
       console.log(item);
       //console.log(navigate);
     }
@@ -86,10 +86,18 @@ const ResultList = () => {
     if (checked) {
       searchParams.set('category', item);
       setSearchParams(searchParams);
-      navigate(`/resultlist?${searchParams.toString()}`);
+      // navigate(`/resultlist?${searchParams.toString()}`);
       console.log(item);
       //console.log(navigate);
     }
+  };
+
+  /* 라디오 버튼 함수  */
+  const handleClickRadioButton = (e, radioBtnName) => {
+    console.log(e, radioBtnName);
+    searchParams.set('rating', radioBtnName);
+    setSearchParams(searchParams);
+    // setRadioInputStatus(radioBtnName);
   };
 
   /* resultList 상단 메뉴 클릭 함수 시작 */
@@ -115,19 +123,19 @@ const ResultList = () => {
 
   /* resultList 상단 메뉴 클릭 함수 끝 */
 
-  const handleChangeLink = () => {
-    fetch(`http://172.20.10.11:8000/search?query={}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-      },
-    })
-      .then(response => response.json(), {})
-      .then(result => {
-        console.log(result.data);
-        setRestaurantData(result.data);
-      });
-  };
+  // const handleChangeLink = () => {
+  //   fetch(`http://172.20.10.11:8000/search?query={}`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json;charset=utf-8',
+  //     },
+  //   })
+  //     .then(response => response.json(), {})
+  //     .then(result => {
+  //       console.log(result.data);
+  //       setRestaurantData(result.data);
+  //     });
+  // };
 
   return (
     <article className="resultList">
@@ -173,7 +181,8 @@ const ResultList = () => {
       </div>
       <div className="searchFilterWrap">
         <SearchBox
-          handleChangeLink={handleChangeLink}
+          // handleChangeLink={handleChangeLink}
+          handleClickRadioButton={handleClickRadioButton}
           searchData={searchData}
           restaurantData={restaurantData}
           setRestaurantData={setRestaurantData}

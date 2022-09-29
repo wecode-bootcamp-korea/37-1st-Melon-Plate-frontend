@@ -42,8 +42,11 @@ const SearchBox = ({
             value="popularity"
             className="radioBox"
             id="sorting1"
-            onClick={() => handleClickRadioButton('popularity')}
-            checked={radioInputStatus === 'popularity'}
+            // onClick={e => handleClickRadioButton('popularity')}
+            onClick={e => {
+              handleClickRadioButton(e.target.checked, e.target.value);
+            }}
+            //checked={radioInputStatus === 'popularity'}
           />
           <label htmlFor="sorting1">인기순</label>
           <input
@@ -52,8 +55,11 @@ const SearchBox = ({
             value="rating"
             className="radioBox"
             id="sorting2"
-            onClick={() => handleClickRadioButton('rating')}
-            checked={radioInputStatus === 'rating'}
+            // onClick={() => handleClickRadioButton('rating')}
+            onClick={e => {
+              handleClickRadioButton(e.target.checked, e.target.value);
+            }}
+            //checked={radioInputStatus === 'rating'}
           />
           <label htmlFor="sorting2">평점순</label>
         </p>
@@ -65,17 +71,17 @@ const SearchBox = ({
             return (
               <>
                 <input
-                  type="checkbox"
-                  name=""
+                  type="radio"
+                  name="priceRadioBox"
                   value={menuList.price}
-                  className="checkBox"
-                  id={'checkBoxMid' + menuList.id}
+                  className="radioBox"
+                  id={'radioBoxMid' + menuList.id}
                   key={menuList.id}
                   onClick={e => {
                     onCheckedPriceRange(e.target.checked, menuList.price);
                   }}
                 />
-                <label htmlFor={'checkBoxMid' + menuList.id}>
+                <label htmlFor={'radioBoxMid' + menuList.id}>
                   {menuList.name}
                 </label>
               </>
@@ -90,17 +96,17 @@ const SearchBox = ({
             return (
               <>
                 <input
-                  type="checkbox"
-                  name=""
+                  type="radio"
+                  name="categoryRadioBox"
                   value={menuList.category}
-                  className="checkBox"
-                  id={'checkBoxBot' + menuList.id}
+                  className="radioBox"
+                  id={'radioBoxBot' + menuList.id}
                   key={menuList.id}
                   onClick={e => {
                     onCheckedCategory(e.target.checked, menuList.category);
                   }}
                 />
-                <label htmlFor={'checkBoxBot' + menuList.id}>
+                <label htmlFor={'radioBoxBot' + menuList.id}>
                   {menuList.category}
                 </label>
               </>
@@ -125,10 +131,7 @@ const SearchBox = ({
 };
 
 const SEARCH_MENU = [
-  {
-    id: 1,
-    category: '한식',
-  },
+  { id: 1, category: '한식' },
   { id: 2, category: '중식' },
   { id: 3, category: '일식' },
   { id: 4, category: '양식' },
