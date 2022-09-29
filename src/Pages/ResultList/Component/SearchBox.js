@@ -59,9 +59,7 @@ const SearchBox = ({
         </p>
       </div> */}
       <div className="searchFilterBox searchFilterMid">
-        <label>
-          가격대<span>(중복가능)</span>
-        </label>
+        <label>가격대</label>
         <p>
           {PRICE_DATA.map(menuList => {
             return (
@@ -86,9 +84,7 @@ const SearchBox = ({
         </p>
       </div>
       <div className="searchFilterBox searchFilterBot">
-        <label>
-          음식 종류<span>(중복가능)</span>
-        </label>
+        <label>음식 종류</label>
         <p>
           {SEARCH_MENU.map(menuList => {
             return (
