@@ -20,7 +20,7 @@ Introduction
 
 Demo
 ---------------------
-<a href="//유튜브 주소" target='_blank'>
+<a href="https://www.youtube.com/watch?v=PT2_F-1esPk&list=RDPT2_F-1esPk&start_radio=1" target='_blank'>
   <img src="//시연이미지" alt="로그인 이미지" />
 <a/>
 
