@@ -1,4 +1,4 @@
-##Introduction
+## Introduction
 -------------------------------------------
 - 팀원
   백엔드 : 김응수, 조준형
@@ -18,7 +18,7 @@
 - Notion 프로젝트 소개 : https://www.notion.so/1-Melon-Plate-1b383e58e9f9497b9dfe595410d7066d
 
 
-##Demo
+## Demo
 ---------------------
 <a href="https://www.youtube.com/watch?v=PT2_F-1esPk&list=RDPT2_F-1esPk&start_radio=1" target='_blank'>
   <img src="//시연이미지" alt="로그인 이미지" />
@@ -37,23 +37,23 @@ node.js, mysql, typeorm, multer, express, AWS RDS, S3
 HTML, CSS, Javascript, REACT
 
   
-  ##Feature
+  ## Feature
   -----------------------
   
-  ###User
+  ### User
   - 로그인 및 회원가입
   - 리뷰 작성 및 업로드
   <br/>
   <br/>
   
-  ###SEARCH & FILTER
+  ### SEARCH & FILTER
   - 검색창을 통한 맛집 검색
   - 필터 별 맛집 추출
   - 자체 추천 리스트
   
   <br/>
   <br/>
-  ###ADMIN
+  ### ADMIN
   - 식당별 상세 페이지
   - Admin 페이지로 식당 관리
  
