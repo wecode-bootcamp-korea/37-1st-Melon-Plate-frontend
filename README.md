@@ -21,7 +21,7 @@ Introduction
 Demo
 ---------------------
 <a url="https://wecode-bootcamp.slack.com/files/U03N6162LD8/F0459CAKV7S/_________________________________________________________________________.mp4">
-  <img ""/>
+  <img "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAyMDlfNyAg%2FMDAxNjQ0MzgzNzQ2MzE5.mw410_48RM78vte2r1A0Th-WM9eWd3eEvJD4PWGMbjQg.mei2uaHxhrm1bjTv4thSiN6yI8Ei1VUS9qy8FeO2s7Ag.PNG.pitrading12%2F6.png&type=a340"/>
 </a>
 
 Technologies
