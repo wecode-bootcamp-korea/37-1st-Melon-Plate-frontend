@@ -23,11 +23,6 @@ Demo
 
 Technologies
 ----------------------
-
-
-
-common
-----------------
 git&github, slack, trello, figma,
 
 
