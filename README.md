@@ -28,23 +28,13 @@ Technologies
 
 common
 ----------------
-git&github
-slack
-trello
-figma
+git&github, slack, trello, figma,
 
 
 Back-end
 ----------------
-node.js,
-mysql,
-typeorm,
-multer,
-express,
-AWS RDS, S3
+node.js, mysql, typeorm, multer, express, AWS RDS, S3
 
 Front-end
 ----------------
-HTML,
-CSS,
-REACT
+HTML, CSS, REACT
