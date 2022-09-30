@@ -26,8 +26,8 @@ Technologies
 git&github, slack, trello, figma,
 
 
-- Back-end
+- Back-end <br/>
 node.js, mysql, typeorm, multer, express, AWS RDS, S3
 
-- Front-end
+- Front-end <br/>
 HTML, CSS, REACT
