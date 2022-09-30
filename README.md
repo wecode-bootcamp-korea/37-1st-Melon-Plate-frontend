@@ -20,8 +20,8 @@ Introduction
 
 Demo
 ---------------------
-<a href="https://www.youtube.com/watch?v=fdzojloPlFA">
-  <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAyMDlfNyAg%2FMDAxNjQ0MzgzNzQ2MzE5.mw410_48RM78vte2r1A0Th-WM9eWd3eEvJD4PWGMbjQg.mei2uaHxhrm1bjTv4thSiN6yI8Ei1VUS9qy8FeO2s7Ag.PNG.pitrading12%2F6.png&type=a340" />
+<a href="https://www.youtube.com/watch?v=fdzojloPlFA" target="_blank">
+  <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAyMDlfNyAg%2FMDAxNjQ0MzgzNzQ2MzE5.mw410_48RM78vte2r1A0Th-WM9eWd3eEvJD4PWGMbjQg.mei2uaHxhrm1bjTv4thSiN6yI8Ei1VUS9qy8FeO2s7Ag.PNG.pitrading12%2F6.png&type=a340" alt="로그인 이미지" />
 <a/>
 
 Technologies
