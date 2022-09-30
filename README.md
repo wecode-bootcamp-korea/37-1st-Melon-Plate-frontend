@@ -10,12 +10,12 @@ Introduction
   강남 맛집 추천 여기서 해결
 
 
-기간 : 22.09.19 - 22.09.29
-구성 : Front-end 4명, Back-end 2명
+-기간 : 22.09.19 - 22.09.29
+-구성 : Front-end 4명, Back-end 2명
 
-백앤드 깃헙주소 : https://github.com/wecode-bootcamp-korea/37-1st-Melon-Plate-backend/
-프론트엔드 깃헙주소 : https://github.com/wecode-bootcamp-korea/37-1st-Melon-Plate-frontend/
-Notion 프로젝트 소개 : https://www.notion.so/1-Melon-Plate-1b383e58e9f9497b9dfe595410d7066d
+- 백앤드 깃헙주소 : https://github.com/wecode-bootcamp-korea/37-1st-Melon-Plate-backend/
+- 프론트엔드 깃헙주소 : https://github.com/wecode-bootcamp-korea/37-1st-Melon-Plate-frontend/
+- Notion 프로젝트 소개 : https://www.notion.so/1-Melon-Plate-1b383e58e9f9497b9dfe595410d7066d
 
 
 Demo
@@ -31,10 +31,8 @@ common
 git&github, slack, trello, figma,
 
 
-Back-end
-----------------
+-Back-end
 node.js, mysql, typeorm, multer, express, AWS RDS, S3
 
-Front-end
-----------------
+-Front-end
 HTML, CSS, REACT
