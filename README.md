@@ -31,4 +31,4 @@ git&github, slack, trello, figma,
 node.js, mysql, typeorm, multer, express, AWS RDS, S3
 
 - Front-end <br/>
-HTML, CSS, REACT
+HTML, CSS, Javascript, REACT
