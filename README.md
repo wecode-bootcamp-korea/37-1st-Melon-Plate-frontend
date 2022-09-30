@@ -18,9 +18,8 @@
 
 
 # Demo
-<a href="https://www.youtube.com/watch?v=PT2_F-1esPk&list=RDPT2_F-1esPk&start_radio=1" target='_blank'>
-  <img src="//시연이미지" alt="로그인 이미지" />
-<a/>
+
+  ![image](https://user-images.githubusercontent.com/109328454/193214827-d8d2b6d7-f394-49f8-bb07-5c79247f6f87.png)
 
 # Technologies
   
@@ -35,21 +34,20 @@ node.js, mysql, typeorm, multer, express, AWS RDS, S3
 HTML, CSS, Javascript, REACT
 
   
-  # Front-end
-  ## User
-  - 로그인 및 회원가입
-  - 리뷰 작성 및 업로드
-  <br/>
+## Feature
+
+### User
+  - 로그인 및 회원가입 - FileReader를 사용한 이미지 미리보기, 컴포넌트 재사용으로 두 가지 회원가입 구현
+  - 리뷰 작성 및 업로드 - 멜론 이미지로 평점 리뷰 남기기 기능 구현
   <br/>
   
-  ## SEARCH & FILTER
-  - 검색창을 통한 맛집 검색
+### SEARCH & FILTER
+  - 검색창을 통한 맛집 검색 - 쿼리스트링을 사용한 검색, 필터 기능 구현
   - 필터 별 맛집 추출
   - 자체 추천 리스트
   <br/>
-  <br/>
   
-  ## ADMIN
+### ADMIN
   - 식당별 상세 페이지
   - Admin 페이지로 식당 관리
  
