@@ -24,7 +24,7 @@ const ResultListContents = ({ restaurantData, getFetchData }) => {
     }) => (
       <li className="resultListContentsLi" key={id}>
         <figure className="restaurantItem">
-          <Link key={id} to={`/resultList/${id}`} className="contentLink">
+          <Link key={id} to={`/detail/${id}`} className="contentLink">
             <div className="thumb">
               <img className="resultImage" alt={address} src={image} />
               {/* {dayOff && <div className="dayOffImage">쉬는 날 {dayOff}</div>} */}
@@ -33,7 +33,7 @@ const ResultListContents = ({ restaurantData, getFetchData }) => {
 
           <figcaption>
             <div className="info">
-              <Link key={id} to={`/resultList/${id}`} className="contentLink">
+              <Link key={id} to={`/detail/${id}`} className="contentLink">
                 <h2 className="title">
                   {name}
                   {/* <span className="branch">({branch})</span> */}

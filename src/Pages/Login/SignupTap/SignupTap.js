@@ -27,4 +27,4 @@ export default function SignupTap() {
   );
 }
 
-const CATEGORY_ARR = ['일반 회원가입', '사장님회원가입'];
+const CATEGORY_ARR = ['일반 회원가입', 'admin 회원가입'];

@@ -9,9 +9,11 @@ const SearchForm = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [data, setData] = useState([]);
   const accessToken = localStorage.getItem('TOKEN');
+  const [focused, setFocused] = useState(false);
 
   const termChange = e => {
     setSearchTerm(e.target.value);
+    setFocused(true);
   };
 
   const termSubmit = e => {
@@ -56,7 +58,7 @@ const SearchForm = () => {
 
         <button className="searchButton">검색</button>
       </form>
-      {/* {data && <SearchedResult data={data} accessToken={accessToken} />} */}
+      {focused && <SearchedResult data={data} accessToken={accessToken} />}
     </div>
   );
 };

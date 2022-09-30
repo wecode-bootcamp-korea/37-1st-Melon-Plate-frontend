@@ -12,7 +12,7 @@ const Store = ({ text }) => {
     open_time,
     closed_time,
     closed_day,
-    category,
+    category_id,
   } = text;
 
   return (
@@ -31,10 +31,10 @@ const Store = ({ text }) => {
           <div className="info">
             <p className="address">주소 : {address}</p>
             <p className="tel">전화번호 : {tel}</p>
-            <p className="hour">오픈시간 : {open_time}</p>
-            <p className="hour">마감시간 : {closed_time}</p>
-            <p className="off ">휴뮤일 : {closed_day}</p>
-            <p className="off ">음식종류 : {category}</p>
+            {/* <p className="hour">오픈시간 : {open_time}</p>
+            <p className="hour">마감시간 : {closed_time}</p> */}
+            <p className="off ">휴무일 : {closed_day}</p>
+            <p className="off ">음식종류 : {category_id}</p>
           </div>
         </div>
       </div>

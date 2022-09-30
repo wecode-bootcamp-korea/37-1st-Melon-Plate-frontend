@@ -14,8 +14,6 @@ const AdminCreate = () => {
     description: '',
     address: '',
     tel: '',
-    open_time: '',
-    closed_time: '',
     closed_day_id: '',
     price_range: ' ',
     category_id: '',
@@ -102,7 +100,7 @@ const AdminCreate = () => {
     })
       .then(res => res.json())
       .then(result => console.log(result));
-    await navigate('/adminpage');
+    navigate('/adminpage');
     window.location.reload();
   };
 

@@ -8,7 +8,7 @@ const TestLogin = ({ currentId }) => {
   const navigate = useNavigate();
 
   const [inputValues, setInputValues] = useState({
-    user_id: '',
+    userId: '',
     password: '',
   });
 
@@ -32,7 +32,7 @@ const TestLogin = ({ currentId }) => {
           console.log(data),
           localStorage.setItem('TOKEN', data.accessToken),
           localStorage.setItem('nickname', data.nickname),
-          currentId === '사장님로그인' && data.admin === 'true'
+          currentId === 'admin 로그인' && data.admin === 'true'
             ? navigate('/adminpage')
             : navigate('/')
         )
@@ -54,7 +54,7 @@ const TestLogin = ({ currentId }) => {
             type="text"
             placeholder="아이디"
             onChange={handleInput}
-            name="user_id"
+            name="userId"
           />
 
           <input

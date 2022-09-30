@@ -7,8 +7,7 @@
   padding: 30px 20px 50px;
   background: white;
   text-align: center;
-
-  font-weight: bolder;
+  font-weight: 500;
 
   .title {
     margin: 24px;
@@ -65,6 +64,10 @@
     &:visited {
       color: gray;
       text-decoration: none;
+    }
+
+    &:hover {
+      color: #76ba99;
     }
   }
 

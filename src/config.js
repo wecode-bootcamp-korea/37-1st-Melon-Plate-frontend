@@ -1,4 +1,4 @@
-const BASE_URL = 'http://192.168.215.82:3000';
+const BASE_URL = 'http://192.168.239.167:3000';
 const API = {
   signup: `${BASE_URL}/user/signup`, //성종화
   login: `${BASE_URL}/user/signin`,
