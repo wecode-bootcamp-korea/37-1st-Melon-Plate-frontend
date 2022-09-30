@@ -1,5 +1,4 @@
 ## Introduction
-----------------------
 - 팀원
   백엔드 : 김응수, 조준형
   프론트 : 김지원, 남장현, 성종화, 신지윤
@@ -19,13 +18,11 @@
 
 
 ## Demo
-----------------------
 <a href="https://www.youtube.com/watch?v=PT2_F-1esPk&list=RDPT2_F-1esPk&start_radio=1" target='_blank'>
   <img src="//시연이미지" alt="로그인 이미지" />
 <a/>
 
 ## Technologies
-----------------------
   
 - common <br/>
 git&github, slack, trello, figma,
@@ -39,8 +36,7 @@ HTML, CSS, Javascript, REACT
 
   
   ## Feature
-  ----------------------
-  
+  #Front-end
   ### User
   - 로그인 및 회원가입
   - 리뷰 작성 및 업로드
@@ -51,7 +47,6 @@ HTML, CSS, Javascript, REACT
   - 검색창을 통한 맛집 검색
   - 필터 별 맛집 추출
   - 자체 추천 리스트
-  
   <br/>
   <br/>
   
