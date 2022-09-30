@@ -47,6 +47,7 @@ const Header = () => {
 
   return (
     <div className="header">
+      {console.log(user)}
       <Link to="/">
         <div className="headerRight">
           <img

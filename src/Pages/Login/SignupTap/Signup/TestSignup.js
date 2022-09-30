@@ -46,7 +46,7 @@ const TestSignup = ({ currentId }) => {
   userSignUp.append('gender', gender);
   userSignUp.append('age', age);
 
-  if (currentId === '사장님회원가입') {
+  if (currentId === 'admin 회원가입') {
     userSignUp.append('admin', true);
   }
   //

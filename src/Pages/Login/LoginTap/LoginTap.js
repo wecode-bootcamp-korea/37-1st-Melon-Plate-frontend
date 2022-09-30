@@ -27,4 +27,4 @@ export default function LoginTap() {
   );
 }
 
-const CATEGORY_ARR = ['로그인', '사장님로그인'];
+const CATEGORY_ARR = ['일반회원 로그인', 'admin 로그인'];

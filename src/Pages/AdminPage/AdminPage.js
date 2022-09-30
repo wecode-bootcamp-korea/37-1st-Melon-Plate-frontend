@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import API from '../../config';
+import { TEXT } from './TEXT';
 import Store from './Store';
 import './AdminPage.scss';
 

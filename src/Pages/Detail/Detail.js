@@ -94,7 +94,7 @@ const Detail = () => {
             <tr>
               <th className="tableTh gray">음식종류</th>
               <td className="tableTd data" colSpan="2">
-                {restaurantData.category_id}
+                {restaurantData.category}
               </td>
             </tr>
             <tr>
@@ -120,7 +120,9 @@ const Detail = () => {
             <tr>
               <th className="tableTh gray">휴무일</th>
               <td className="tableTd data" colSpan="2">
-                {restaurantData.closed_time}
+                {restaurantData.closed_day
+                  ? restaurantData.closed_day
+                  : '연중무휴'}
               </td>
             </tr>
             <tr>

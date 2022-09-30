@@ -101,8 +101,8 @@ const AdminEdit = () => {
   adminEditForm.append('name', name);
   adminEditForm.append('address', address);
   adminEditForm.append('tel', tel);
-  adminEditForm.append('open_time', open_time);
-  adminEditForm.append('closed_time', closed_time);
+  // adminEditForm.append('open_time', open_time);
+  // adminEditForm.append('closed_time', closed_time);
   adminEditForm.append('image', imageInput);
   adminEditForm.append('closed_day_id', dayNum);
   adminEditForm.append('description', description);

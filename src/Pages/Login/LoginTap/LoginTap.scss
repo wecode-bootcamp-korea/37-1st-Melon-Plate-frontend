@@ -2,17 +2,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 300px;
+  height: 500px;
 
   .category {
-    all: revert;
+    all: unset;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
     height: 50px;
     width: 194px;
-    color: white;
-    background-color: #76ba99;
-    border: #76ba99 solid;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    color: gray;
     font-weight: bolder;
+    text-align: center;
+
+    &:hover {
+      font-size: larger;
+      color: #76ba99;
+    }
   }
 }

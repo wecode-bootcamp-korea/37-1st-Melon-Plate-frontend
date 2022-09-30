@@ -10,7 +10,7 @@ export const TEXT = [
     open_time: '17:00',
     closed_time: '23:00',
     closed_day: '휴일 : 수',
-    category_id: '중식',
+    category: '중식',
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ export const TEXT = [
     open_time: '영업시간 : 	17:00 - 23:00',
     closed_time: 'ddddddddddd',
     closed_day: '휴일 : 수',
-    category_id: '중국음식',
+    category: '중국음식',
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ export const TEXT = [
     open_time: ' 	17:00 - 23:00',
     closed_time: 'ddddddddddd',
     closed_day: ' 수',
-    category_id: '중국음식',
+    category: '중국음식',
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ export const TEXT = [
     open_time: '영업시간 : 	17:00 - 23:00',
     closed_time: 'ddddddddddd',
     closed_day: '휴일 : 수',
-    category_id: '중국음식',
+    category: '중국음식',
   },
   {
     id: 5,
@@ -54,7 +54,7 @@ export const TEXT = [
     open_time: '영업시간 : 	17:00 - 23:00',
     closed_time: 'ddddddddddd',
     closed_day: '휴일 : 수',
-    category_id: '중국음식',
+    category: '중국음식',
   },
   {
     id: 6,
@@ -65,6 +65,6 @@ export const TEXT = [
     open_time: '영업시간 : 	17:00 - 23:00',
     closed_time: 'ddddddddddd',
     closed_day: '휴일 : 수',
-    category_id: '중국음식',
+    category: '중국음식',
   },
 ];
