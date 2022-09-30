@@ -20,7 +20,7 @@ Introduction
 
 Demo
 ---------------------
-<a href="//유튜브 주소" ,'_blank'>
+<a href="//유튜브 주소" '_blank'>
   <img src="//시연이미지" alt="로그인 이미지" />
 <a/>
 
