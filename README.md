@@ -27,7 +27,7 @@ Demo
 Technologies
 ----------------------
 - common <br/>
-git&github, slack, trello, figma,
+git&github GitHub supports emoji! : +1 : sparkles, slack, trello, figma,
 
 
 - Back-end <br/>
