@@ -1,5 +1,5 @@
 ## Introduction
--------------------------------------------
+----------------------
 - 팀원
   백엔드 : 김응수, 조준형
   프론트 : 김지원, 남장현, 성종화, 신지윤
@@ -19,13 +19,14 @@
 
 
 ## Demo
----------------------
+----------------------
 <a href="https://www.youtube.com/watch?v=PT2_F-1esPk&list=RDPT2_F-1esPk&start_radio=1" target='_blank'>
   <img src="//시연이미지" alt="로그인 이미지" />
 <a/>
 
-##Technologies
+## Technologies
 ----------------------
+  
 - common <br/>
 git&github, slack, trello, figma,
 
@@ -38,7 +39,7 @@ HTML, CSS, Javascript, REACT
 
   
   ## Feature
-  -----------------------
+  ----------------------
   
   ### User
   - 로그인 및 회원가입
@@ -53,6 +54,7 @@ HTML, CSS, Javascript, REACT
   
   <br/>
   <br/>
+  
   ### ADMIN
   - 식당별 상세 페이지
   - Admin 페이지로 식당 관리
